@@ -133,58 +133,90 @@ const Hero = () => {
         initial="hidden"
         animate="visible"
       >
-        <div className="max-w-4xl">
-          <motion.h1 
-            className="text-6xl md:text-8xl font-bold mb-8 leading-tight"
-            initial={{ y: 50, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.5 }}
-          >
-            Unveiling
-            <br />
-            <motion.span 
-              className="text-gray-300"
-              animate={{ opacity: [0.5, 1, 0.5] }}
-              transition={{ duration: 3, repeat: Infinity }}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          {/* Text Content */}
+          <div className="max-w-4xl">
+            <motion.h1 
+              className="text-6xl md:text-8xl font-bold mb-8 leading-tight"
+              initial={{ y: 50, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.8, delay: 0.5 }}
             >
-              Architectural
-            </motion.span>
-            <br />
-            Mastery
-          </motion.h1>
-          <motion.p 
-            className="text-xl md:text-2xl mb-12 text-gray-400 max-w-2xl"
-            initial={{ y: 50, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.7 }}
-          >
-            Our architects breathe life into dreams, creating environments where innovation meets tradition, and spaces transcend mere structures
-          </motion.p>
-          <motion.div 
-            className="flex items-center space-x-4"
-            initial={{ y: 50, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.9 }}
-          >
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <Button 
-                className="bg-transparent border border-gray-500 text-white hover:bg-white hover:text-black px-8 py-3 rounded-full transition-all duration-300 group"
-                onClick={() => scrollToSection('about')}
+              Unveiling
+              <br />
+              <motion.span 
+                className="text-gray-300"
+                animate={{ opacity: [0.5, 1, 0.5] }}
+                transition={{ duration: 3, repeat: Infinity }}
               >
-                View More
-                <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-              </Button>
+                Architectural
+              </motion.span>
+              <br />
+              Mastery
+            </motion.h1>
+            <motion.p 
+              className="text-xl md:text-2xl mb-12 text-gray-400 max-w-2xl"
+              initial={{ y: 50, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.8, delay: 0.7 }}
+            >
+              Our architects breathe life into dreams, creating environments where innovation meets tradition, and spaces transcend mere structures
+            </motion.p>
+            <motion.div 
+              className="flex items-center space-x-4"
+              initial={{ y: 50, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.8, delay: 0.9 }}
+            >
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <Button 
+                  className="bg-transparent border border-gray-500 text-white hover:bg-white hover:text-black px-8 py-3 rounded-full transition-all duration-300 group"
+                  onClick={() => scrollToSection('about')}
+                >
+                  View More
+                  <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                </Button>
+              </motion.div>
             </motion.div>
+          </div>
+
+          {/* Building Image */}
+          <motion.div
+            className="relative"
+            initial={{ x: 100, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{ duration: 1, delay: 0.8 }}
+          >
+            <div className="relative overflow-hidden rounded-lg shadow-2xl">
+              <img 
+                src="https://images.unsplash.com/photo-1487958449943-2429e8be8625?w=600&h=800&fit=crop" 
+                alt="Modern Architecture Building"
+                className="w-full h-[600px] object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+            </div>
+            <motion.div
+              className="absolute -bottom-4 -right-4 w-32 h-32 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full blur-xl opacity-70"
+              animate={{ 
+                scale: [1, 1.2, 1],
+                opacity: [0.7, 0.9, 0.7]
+              }}
+              transition={{ 
+                duration: 4,
+                repeat: Infinity,
+                ease: "easeInOut"
+              }}
+            ></motion.div>
           </motion.div>
         </div>
       </motion.div>
 
-      {/* Floating Geometric Shapes */}
+      {/* Floating Geometric Shapes - Moved Down */}
       <motion.div
-        className="absolute top-20 left-10 w-4 h-4 bg-white opacity-20"
+        className="absolute bottom-40 left-10 w-4 h-4 bg-white opacity-20"
         animate={{ 
           y: [0, -20, 0],
           rotate: [0, 180, 360]
@@ -197,7 +229,7 @@ const Hero = () => {
       ></motion.div>
       
       <motion.div
-        className="absolute bottom-32 right-20 w-6 h-6 border border-white opacity-20"
+        className="absolute bottom-20 right-20 w-6 h-6 border border-white opacity-20"
         animate={{ 
           y: [0, 20, 0],
           rotate: [0, -180, -360]

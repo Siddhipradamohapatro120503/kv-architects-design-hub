@@ -13,10 +13,10 @@ const FloatingContact = () => {
 
   return (
     <div className="fixed z-50">
-      {/* Call Button - Left Side */}
+      {/* Call Button - Left Side - Lower Position */}
       <motion.button
         onClick={handleCall}
-        className="fixed left-6 top-1/2 -translate-y-1/2 bg-blue-600 hover:bg-blue-700 text-white p-4 rounded-full shadow-lg transition-all duration-300 group"
+        className="fixed left-6 bottom-32 bg-blue-600 hover:bg-blue-700 text-white p-4 rounded-full shadow-lg transition-all duration-300 group"
         initial={{ x: -100, opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
         transition={{ duration: 0.5, delay: 1 }}
@@ -30,10 +30,10 @@ const FloatingContact = () => {
         </div>
       </motion.button>
 
-      {/* WhatsApp Button - Right Side */}
+      {/* WhatsApp Button - Right Side - Lower Position */}
       <motion.button
         onClick={handleWhatsApp}
-        className="fixed right-6 top-1/2 -translate-y-1/2 bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-lg transition-all duration-300 group"
+        className="fixed right-6 bottom-32 bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-lg transition-all duration-300 group"
         initial={{ x: 100, opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
         transition={{ duration: 0.5, delay: 1.2 }}
@@ -49,7 +49,7 @@ const FloatingContact = () => {
 
       {/* Floating Animation Particles */}
       <motion.div
-        className="fixed left-6 top-1/2 -translate-y-1/2 pointer-events-none"
+        className="fixed left-6 bottom-32 pointer-events-none"
         initial={{ scale: 0 }}
         animate={{ scale: [0, 1, 0] }}
         transition={{ duration: 2, repeat: Infinity, delay: 2 }}
@@ -58,7 +58,7 @@ const FloatingContact = () => {
       </motion.div>
 
       <motion.div
-        className="fixed right-6 top-1/2 -translate-y-1/2 pointer-events-none"
+        className="fixed right-6 bottom-32 pointer-events-none"
         initial={{ scale: 0 }}
         animate={{ scale: [0, 1, 0] }}
         transition={{ duration: 2, repeat: Infinity, delay: 2.5 }}
