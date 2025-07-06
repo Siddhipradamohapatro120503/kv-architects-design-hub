@@ -26,7 +26,7 @@ const Hero = () => {
       opacity: 1,
       transition: {
         duration: 0.8,
-        ease: [0.6, -0.05, 0.01, 0.99]
+        ease: "easeOut"
       }
     }
   };
@@ -136,7 +136,9 @@ const Hero = () => {
         <div className="max-w-4xl">
           <motion.h1 
             className="text-6xl md:text-8xl font-bold mb-8 leading-tight"
-            variants={itemVariants}
+            initial={{ y: 50, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.5 }}
           >
             Unveiling
             <br />
@@ -152,13 +154,17 @@ const Hero = () => {
           </motion.h1>
           <motion.p 
             className="text-xl md:text-2xl mb-12 text-gray-400 max-w-2xl"
-            variants={itemVariants}
+            initial={{ y: 50, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.7 }}
           >
             Our architects breathe life into dreams, creating environments where innovation meets tradition, and spaces transcend mere structures
           </motion.p>
           <motion.div 
             className="flex items-center space-x-4"
-            variants={itemVariants}
+            initial={{ y: 50, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.9 }}
           >
             <motion.div
               whileHover={{ scale: 1.05 }}
