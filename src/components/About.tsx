@@ -21,19 +21,6 @@ const About = () => {
     return () => observer.disconnect();
   }, []);
 
-  const cardVariants = {
-    hidden: { y: 50, opacity: 0 },
-    visible: (i: number) => ({
-      y: 0,
-      opacity: 1,
-      transition: {
-        delay: i * 0.2,
-        duration: 0.6,
-        ease: "easeOut"
-      }
-    })
-  };
-
   return (
     <section id="about" className="py-20 bg-gray-900 text-white overflow-hidden">
       <div className="container mx-auto px-4">
@@ -109,10 +96,16 @@ const About = () => {
             <motion.div 
               key={index}
               className="bg-gray-800 p-8 rounded-lg relative group hover:bg-gray-700 transition-all duration-300 cursor-pointer"
-              variants={cardVariants}
-              custom={index}
-              initial="hidden"
-              animate={isVisible ? "visible" : "hidden"}
+              initial={{ y: 50, opacity: 0 }}
+              animate={isVisible ? { 
+                y: 0, 
+                opacity: 1,
+                transition: {
+                  delay: index * 0.2,
+                  duration: 0.6,
+                  ease: [0.6, -0.05, 0.01, 0.99]
+                }
+              } : { y: 50, opacity: 0 }}
               whileHover={{ 
                 y: -10,
                 scale: 1.02,
