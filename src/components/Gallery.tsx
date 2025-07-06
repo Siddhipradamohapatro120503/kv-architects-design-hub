@@ -1,33 +1,48 @@
 
 const Gallery = () => {
-  const galleryItems = [
-    "Residential and commercial projects",
-    "Interior spaces and landscaping",
-    "Renovation before-and-after",
-    "3D renders and walkthroughs"
-  ];
-
   return (
-    <section id="gallery" className="py-20 bg-gray-100">
+    <section id="gallery" className="py-20 bg-gray-900 text-white">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">Gallery</h2>
-          <div className="w-24 h-1 bg-blue-600 mx-auto"></div>
-        </div>
-        
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {galleryItems.map((item, index) => (
-            <div key={index} className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 text-center">
-              <div className="w-full h-48 bg-gradient-to-br from-blue-100 to-blue-200 rounded-lg mb-4 flex items-center justify-center">
-                <span className="text-blue-600 font-medium">{item}</span>
+        <div className="grid lg:grid-cols-2 gap-16 items-start mb-16">
+          <div>
+            <h2 className="text-5xl md:text-6xl font-bold mb-8">
+              Best Architect with
+              <br />
+              <span className="text-gray-400">knowledge</span>
+            </h2>
+          </div>
+          <div>
+            <p className="text-gray-400 text-lg leading-relaxed mb-8">
+              Welcome to a world where spaces transform into works of art. Our architects bring a touch of brilliance to every project.
+            </p>
+            <div className="flex items-center space-x-4">
+              <button className="text-white border-b border-gray-500 pb-1 hover:border-white transition-colors">
+                View More
+              </button>
+              <div className="w-8 h-8 border border-gray-500 rounded-full flex items-center justify-center">
+                <span className="text-gray-400">→</span>
               </div>
-              <p className="text-gray-700 font-medium">{item}</p>
             </div>
-          ))}
+          </div>
         </div>
-        
-        <div className="text-center mt-12">
-          <p className="text-gray-600 text-lg">Showcase visuals of our completed projects</p>
+
+        {/* Gallery Grid */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="bg-gray-800 aspect-square rounded-lg flex items-center justify-center">
+            <span className="text-gray-500">Modern Architecture</span>
+          </div>
+          <div className="bg-gray-800 aspect-square rounded-lg flex items-center justify-center">
+            <span className="text-gray-500">Interior Spaces</span>
+          </div>
+          <div className="bg-gray-800 aspect-square rounded-lg flex items-center justify-center">
+            <span className="text-gray-500">Structural Design</span>
+          </div>
+          <div className="bg-gray-800 aspect-square rounded-lg flex items-center justify-center md:col-span-2">
+            <span className="text-gray-500">Commercial Projects</span>
+          </div>
+          <div className="bg-gray-800 aspect-square rounded-lg flex items-center justify-center">
+            <span className="text-gray-500">Renovation Works</span>
+          </div>
         </div>
       </div>
     </section>
