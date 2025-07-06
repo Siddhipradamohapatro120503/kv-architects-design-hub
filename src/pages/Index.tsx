@@ -6,6 +6,7 @@ import Gallery from "@/components/Gallery";
 import WhyChooseUs from "@/components/WhyChooseUs";
 import ServiceLocations from "@/components/ServiceLocations";
 import Contact from "@/components/Contact";
+import FloatingContact from "@/components/FloatingContact";
 
 const Index = () => {
   return (
@@ -17,6 +18,7 @@ const Index = () => {
       <WhyChooseUs />
       <ServiceLocations />
       <Contact />
+      <FloatingContact />
     </div>
   );
 };
