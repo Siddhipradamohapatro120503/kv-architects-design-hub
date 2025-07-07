@@ -1,9 +1,12 @@
 
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
+import MobileNav from "./MobileNav";
 
 const Hero = () => {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const scrollToSection = (sectionId: string) => {
     document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' });
   };
@@ -32,10 +35,25 @@ const Hero = () => {
   };
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-900 via-gray-800 to-black text-white overflow-hidden">
+    <section className="relative min-h-screen flex items-center justify-center text-white overflow-hidden">
+      {/* Background Image with Overlay */}
+      <div className="absolute inset-0 z-0">
+        <img 
+          src="https://images.unsplash.com/photo-1487958449943-2429e8be8625?auto=format&fit=crop&w=2000&q=80"
+          alt="Modern Architectural Background"
+          className="w-full h-full object-cover"
+          loading="eager"
+          onError={(e) => {
+            const target = e.target as HTMLImageElement;
+            target.onerror = null;
+            target.src = '/fallback-hero.jpg';
+          }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-br from-black/80 via-black/60 to-black/40"></div>
+      </div>
       {/* Navigation */}
       <motion.nav 
-        className="absolute top-0 left-0 right-0 z-20 p-6"
+        className="absolute top-0 left-0 right-0 z-30 p-6"
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.8 }}
@@ -82,7 +100,8 @@ const Hero = () => {
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
             </motion.button>
           </div>
-          <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+          <div className="flex items-center gap-4">
+            <motion.div className="hidden md:block" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
             <Button 
               variant="outline" 
               className="border-white text-white hover:bg-white hover:text-black transition-all duration-300"
@@ -91,6 +110,8 @@ const Hero = () => {
               Let's talk
             </Button>
           </motion.div>
+            <MobileNav isOpen={isMobileMenuOpen} setIsOpen={setIsMobileMenuOpen} />
+          </div>
         </div>
       </motion.nav>
 
@@ -186,18 +207,10 @@ const Hero = () => {
           {/* Building Image */}
           <motion.div
             className="relative"
-            initial={{ x: 100, opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
-            transition={{ duration: 1, delay: 0.8 }}
+            initial={{ scale: 1.1, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ duration: 1.2, delay: 0.8 }}
           >
-            <div className="relative overflow-hidden rounded-lg shadow-2xl">
-              <img 
-                src="https://images.unsplash.com/photo-1487958449943-2429e8be8625?w=600&h=800&fit=crop" 
-                alt="Modern Architecture Building"
-                className="w-full h-[600px] object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
-            </div>
             <motion.div
               className="absolute -bottom-4 -right-4 w-32 h-32 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full blur-xl opacity-70"
               animate={{ 

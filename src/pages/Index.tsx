@@ -9,6 +9,8 @@ import Contact from "@/components/Contact";
 import FloatingContact from "@/components/FloatingContact";
 import BrandMarquee from "@/components/BrandMarquee";
 import IndiaMap from "@/components/IndiaMap";
+import Brands from "@/components/Brands";
+import Testimonials from "@/components/Testimonials";
 
 const Index = () => {
   return (
@@ -20,6 +22,8 @@ const Index = () => {
       <Gallery />
       <WhyChooseUs />
       <ServiceLocations />
+      <Testimonials />
+      <Brands />
       {/* India Map Section */}
       <section className="py-20 bg-gray-900">
         <div className="container mx-auto px-4">
