@@ -64,7 +64,7 @@ const Hero = () => {
             whileHover={{ scale: 1.05 }}
             transition={{ duration: 0.2 }}
           >
-            KV Architects
+            KV Associate
           </motion.div>
           <div className="hidden md:flex space-x-8 text-gray-300">
             <motion.button 
@@ -72,7 +72,7 @@ const Hero = () => {
               className="hover:text-white transition-colors relative group"
               whileHover={{ y: -2 }}
             >
-              Home
+              About Us
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
             </motion.button>
             <motion.button 
@@ -80,15 +80,15 @@ const Hero = () => {
               className="hover:text-white transition-colors relative group"
               whileHover={{ y: -2 }}
             >
-              Studio
+              Services
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
             </motion.button>
             <motion.button 
-              onClick={() => scrollToSection('gallery')} 
+              onClick={() => scrollToSection('projects')} 
               className="hover:text-white transition-colors relative group"
               whileHover={{ y: -2 }}
             >
-              Services
+              Projects
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
             </motion.button>
             <motion.button 
@@ -107,7 +107,7 @@ const Hero = () => {
               className="border-white text-white hover:bg-white hover:text-black transition-all duration-300"
               onClick={() => scrollToSection('contact')}
             >
-              Let's talk
+              Get in Touch
             </Button>
           </motion.div>
             <MobileNav isOpen={isMobileMenuOpen} setIsOpen={setIsMobileMenuOpen} />
@@ -163,17 +163,17 @@ const Hero = () => {
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.5 }}
             >
-              Unveiling
+              Transforming
               <br />
               <motion.span 
-                className="text-gray-300"
-                animate={{ opacity: [0.5, 1, 0.5] }}
+                className="text-blue-400"
+                animate={{ opacity: [0.7, 1, 0.7] }}
                 transition={{ duration: 3, repeat: Infinity }}
               >
-                Architectural
+                Dreams
               </motion.span>
               <br />
-              Mastery
+              Into Reality
             </motion.h1>
             <motion.p 
               className="text-xl md:text-2xl mb-12 text-gray-400 max-w-2xl"
@@ -181,7 +181,7 @@ const Hero = () => {
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.7 }}
             >
-              Our architects breathe life into dreams, creating environments where innovation meets tradition, and spaces transcend mere structures
+              At KV Associate, we blend innovative design with sustainable practices to create spaces that inspire, function perfectly, and stand the test of time
             </motion.p>
             <motion.div 
               className="flex items-center space-x-4"
@@ -197,7 +197,7 @@ const Hero = () => {
                   className="bg-transparent border border-gray-500 text-white hover:bg-white hover:text-black px-8 py-3 rounded-full transition-all duration-300 group"
                   onClick={() => scrollToSection('about')}
                 >
-                  View More
+                  Explore Our Work
                   <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
                 </Button>
               </motion.div>

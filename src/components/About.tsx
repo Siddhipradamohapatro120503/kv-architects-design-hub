@@ -25,52 +25,65 @@ const About = () => {
     <section id="about" className="py-20 bg-gray-900 text-white overflow-hidden">
       <div className="container mx-auto px-4">
         <motion.div 
-          className="grid lg:grid-cols-2 gap-16 items-center"
+          className="grid lg:grid-cols-2 gap-16 items-start"
           initial={{ opacity: 0 }}
           animate={isVisible ? { opacity: 1 } : { opacity: 0 }}
           transition={{ duration: 0.8 }}
         >
           <motion.div
+            className="space-y-8"
             initial={{ x: -50, opacity: 0 }}
             animate={isVisible ? { x: 0, opacity: 1 } : { x: -50, opacity: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <p className="text-gray-400 mb-8 text-lg leading-relaxed">
-              Our architects blend creativity and functionality to redefine the way you experience your surroundings.
-            </p>
-            <div className="flex items-center space-x-4">
-              <motion.button 
-                className="text-white border-b border-gray-500 pb-1 hover:border-white transition-colors"
-                whileHover={{ y: -2 }}
-              >
-                View More
-              </motion.button>
-              <motion.div 
-                className="w-8 h-8 border border-gray-500 rounded-full flex items-center justify-center hover:border-white transition-colors"
-                whileHover={{ rotate: 90, scale: 1.1 }}
-                transition={{ duration: 0.3 }}
-              >
-                <span className="text-gray-400">→</span>
-              </motion.div>
+            <div className="space-y-8">
+              <div>
+                <h3 className="text-3xl font-bold mb-6">Company Vision</h3>
+                <p className="text-gray-400 text-lg leading-relaxed">
+                  To be a standard-setting architectural firm committed to total customer satisfaction by leveraging strengths in design innovation, material quality, technology, and timely project delivery.
+                </p>
+              </div>
+              
+              <div>
+                <h3 className="text-3xl font-bold mb-6">Principal Architect</h3>
+                <div className="text-gray-400 space-y-4">
+                  <p className="text-xl font-semibold">Ar. Anil Bharti</p>
+                  <ul className="list-disc pl-5 space-y-2">
+                    <li>M. Arch from IIT Roorkee (2013)</li>
+                    <li>Ph.D. completed in September 2019</li>
+                    <li>11 years of experience in teaching, practical work, and research</li>
+                    <li>Former Associate Professor & Head, Faculty of Architecture, HZU</li>
+                    <li>Member of COA-Delhi, IIA-Mumbai, IBC-Delhi, IITRAA-Dehradun</li>
+                    <li>Published 8+ research papers in national and international journals</li>
+                  </ul>
+                </div>
+              </div>
             </div>
           </motion.div>
-          
+
           <motion.div
             initial={{ x: 50, opacity: 0 }}
             animate={isVisible ? { x: 0, opacity: 1 } : { x: 50, opacity: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
+            className="relative"
           >
-            <h2 className="text-5xl md:text-6xl font-bold mb-8">
-              Best Architect with
-              <br />
-              <motion.span 
-                className="text-gray-400"
-                animate={isVisible ? { opacity: [0.5, 1, 0.5] } : {}}
-                transition={{ duration: 2, repeat: Infinity }}
-              >
-                knowledge
-              </motion.span>
-            </h2>
+            <div className="aspect-square bg-gray-800 rounded-lg overflow-hidden">
+              <img
+                src="/images/principal-architect.jpg"
+                alt="Ar. Anil Bharti - Principal Architect"
+                className="w-full h-full object-cover"
+              />
+            </div>
+
+            <motion.div
+              className="absolute -bottom-8 -left-8 bg-black p-8 rounded-lg shadow-xl"
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={isVisible ? { scale: 1, opacity: 1 } : { scale: 0.8, opacity: 0 }}
+              transition={{ duration: 0.6, delay: 0.8 }}
+            >
+              <div className="text-4xl font-bold mb-2">11+</div>
+              <div className="text-gray-400">Years Experience</div>
+            </motion.div>
           </motion.div>
         </motion.div>
 

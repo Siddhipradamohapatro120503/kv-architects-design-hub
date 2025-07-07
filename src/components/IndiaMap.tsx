@@ -3,21 +3,49 @@ import { motion } from "framer-motion";
 
 const IndiaMap = () => {
   const locations = [
-    { name: "Jodhpur", x: "25%", y: "35%", projects: 15 },
-    { name: "Pali", x: "27%", y: "38%", projects: 8 },
-    { name: "Barmer", x: "20%", y: "40%", projects: 6 },
-    { name: "Bikaner", x: "22%", y: "25%", projects: 10 },
-    { name: "Jaipur", x: "35%", y: "30%", projects: 20 },
-    { name: "Udaipur", x: "32%", y: "45%", projects: 12 },
-    { name: "Ajmer", x: "30%", y: "33%", projects: 7 },
-    { name: "Kota", x: "38%", y: "42%", projects: 9 }
+    { 
+      name: "Varanasi", 
+      x: "48%", 
+      y: "42%", 
+      projects: 3,
+      details: [
+        "Residence of Mr Ramesh Kumar",
+        "Residence of Mr C.L Jaisal",
+        "Residence of Satish Bharti"
+      ]
+    },
+    { 
+      name: "Dehradun", 
+      x: "35%", 
+      y: "25%", 
+      projects: 6,
+      details: [
+        "Computer Showroom of Nitin Jain",
+        "School of Shivalik Academic",
+        "Showroom of Dixton",
+        "School Design of DMIT",
+        "Hostel of Mr. Pankaj Sharma",
+        "Seminar Hall of HZU"
+      ]
+    },
+    { 
+      name: "Selaqui", 
+      x: "34%", 
+      y: "24%", 
+      projects: 3,
+      details: [
+        "Factory of Catvision",
+        "Alder BioChem Factory",
+        "Interior of Incraft"
+      ]
+    }
   ];
 
   return (
     <div className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-lg p-8 shadow-2xl">
       <div className="text-center mb-8">
-        <h3 className="text-3xl font-bold text-white mb-2">Our Service Locations in India</h3>
-        <p className="text-blue-400 text-sm">Architectural Excellence Across Rajasthan</p>
+        <h3 className="text-3xl font-bold text-white mb-2">Our Project Locations</h3>
+        <p className="text-blue-400 text-sm">Delivering Excellence Across Northern India</p>
       </div>
       <div className="relative mx-auto max-w-lg">
         {/* Accurate India Map SVG */}
@@ -45,9 +73,17 @@ const IndiaMap = () => {
               <div className="w-5 h-5 bg-blue-500 rounded-full border-2 border-white shadow-lg flex items-center justify-center">
                 <div className="w-2 h-2 bg-white rounded-full"></div>
               </div>
-              <div className="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 bg-gray-900 text-white px-4 py-2 rounded-lg text-sm whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10 border border-gray-700 shadow-xl">
-                <div className="font-semibold mb-1">{location.name}</div>
-                <div className="text-blue-400 text-xs">{location.projects} Projects</div>
+              <div className="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 bg-gray-900 text-white px-4 py-2 rounded-lg text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10 border border-gray-700 shadow-xl min-w-[200px]">
+                <div className="font-semibold mb-2">{location.name}</div>
+                <div className="text-blue-400 mb-2">{location.projects} Projects</div>
+                <ul className="text-gray-300 text-xs space-y-1">
+                  {location.details.map((detail, idx) => (
+                    <li key={idx} className="flex items-start">
+                      <span className="mr-1 text-blue-400">•</span>
+                      <span>{detail}</span>
+                    </li>
+                  ))}
+                </ul>
                 <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 border-4 border-transparent border-b-gray-900"></div>
               </div>
             </motion.div>

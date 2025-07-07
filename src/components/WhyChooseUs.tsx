@@ -2,28 +2,28 @@
 const WhyChooseUs = () => {
   const reasons = [
     {
-      title: "Pan-Rajasthan Coverage",
-      description: "Complete project coverage across all major cities of Rajasthan with local expertise and understanding."
+      title: "Satisfied Clients",
+      description: "Over 100 satisfied clients across India, building long-term relationships based on trust and service."
     },
     {
-      title: "Transparent Pricing",
-      description: "Competitive and transparent pricing structure with no hidden costs or surprises."
+      title: "Quality Materials",
+      description: "Use of high-quality raw materials ensuring durability and excellence in every project."
     },
     {
-      title: "Creative Excellence",
-      description: "Experienced design team with innovative solutions and cutting-edge architectural practices."
+      title: "Expert Team",
+      description: "Skilled workers and a technically strong team with extensive experience in architectural design."
     },
     {
-      title: "24/7 Support",
-      description: "Round-the-clock client support ensuring seamless communication throughout your project."
+      title: "Innovation Focus",
+      description: "Commitment to innovative designs, new technology, and high standards of workmanship."
     },
     {
-      title: "Proven Track Record",
-      description: "Successful partnerships with corporate, government, and private clients across diverse projects."
+      title: "Timely Delivery",
+      description: "Strong focus on timely project completion without compromising on quality."
     },
     {
-      title: "Compliance & Safety",
-      description: "Full compliance with local permissions and safety standards, ensuring legal and secure construction."
+      title: "Comprehensive Services",
+      description: "Full range of services from architectural design to construction and project management."
     }
   ];
 
@@ -34,7 +34,7 @@ const WhyChooseUs = () => {
           <h2 className="text-5xl md:text-6xl font-bold mb-8">
             Why Choose
             <br />
-            <span className="text-gray-400">KV Architects?</span>
+            <span className="text-gray-400">KV Associate?</span>
           </h2>
         </div>
         

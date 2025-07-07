@@ -38,12 +38,12 @@ const Contact = () => {
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-5xl md:text-6xl font-bold mb-8">
-            Let's Create
+            Let's Bring Your
             <br />
-            <span className="text-gray-400">Together</span>
+            <span className="text-gray-400">Vision to Life</span>
           </h2>
           <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-            Ready to transform your space? Get in touch with our expert team.
+            Transform your architectural dreams into reality with our expert team.
           </p>
         </div>
         
@@ -56,9 +56,9 @@ const Contact = () => {
                 <div>
                   <p className="font-semibold mb-2">Address</p>
                   <p className="text-gray-400 leading-relaxed">
-                    KV Architects & Design Solutions<br />
-                    Office No. 7, 2nd Floor, Shubham Complex,<br />
-                    Opp. Bombay Motor Circle, Jodhpur - 342001
+                    KV Associate<br />
+                    Opp. to Bangal Sweet,<br />
+                    DLW-Lanka Road, Varanasi - 221004
                   </p>
                 </div>
               </div>
@@ -67,7 +67,7 @@ const Contact = () => {
                 <Phone className="text-gray-400 flex-shrink-0" size={20} />
                 <div>
                   <p className="font-semibold mb-2">Phone</p>
-                  <p className="text-gray-400">+91-98290XXXXX</p>
+                  <p className="text-gray-400">+91-8449 299 109, +91-9621 833 599</p>
                 </div>
               </div>
               
@@ -75,7 +75,7 @@ const Contact = () => {
                 <Mail className="text-gray-400 flex-shrink-0" size={20} />
                 <div>
                   <p className="font-semibold mb-2">Email</p>
-                  <p className="text-gray-400">kvarchjodhpur@gmail.com</p>
+                  <p className="text-gray-400">design@kvassociate.com, info@kvassociate.com</p>
                 </div>
               </div>
               
@@ -95,7 +95,7 @@ const Contact = () => {
             <div className="mt-8">
               <div className="relative w-full h-[300px] rounded-lg overflow-hidden shadow-xl">
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3677.825.744901841!2d71.95654367075581!3d26.627069168340925!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396a3efaf7e30e37%3A0xb52b9b4506c088e5!2sRajasthan!5e0!3m2!1sen!2sin!4v1688641458899!5m2!1sen!2sin"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3608.3015305271784!2d82.9768813!3d25.2825697!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x398e33ef9b1f7e5d%3A0x7d1e86e0471cf44f!2sLanka%2C%20Varanasi%2C%20Uttar%20Pradesh!5e0!3m2!1sen!2sin!4v1688641458899!5m2!1sen!2sin"
                   width="100%"
                   height="300"
                   style={{ border: 0 }}
