@@ -73,7 +73,7 @@ const IndiaMap = () => {
               <div className="w-5 h-5 bg-blue-500 rounded-full border-2 border-white shadow-lg flex items-center justify-center">
                 <div className="w-2 h-2 bg-white rounded-full"></div>
               </div>
-              <div className="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 bg-gray-900 text-white px-4 py-2 rounded-lg text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10 border border-gray-700 shadow-xl min-w-[200px]">
+              <div className="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 bg-gray-900 text-white px-4 py-2 rounded-lg text-sm opacity-0 hover:opacity-100 group-hover:opacity-100 transition-opacity duration-200 z-10 border border-gray-700 shadow-xl min-w-[200px] pointer-events-none group-hover:pointer-events-auto">
                 <div className="font-semibold mb-2">{location.name}</div>
                 <div className="text-blue-400 mb-2">{location.projects} Projects</div>
                 <ul className="text-gray-300 text-xs space-y-1">
@@ -90,7 +90,7 @@ const IndiaMap = () => {
             
             {/* Pulse animation */}
             <motion.div
-              className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-5 h-5 bg-blue-400 rounded-full opacity-40"
+              className="absolute top-0 transform -translate-x-1/2 -translate-y-1/2 w-5 h-5 bg-blue-400 rounded-full opacity-40"
               animate={{ scale: [1, 2.5, 1] }}
               transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
             />
