@@ -62,7 +62,7 @@ const Gallery = () => {
   ];
 
   return (
-    <section id="gallery" className="py-20 bg-gray-900 text-white overflow-hidden">
+    <section id="gallery" className="py-20 bg-gradient-to-br dark:from-black dark:via-gray-900 dark:to-black from-blue-50 via-white to-blue-50 transition-colors duration-300">
       <div className="container mx-auto px-4">
         <motion.div 
           className="grid lg:grid-cols-2 gap-16 items-start mb-16"
@@ -75,10 +75,10 @@ const Gallery = () => {
             animate={isVisible ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <h2 className="text-5xl md:text-6xl font-bold mb-8">
+            <h2 className="text-5xl md:text-6xl font-bold mb-8 text-blue-950 dark:text-foreground">
               Best Architect with
               <br />
-              <span className="text-gray-400">knowledge</span>
+              <span className="text-muted-foreground">knowledge</span>
             </h2>
           </motion.div>
           <motion.div
@@ -86,15 +86,15 @@ const Gallery = () => {
             animate={isVisible ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-            <p className="text-gray-400 text-lg leading-relaxed mb-8">
+            <p className="text-blue-600 dark:text-muted-foreground text-lg max-w-2xl mx-auto mb-16">
               Welcome to a world where spaces transform into works of art. Our architects bring a touch of brilliance to every project.
             </p>
             <div className="flex items-center space-x-4">
-              <button className="text-white border-b border-gray-500 pb-1 hover:border-white transition-colors">
+              <button className="bg-white dark:bg-gray-900/50 rounded-lg overflow-hidden border border-blue-100 dark:border-border shadow-sm group hover:border-blue-200 dark:hover:border-border transition-all duration-300">
                 View More
               </button>
-              <div className="w-8 h-8 border border-gray-500 rounded-full flex items-center justify-center">
-                <span className="text-gray-400">→</span>
+              <div className="w-8 h-8 border border-muted rounded-full flex items-center justify-center">
+                <span className="text-muted-foreground">→</span>
               </div>
             </div>
           </motion.div>
@@ -116,15 +116,15 @@ const Gallery = () => {
                     whileHover={{ scale: 1.05 }}
                     transition={{ duration: 0.3 }}
                   >
-                    <div className="aspect-square rounded-lg overflow-hidden bg-gray-800">
+                    <div className="aspect-square rounded-lg overflow-hidden bg-muted">
                       <img 
                         src={item.image} 
                         alt={item.title}
                         className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                       />
-                      <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 transition-all duration-300 flex items-end">
-                        <div className="p-6 text-white transform translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-300">
-                          <span className="text-sm text-gray-300 mb-2 block">{item.category}</span>
+                      <div className="absolute inset-0 bg-background bg-opacity-0 group-hover:bg-opacity-50 transition-all duration-300 flex items-end">
+                        <div className="p-6 text-foreground transform translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-300">
+                          <span className="text-sm text-muted-foreground mb-2 block">{item.category}</span>
                           <h3 className="text-xl font-bold">{item.title}</h3>
                         </div>
                       </div>
@@ -133,8 +133,8 @@ const Gallery = () => {
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <CarouselPrevious className="left-4 bg-gray-800 border-gray-600 hover:bg-gray-700" />
-            <CarouselNext className="right-4 bg-gray-800 border-gray-600 hover:bg-gray-700" />
+            <CarouselPrevious className="left-4 bg-white dark:bg-card border-blue-100 dark:border-border hover:bg-blue-50 dark:hover:bg-muted transition-colors duration-300" />
+            <CarouselNext className="right-4 bg-white dark:bg-card border-blue-100 dark:border-border hover:bg-blue-50 dark:hover:bg-muted transition-colors duration-300" />
           </Carousel>
         </motion.div>
 
@@ -148,7 +148,7 @@ const Gallery = () => {
           {galleryImages.slice(0, 5).map((item, index) => (
             <motion.div 
               key={`grid-${item.id}`}
-              className={`bg-gray-800 rounded-lg overflow-hidden group cursor-pointer ${
+              className={`bg-muted rounded-lg overflow-hidden group cursor-pointer ${
                 index === 3 ? 'md:col-span-2' : ''
               }`}
               initial={{ opacity: 0, y: 30 }}
@@ -162,9 +162,9 @@ const Gallery = () => {
                   alt={item.title}
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
-                  <div className="p-4 text-white">
-                    <span className="text-sm text-gray-300">{item.category}</span>
+                <div className="absolute inset-0 bg-gradient-to-t from-background/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                  <div className="p-4 text-foreground">
+                    <span className="text-sm text-muted-foreground">{item.category}</span>
                     <h3 className="text-lg font-semibold">{item.title}</h3>
                   </div>
                 </div>

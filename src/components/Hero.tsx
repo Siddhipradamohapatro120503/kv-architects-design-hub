@@ -1,17 +1,113 @@
 
-import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
-import { motion } from "framer-motion";
+import { motion, useInView, Variants } from "framer-motion";
+import { useNavigate } from "react-router-dom";
+import { useRef, useState, useEffect } from "react";
 import MobileNav from "./MobileNav";
 
-const Hero = () => {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const scrollToSection = (sectionId: string) => {
-    document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' });
+// Hero Scribble Text Component
+const HeroScribbleText = () => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const [showText, setShowText] = useState(false);
+
+  useEffect(() => {
+    if (isInView) {
+      const timer = setTimeout(() => setShowText(true), 800);
+      return () => clearTimeout(timer);
+    }
+  }, [isInView]);
+
+  // SVG path for decorative scribble
+  const scribblePaths = {
+    underline: "M20,80 Q100,60 180,80 Q260,100 340,80",
+    spiral: "M50,50 Q60,40 70,50 Q80,60 70,70 Q60,80 50,70 Q40,60 50,50",
   };
 
-  const containerVariants = {
+  return (
+    <div ref={ref} className="relative mb-6 sm:mb-8">
+      <div className="relative">
+        {/* Self-Drawing SVG Animation */}
+        <div className="absolute inset-0 pointer-events-none">
+          <svg className="absolute bottom-0 left-0 w-full h-12">
+            <motion.path
+              d={scribblePaths.underline}
+              fill="none"
+              stroke="rgb(59, 130, 246)"
+              strokeWidth="3"
+              strokeLinecap="round"
+              filter="url(#glow)"
+              initial={{ pathLength: 0, opacity: 0 }}
+              animate={isInView ? { pathLength: 1, opacity: 1 } : { pathLength: 0, opacity: 0 }}
+              transition={{ duration: 2, ease: "easeInOut", delay: 0.5 }}
+            />
+          </svg>
+        </div>
+
+        {/* Main Text with Letter Animation - Only Tagline */}
+        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold leading-tight text-blue-950 dark:text-foreground">
+          <div>
+            {"We Design".split("").map((char, index) => (
+              <motion.span
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                transition={{ duration: 0.5, delay: index * 0.05 }}
+                className="inline-block"
+              >
+                {char === " " ? "\u00A0" : char}
+              </motion.span>
+            ))}
+          </div>
+          <div className="text-primary relative inline-block">
+            {"Your Dreams".split("").map((char, index) => (
+              <motion.span
+                key={index + 20}
+                initial={{ opacity: 0, scale: 0.5 }}
+                animate={isInView ? { 
+                  opacity: 1, 
+                  scale: 1,
+                  textShadow: "0 0 10px rgba(59, 130, 246, 0.5)"
+                } : { opacity: 0, scale: 0.5 }}
+                transition={{ 
+                  duration: 0.6, 
+                  delay: 0.6 + (index * 0.1),
+                  type: "spring",
+                  stiffness: 200
+                }}
+                className="inline-block"
+              >
+                {char === " " ? "\u00A0" : char}
+              </motion.span>
+            ))}
+            <motion.div 
+              className="absolute -bottom-2 left-0 w-full h-1 bg-primary"
+              initial={{ scaleX: 0 }}
+              animate={isInView ? { scaleX: 1 } : { scaleX: 0 }}
+              transition={{ duration: 1, delay: 1.2 }}
+              style={{ transformOrigin: "left" }}
+            />
+          </div>
+        </h1>
+      </div>
+    </div>
+  );
+};
+
+const Hero = () => {
+  const navigate = useNavigate();
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  
+  const handleNavigation = (path: string) => {
+    if (path.startsWith('/')) {
+      navigate(path);
+    } else {
+      document.getElementById(path)?.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
@@ -22,20 +118,19 @@ const Hero = () => {
     }
   };
 
-  const itemVariants = {
-    hidden: { y: 50, opacity: 0 },
+  const itemVariants: Variants = {
+    hidden: { y: 20, opacity: 0 },
     visible: {
       y: 0,
       opacity: 1,
       transition: {
-        duration: 0.8,
-        ease: "easeOut"
+        duration: 0.5
       }
     }
   };
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center text-white overflow-hidden">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-background text-foreground transition-colors duration-300">
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0">
         <img 
@@ -49,10 +144,10 @@ const Hero = () => {
             target.src = '/fallback-hero.jpg';
           }}
         />
-        <div className="absolute inset-0 bg-gradient-to-br from-black/80 via-black/60 to-black/40"></div>
+        <div className="absolute inset-0 bg-gradient-to-br dark:from-black/80 dark:via-black/60 dark:to-black/40 from-white/80 via-white/60 to-white/40"></div>
       </div>
       {/* Navigation */}
-      <motion.nav 
+      {/* <motion.nav 
         className="absolute top-0 left-0 right-0 z-30 p-6"
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
@@ -68,7 +163,7 @@ const Hero = () => {
           </motion.div>
           <div className="hidden md:flex space-x-8 text-gray-300">
             <motion.button 
-              onClick={() => scrollToSection('about')} 
+              onClick={() => handleNavigation('about')} 
               className="hover:text-white transition-colors relative group"
               whileHover={{ y: -2 }}
             >
@@ -76,7 +171,7 @@ const Hero = () => {
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
             </motion.button>
             <motion.button 
-              onClick={() => scrollToSection('services')} 
+              onClick={() => handleNavigation('services')} 
               className="hover:text-white transition-colors relative group"
               whileHover={{ y: -2 }}
             >
@@ -84,7 +179,7 @@ const Hero = () => {
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
             </motion.button>
             <motion.button 
-              onClick={() => scrollToSection('projects')} 
+              onClick={() => handleNavigation('projects')} 
               className="hover:text-white transition-colors relative group"
               whileHover={{ y: -2 }}
             >
@@ -92,7 +187,7 @@ const Hero = () => {
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
             </motion.button>
             <motion.button 
-              onClick={() => scrollToSection('contact')} 
+              onClick={() => handleNavigation('contact')} 
               className="hover:text-white transition-colors relative group"
               whileHover={{ y: -2 }}
             >
@@ -104,8 +199,8 @@ const Hero = () => {
             <motion.div className="hidden md:block" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
             <Button 
               variant="outline" 
-              className="border-white text-black bg-white transition-all duration-300"
-              onClick={() => scrollToSection('contact')}
+              className="border-white text-white hover:bg-white hover:text-black transition-all duration-300"
+              onClick={() => handleNavigation('contact')}
             >
               Get in Touch
             </Button>
@@ -113,7 +208,7 @@ const Hero = () => {
             <MobileNav isOpen={isMobileMenuOpen} setIsOpen={setIsMobileMenuOpen} />
           </div>
         </div>
-      </motion.nav>
+      </motion.nav> */}
 
       {/* Animated Background Elements */}
       <motion.div 
@@ -155,34 +250,12 @@ const Hero = () => {
         animate="visible"
       >
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          {/* Text Content */}
+          {/* Text Content with Self-Drawing Animation */}
           <div className="max-w-4xl">
-            <motion.h1 
-              className="text-6xl md:text-8xl font-bold mb-8 leading-tight"
-              initial={{ y: 50, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ duration: 0.8, delay: 0.5 }}
-            >
-              Transforming
-              <br />
-              <motion.span 
-                className="text-blue-400"
-                animate={{ opacity: [0.7, 1, 0.7] }}
-                transition={{ duration: 3, repeat: Infinity }}
-              >
-                Dreams
-              </motion.span>
-              <br />
-              Into Reality
-            </motion.h1>
-            <motion.p 
-              className="text-xl md:text-2xl mb-12 text-gray-400 max-w-2xl"
-              initial={{ y: 50, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ duration: 0.8, delay: 0.7 }}
-            >
+            <HeroScribbleText />
+            <p className="text-lg sm:text-xl md:text-2xl mb-8 sm:mb-12 text-blue-600 dark:text-muted-foreground max-w-2xl mx-auto px-4 sm:px-0">
               At KV Associate, we blend innovative design with sustainable practices to create spaces that inspire, function perfectly, and stand the test of time
-            </motion.p>
+            </p>
             <motion.div 
               className="flex items-center space-x-4"
               initial={{ y: 50, opacity: 0 }}
@@ -194,8 +267,8 @@ const Hero = () => {
                 whileTap={{ scale: 0.95 }}
               >
                 <Button 
-                  className="bg-transparent border border-gray-500 text-white hover:bg-white hover:text-black px-8 py-3 rounded-full transition-all duration-300 group"
-                  onClick={() => scrollToSection('about')}
+                  className="bg-blue-100 border-blue-200 text-blue-700 hover:bg-blue-200 dark:border-foreground dark:text-foreground dark:hover:bg-foreground dark:hover:text-background transition-all duration-300 px-4 sm:px-6 py-2 sm:py-3 text-sm sm:text-base"
+                  onClick={() => handleNavigation('about')}
                 >
                   Explore Our Work
                   <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />

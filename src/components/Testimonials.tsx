@@ -70,14 +70,14 @@ const testimonials: Testimonial[] = [
 
 const Testimonials: React.FC = () => {
   return (
-    <section className="py-20 bg-gray-900 text-white overflow-hidden">
+    <section className="py-20 bg-gradient-to-br dark:from-gray-900 dark:via-black dark:to-gray-900 from-gray-50 via-white to-gray-50 text-foreground overflow-hidden transition-colors duration-300">
       <div className="container mx-auto px-4">
         <div className="text-center">
-          <h2 className="text-3xl font-bold text-white sm:text-4xl lg:text-5xl">
-            What Our Clients Say
+          <h2 className="text-3xl font-bold text-foreground sm:text-4xl lg:text-5xl">
+            Client Stories
           </h2>
-          <p className="mt-4 text-lg text-gray-300">
-            Hear from our satisfied clients about their experience working with KV Architects
+          <p className="mt-4 text-lg text-muted-foreground">
+            See what our clients are sharing about their KV Architects experience
           </p>
         </div>
 
@@ -97,24 +97,45 @@ const Testimonials: React.FC = () => {
                 {testimonials.map((testimonial) => (
                   <motion.div
                     key={`${i}-${testimonial.id}`}
-                    className="w-[280px] sm:w-[320px] md:w-[400px] flex-shrink-0 bg-gray-800 rounded-lg shadow-lg p-4 sm:p-6 md:p-8 hover:shadow-xl transition-shadow duration-300 border border-gray-700"
+                    className="w-[320px] sm:w-[350px] md:w-[400px] flex-shrink-0 bg-card rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 border border-border overflow-hidden"
                   >
-              <div className="flex items-center mb-6">
-                <div className="h-12 w-12 rounded-full overflow-hidden">
-                  <img
-                    src={testimonial.image}
-                    alt={testimonial.name}
-                    className="h-full w-full object-cover"
-                  />
-                </div>
-                <div className="ml-4">
-                  <h3 className="text-lg font-semibold text-white">
-                    {testimonial.name}
-                  </h3>
-                  <p className="text-sm text-gray-400">{testimonial.role}</p>
-                </div>
+              {/* Instagram-style image */}
+              <div className="w-full aspect-square overflow-hidden">
+                <img
+                  src={testimonial.image}
+                  alt={testimonial.name}
+                  className="h-full w-full object-cover"
+                />
               </div>
-              <p className="text-gray-300 italic">"{testimonial.content}"</p>
+              
+              {/* Instagram-style caption area */}
+              <div className="p-4">
+                <div className="flex items-center mb-3">
+                  <div className="h-8 w-8 rounded-full overflow-hidden border border-gray-200 dark:border-gray-700">
+                    <img
+                      src={testimonial.image}
+                      alt={testimonial.name}
+                      className="h-full w-full object-cover"
+                    />
+                  </div>
+                  <div className="ml-2 flex items-center justify-between w-full">
+                    <div>
+                      <h3 className="text-sm font-semibold text-foreground">
+                        {testimonial.name}
+                      </h3>
+                      <p className="text-xs text-muted-foreground">{testimonial.role}</p>
+                    </div>
+                    <div className="text-blue-500">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 12c0-5.5-4.5-10-10-10S2 6.5 2 12s4.5 10 10 10 10-4.5 10-10"/><path d="m9 12 2 2 4-4"/></svg>
+                    </div>
+                  </div>
+                </div>
+                <p className="text-sm text-foreground mb-2">
+                  <span className="font-semibold mr-1">{testimonial.name}</span>
+                  {testimonial.content}
+                </p>
+                <p className="text-xs text-muted-foreground">2 days ago</p>
+              </div>
             </motion.div>
                 ))}
               </div>
@@ -122,8 +143,8 @@ const Testimonials: React.FC = () => {
           </motion.div>
           
           {/* Gradient overlays */}
-          <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-gray-900 to-transparent z-10"></div>
-          <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-gray-900 to-transparent z-10"></div>
+          <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r dark:from-gray-900 from-gray-50 to-transparent z-10"></div>
+          <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l dark:from-gray-900 from-gray-50 to-transparent z-10"></div>
         </div>
       </div>
     </section>

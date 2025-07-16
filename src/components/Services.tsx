@@ -1,5 +1,6 @@
-import { motion, useScroll, useTransform, useSpring, useInView } from "framer-motion";
+import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import { useRef, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   Lightbulb,
   PenTool,
@@ -15,6 +16,7 @@ import {
 } from "lucide-react";
 
 const WorkflowProgressScroll = () => {
+  const navigate = useNavigate();
   const containerRef = useRef(null);
   const [activeStep, setActiveStep] = useState(0);
   const [completedSteps, setCompletedSteps] = useState(0);
@@ -122,47 +124,54 @@ const WorkflowProgressScroll = () => {
   const overallProgress = useTransform(springProgress, [0, 1], [0, 100]);
 
   return (
-    <section className="py-20 bg-gradient-to-br from-gray-900 via-black to-gray-900 text-white relative overflow-hidden">
+    <section 
+      id="services" 
+      onClick={() => navigate('/services')} 
+      className="py-20 bg-gradient-to-br dark:from-black dark:via-gray-900 dark:to-black from-blue-50 via-white to-blue-50 transition-colors duration-300 relative overflow-hidden cursor-pointer hover:opacity-90"
+      role="button"
+      tabIndex={0}
+      onKeyDown={(e) => e.key === 'Enter' && navigate('/services')}
+    >
       {/* Animated Background */}
       <div className="absolute inset-0">
-        <div className="absolute top-20 left-10 w-72 h-72 bg-blue-500/10 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
+        <div className="absolute top-20 left-10 w-72 h-72 bg-primary/10 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-20 right-10 w-96 h-96 bg-secondary/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
         {/* Header */}
         <motion.div 
-          className="text-center mb-16"
+          className="text-center mb-12 sm:mb-16 px-4"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <h2 className="text-5xl md:text-6xl font-bold mb-6">
-            Our Design <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">Journey</span>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 sm:mb-8 text-blue-950 dark:text-foreground">
+            Our Design <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Journey</span>
           </h2>
-          <p className="text-gray-400 text-xl max-w-3xl mx-auto">
+          <p className="text-blue-600 dark:text-muted-foreground text-base sm:text-lg max-w-2xl mx-auto">
             Follow our systematic approach as we transform your vision into reality
           </p>
         </motion.div>
 
         {/* Progress Overview */}
         <motion.div 
-          className="mb-16 bg-gray-800/50 backdrop-blur-sm rounded-2xl p-8 border border-gray-700"
+          className="p-6 bg-white dark:bg-gray-900/50 rounded-lg border border-blue-100 dark:border-border shadow-sm hover:border-blue-200 dark:hover:border-border transition-all duration-300"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
         >
           <div className="flex items-center justify-between mb-6">
             <h3 className="text-2xl font-bold">Project Progress</h3>
-            <motion.div className="text-3xl font-bold text-blue-400">
+            <motion.div className="text-3xl font-bold text-primary">
               {Math.round((completedSteps / 4) * 100)}%
             </motion.div>
           </div>
           
           {/* Progress Bar */}
           <div className="relative">
-            <div className="w-full h-2 bg-gray-700 rounded-full overflow-hidden">
+            <div className="w-full h-2 bg-muted rounded-full overflow-hidden">
               <motion.div 
-                className="h-full bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"
+                className="h-full bg-gradient-to-r from-primary to-secondary rounded-full"
                 style={{ 
                   width: useTransform(overallProgress, (value) => `${value}%`)
                 }}
@@ -182,10 +191,10 @@ const WorkflowProgressScroll = () => {
                   }}
                 >
                   <div className={`w-4 h-4 rounded-full ${
-                    completedSteps > index ? 'bg-green-500' : 
-                    activeStep === index ? 'bg-blue-500' : 'bg-gray-600'
+                    completedSteps > index ? 'bg-success' : 
+                    activeStep === index ? 'bg-primary' : 'bg-muted'
                   } mb-2`} />
-                  <span className="text-sm text-gray-400">{step.title.split(' ')[0]}</span>
+                  <span className="text-sm text-muted-foreground">{step.title.split(' ')[0]}</span>
                 </motion.div>
               ))}
             </div>
@@ -195,9 +204,9 @@ const WorkflowProgressScroll = () => {
         {/* Workflow Steps */}
         <div ref={containerRef} className="relative">
           {/* Connecting Line */}
-          <div className="absolute left-1/2 top-0 bottom-0 w-1 bg-gray-700 transform -translate-x-1/2 hidden lg:block">
+          <div className="absolute left-1/2 top-0 bottom-0 w-1 bg-muted transform -translate-x-1/2 hidden lg:block">
             <motion.div 
-              className="w-full bg-gradient-to-b from-blue-500 to-purple-500 origin-top"
+              className="w-full bg-gradient-to-b from-primary to-secondary origin-top"
               style={{ 
                 scaleY: useTransform(springProgress, [0, 1], [0, 1])
               }}
@@ -205,16 +214,10 @@ const WorkflowProgressScroll = () => {
           </div>
 
           {workflowSteps.map((step, index) => {
-            const stepRef = useRef(null);
-            const isInView = useInView(stepRef, { 
-              threshold: 0.5,
-              margin: "-50px"
-            });
 
             return (
               <motion.div 
                 key={step.id}
-                ref={stepRef}
                 className={`grid lg:grid-cols-2 gap-12 items-center mb-24 relative ${
                   index % 2 === 0 ? '' : 'lg:grid-flow-col-dense'
                 }`}
@@ -228,7 +231,7 @@ const WorkflowProgressScroll = () => {
                     className={`w-16 h-16 rounded-full border-4 flex items-center justify-center ${
                       completedSteps > index ? 'bg-green-500 border-green-400' :
                       activeStep === index ? 'bg-blue-500 border-blue-400' :
-                      'bg-gray-800 border-gray-600'
+                      'bg-gray-300 dark:bg-gray-700 border-gray-200 dark:border-gray-600'
                     }`}
                     animate={{
                       scale: activeStep === index ? 1.2 : 1,
@@ -247,7 +250,7 @@ const WorkflowProgressScroll = () => {
 
                 {/* Content Card */}
                 <motion.div 
-                  className={`bg-gradient-to-br from-gray-900/90 to-gray-800/90 backdrop-blur-sm rounded-2xl p-8 border border-gray-700 ${
+                  className={`bg-gradient-to-br dark:from-gray-900/90 dark:to-gray-800/90 from-gray-50/90 to-white/90 backdrop-blur-sm rounded-2xl p-8 border border-border ${
                     index % 2 === 0 ? 'lg:col-start-1' : 'lg:col-start-2'
                   }`}
                   animate={{
@@ -267,21 +270,24 @@ const WorkflowProgressScroll = () => {
                   {/* Step Header */}
                   <div className="flex items-center justify-between mb-6">
                     <div className="flex items-center space-x-4">
-                      <div className={`w-12 h-12 rounded-full bg-gradient-to-r ${step.gradient} flex items-center justify-center`}>
-                        <step.icon className="w-6 h-6 text-white" />
+                      <div className={`w-12 h-12 rounded-full bg-gradient-to-r ${step.color === 'blue' ? 'from-blue-500 to-cyan-500' : 
+                                                                 step.color === 'purple' ? 'from-purple-500 to-pink-500' : 
+                                                                 step.color === 'green' ? 'from-green-500 to-emerald-500' : 
+                                                                 'from-yellow-500 to-orange-500'} flex items-center justify-center`}>
+                        <step.icon className="w-6 h-6 text-background" />
                       </div>
                       <div>
                         <h3 className="text-2xl font-bold">{step.title}</h3>
-                        <p className="text-gray-400">{step.subtitle}</p>
+                        <p className="text-blue-600 dark:text-muted-foreground">{step.subtitle}</p>
                       </div>
                     </div>
-                    <div className="flex items-center space-x-2 text-gray-400">
+                    <div className="flex items-center space-x-2 text-muted-foreground">
                       <Clock className="w-4 h-4" />
                       <span className="text-sm">{step.duration}</span>
                     </div>
                   </div>
 
-                  <p className="text-gray-300 mb-6 leading-relaxed">
+                  <p className="text-foreground/80 mb-6 leading-relaxed">
                     {step.description}
                   </p>
 
@@ -295,31 +301,34 @@ const WorkflowProgressScroll = () => {
                         whileInView={{ opacity: 1, x: 0 }}
                         transition={{ delay: featureIndex * 0.1 }}
                       >
-                        <div className={`w-2 h-2 rounded-full bg-${step.color}-400`} />
-                        <span className="text-gray-400">{feature}</span>
+                        <div className={`w-2 h-2 rounded-full ${step.color === 'blue' ? 'bg-blue-400' : 
+                                                              step.color === 'purple' ? 'bg-purple-400' : 
+                                                              step.color === 'green' ? 'bg-green-400' : 
+                                                              'bg-yellow-400'}`} />
+                        <span className="text-muted-foreground">{feature}</span>
                       </motion.div>
                     ))}
                   </div>
 
                   {/* Progress Indicator */}
-                  <div className="mt-6 pt-6 border-t border-gray-700">
+                  <div className="mt-6 pt-6 border-t border-border">
                     <div className="flex items-center justify-between">
-                      <span className="text-sm text-gray-400">
+                      <span className="text-sm text-muted-foreground">
                         Step {step.id} of {workflowSteps.length}
                       </span>
                       <div className="flex items-center space-x-2">
                         {completedSteps > index ? (
-                          <div className="flex items-center space-x-1 text-green-400">
+                          <div className="flex items-center space-x-1 text-green-500">
                             <CheckCircle className="w-4 h-4" />
                             <span className="text-sm">Completed</span>
                           </div>
                         ) : activeStep === index ? (
-                          <div className="flex items-center space-x-1 text-blue-400">
+                          <div className="flex items-center space-x-1 text-blue-500">
                             <Circle className="w-4 h-4 animate-pulse" />
                             <span className="text-sm">In Progress</span>
                           </div>
                         ) : (
-                          <div className="flex items-center space-x-1 text-gray-500">
+                          <div className="flex items-center space-x-1 text-gray-400 dark:text-gray-500">
                             <Circle className="w-4 h-4" />
                             <span className="text-sm">Pending</span>
                           </div>
@@ -331,12 +340,15 @@ const WorkflowProgressScroll = () => {
 
                 {/* Visual Element */}
                 <motion.div 
-                  className={`relative h-64 bg-gradient-to-br ${step.gradient} rounded-2xl flex items-center justify-center ${
+                  className={`relative h-64 bg-gradient-to-br ${step.color === 'blue' ? 'from-blue-500 to-cyan-500' : 
+                                                           step.color === 'purple' ? 'from-purple-500 to-pink-500' : 
+                                                           step.color === 'green' ? 'from-green-500 to-emerald-500' : 
+                                                           'from-yellow-500 to-orange-500'} rounded-2xl flex items-center justify-center ${
                     index % 2 === 0 ? 'lg:col-start-2' : 'lg:col-start-1'
                   }`}
                   whileHover={{ scale: 1.05 }}
                 >
-                  <div className="absolute inset-0 bg-black/20 rounded-2xl" />
+                  <div className="absolute inset-0 bg-background/20 rounded-2xl" />
                   <motion.div
                     animate={{ 
                       scale: activeStep === index ? [1, 1.1, 1] : 1,
@@ -347,7 +359,7 @@ const WorkflowProgressScroll = () => {
                       repeat: activeStep === index ? Infinity : 0
                     }}
                   >
-                    <step.icon className="w-24 h-24 text-white/80" />
+                    <step.icon className="w-24 h-24 text-background/80" />
                   </motion.div>
                 </motion.div>
               </motion.div>
@@ -364,18 +376,18 @@ const WorkflowProgressScroll = () => {
           <div className="grid md:grid-cols-3 gap-8 text-center">
             <div>
               <Target className="w-8 h-8 mx-auto mb-3 text-blue-400" />
-              <div className="text-2xl font-bold mb-2">100%</div>
-              <div className="text-gray-400">Project Success Rate</div>
+              <div className="text-xl font-semibold mb-4 text-blue-950 dark:text-foreground">100%</div>
+              <div className="text-blue-600 dark:text-muted-foreground">Project Success Rate</div>
             </div>
             <div>
               <Zap className="w-8 h-8 mx-auto mb-3 text-purple-400" />
-              <div className="text-2xl font-bold mb-2">4-6 Months</div>
-              <div className="text-gray-400">Average Timeline</div>
+              <div className="text-xl font-semibold mb-4 text-blue-950 dark:text-foreground">4-6 Months</div>
+              <div className="text-blue-600 dark:text-muted-foreground">Average Timeline</div>
             </div>
             <div>
               <Award className="w-8 h-8 mx-auto mb-3 text-green-400" />
-              <div className="text-2xl font-bold mb-2">150+</div>
-              <div className="text-gray-400">Projects Delivered</div>
+              <div className="text-xl font-semibold mb-4 text-blue-950 dark:text-foreground">150+</div>
+              <div className="text-blue-600 dark:text-muted-foreground">Projects Delivered</div>
             </div>
           </div>
         </motion.div>

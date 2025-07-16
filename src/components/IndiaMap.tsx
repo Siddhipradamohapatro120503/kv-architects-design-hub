@@ -42,18 +42,18 @@ const IndiaMap = () => {
   ];
 
   return (
-    <div className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-lg p-8 shadow-2xl">
+    <div className="bg-gradient-to-br dark:from-gray-900 dark:to-black from-white to-gray-50 rounded-lg p-8 shadow-2xl border border-border">
       <div className="text-center mb-8">
-        <h3 className="text-3xl font-bold text-white mb-2">Our Project Locations</h3>
-        <p className="text-blue-400 text-sm">Delivering Excellence Across Northern India</p>
+        <h3 className="text-3xl font-bold text-foreground mb-2">Our Project Locations</h3>
+        <p className="text-primary text-sm">Delivering Excellence Across Northern India</p>
       </div>
       <div className="relative mx-auto max-w-lg">
         {/* Accurate India Map SVG */}
         <img
           src="/india.svg"
           alt="Map of India"
-          className="w-full h-auto max-w-lg mx-auto opacity-80"
-          style={{ filter: 'brightness(0.8) contrast(1.2)' }}
+          className="w-full h-auto max-w-lg mx-auto dark:invert dark:opacity-80 opacity-90"
+          style={{ filter: 'contrast(1.2)' }}
         />
 
         {/* Location markers */}
@@ -70,27 +70,27 @@ const IndiaMap = () => {
               className="relative cursor-pointer"
               whileHover={{ scale: 1.3 }}
             >
-              <div className="w-5 h-5 bg-blue-500 rounded-full border-2 border-white shadow-lg flex items-center justify-center">
-                <div className="w-2 h-2 bg-white rounded-full"></div>
+              <div className="w-5 h-5 bg-primary rounded-full border-2 border-background shadow-lg flex items-center justify-center">
+                <div className="w-2 h-2 bg-background rounded-full"></div>
               </div>
-              <div className="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 bg-gray-900 text-white px-4 py-2 rounded-lg text-sm opacity-0 hover:opacity-100 group-hover:opacity-100 transition-opacity duration-200 z-10 border border-gray-700 shadow-xl min-w-[200px] pointer-events-none group-hover:pointer-events-auto">
+              <div className="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 bg-popover text-popover-foreground px-4 py-2 rounded-lg text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10 border border-border shadow-xl min-w-[200px] pointer-events-none group-hover:pointer-events-auto">
                 <div className="font-semibold mb-2">{location.name}</div>
-                <div className="text-blue-400 mb-2">{location.projects} Projects</div>
-                <ul className="text-gray-300 text-xs space-y-1">
+                <div className="text-primary mb-2">{location.projects} Projects</div>
+                <ul className="text-muted-foreground text-xs space-y-1">
                   {location.details.map((detail, idx) => (
                     <li key={idx} className="flex items-start">
-                      <span className="mr-1 text-blue-400">•</span>
+                      <span className="mr-1 text-primary">•</span>
                       <span>{detail}</span>
                     </li>
                   ))}
                 </ul>
-                <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 border-4 border-transparent border-b-gray-900"></div>
+                <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 border-4 border-transparent border-b-popover"></div>
               </div>
             </motion.div>
             
             {/* Pulse animation */}
             <motion.div
-              className="absolute top-0 transform -translate-x-1/2 -translate-y-1/2 w-5 h-5 bg-blue-400 rounded-full opacity-40"
+              className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-5 h-5 bg-primary/40 rounded-full opacity-40"
               animate={{ scale: [1, 2.5, 1] }}
               transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
             />
@@ -98,21 +98,21 @@ const IndiaMap = () => {
         ))}
       </div>
       
-      <div className="mt-8 text-center border-t border-gray-700 pt-6">
-        <p className="text-gray-300 text-sm mb-4">
+      <div className="mt-8 text-center border-t border-border pt-6">
+        <p className="text-muted-foreground text-sm mb-4">
           Delivering architectural excellence across Rajasthan with {locations.reduce((sum, loc) => sum + loc.projects, 0)}+ successful projects
         </p>
         <div className="flex justify-center items-center space-x-6 text-xs">
           <div className="flex items-center space-x-2">
-            <div className="w-3 h-3 bg-blue-500 rounded-full border border-blue-400"></div>
-            <span className="text-blue-400 font-medium">Service Locations</span>
+            <div className="w-3 h-3 bg-primary rounded-full border border-primary/40"></div>
+            <span className="text-primary font-medium">Service Locations</span>
           </div>
           <div className="flex items-center space-x-2">
-            <div className="w-3 h-3 bg-blue-400 opacity-30 rounded-full border border-blue-300"></div>
-            <span className="text-blue-400 font-medium">Primary Region</span>
+            <div className="w-3 h-3 bg-primary/30 rounded-full border border-primary/20"></div>
+            <span className="text-primary font-medium">Primary Region</span>
           </div>
         </div>
-        <div className="mt-4 text-xs text-gray-400">
+        <div className="mt-4 text-xs text-muted-foreground">
           Expanding our reach to serve you better
         </div>
       </div>

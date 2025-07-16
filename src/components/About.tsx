@@ -22,7 +22,7 @@ const About = () => {
   }, []);
 
   return (
-    <section id="about" className="py-20 bg-gray-900 text-white overflow-hidden">
+    <section id="about" className="py-20 bg-gradient-to-br dark:from-black dark:via-gray-900 dark:to-black from-blue-50 via-white to-blue-50 transition-colors duration-300 overflow-hidden transition-colors duration-300">
       <div className="container mx-auto px-4">
         <motion.div 
           className="grid lg:grid-cols-2 gap-16 items-start"
@@ -39,14 +39,14 @@ const About = () => {
             <div className="space-y-8">
               <div>
                 <h3 className="text-3xl font-bold mb-6">Company Vision</h3>
-                <p className="text-gray-400 text-lg leading-relaxed">
+                <p className="text-blue-600 dark:text-muted-foreground text-lg max-w-2xl mx-auto">
                   To be a standard-setting architectural firm committed to total customer satisfaction by leveraging strengths in design innovation, material quality, technology, and timely project delivery.
                 </p>
               </div>
               
               <div>
                 <h3 className="text-3xl font-bold mb-6">Principal Architect</h3>
-                <div className="text-gray-400 space-y-4">
+                <div className="text-muted-foreground space-y-4">
                   <p className="text-xl font-semibold">Ar. Anil Bharti</p>
                   <ul className="list-disc pl-5 space-y-2">
                     <li>M. Arch from IIT Roorkee (2013)</li>
@@ -67,7 +67,7 @@ const About = () => {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="relative"
           >
-            <div className="aspect-square bg-gray-800 rounded-lg overflow-hidden">
+            <div className="bg-white dark:bg-gray-900/50 p-8 rounded-lg border border-blue-100 dark:border-border shadow-sm hover:border-blue-200 dark:hover:border-border transition-all duration-300">
               <img
                 src="/images/principal-architect.jpg"
                 alt="Ar. Anil Bharti - Principal Architect"
@@ -76,13 +76,13 @@ const About = () => {
             </div>
 
             <motion.div
-              className="absolute -bottom-8 -left-8 bg-black p-8 rounded-lg shadow-xl"
+              className="absolute -bottom-8 -left-8 bg-card p-8 rounded-lg shadow-xl border border-border"
               initial={{ scale: 0.8, opacity: 0 }}
               animate={isVisible ? { scale: 1, opacity: 1 } : { scale: 0.8, opacity: 0 }}
               transition={{ duration: 0.6, delay: 0.8 }}
             >
               <div className="text-4xl font-bold mb-2">11+</div>
-              <div className="text-gray-400">Years Experience</div>
+              <div className="text-muted-foreground">Years Experience</div>
             </motion.div>
           </motion.div>
         </motion.div>
@@ -108,7 +108,7 @@ const About = () => {
           ].map((service, index) => (
             <motion.div 
               key={index}
-              className="bg-gray-800 p-8 rounded-lg relative group hover:bg-gray-700 transition-all duration-300 cursor-pointer"
+              className="bg-card p-8 rounded-lg relative group hover:bg-muted transition-all duration-300 cursor-pointer border border-border"
               initial={{ y: 50, opacity: 0 }}
               animate={isVisible ? { 
                 y: 0, 
@@ -128,17 +128,17 @@ const About = () => {
             >
               <div className="flex justify-between items-start mb-6">
                 <motion.span 
-                  className="text-4xl font-bold text-gray-500 group-hover:text-white transition-colors"
+                  className="text-4xl font-bold text-muted-foreground group-hover:text-foreground transition-colors"
                   whileHover={{ scale: 1.1 }}
                 >
                   {service.number}
                 </motion.span>
                 <motion.div 
-                  className="w-8 h-8 border border-gray-500 rounded-full flex items-center justify-center group-hover:border-white transition-colors"
+                  className="w-8 h-8 border border-muted-foreground rounded-full flex items-center justify-center group-hover:border-foreground transition-colors"
                   whileHover={{ rotate: 45, scale: 1.1 }}
                   transition={{ duration: 0.3 }}
                 >
-                  <span className="text-gray-400 group-hover:text-white">↗</span>
+                  <span className="text-muted-foreground group-hover:text-foreground">↗</span>
                 </motion.div>
               </div>
               <motion.h3 
@@ -148,13 +148,13 @@ const About = () => {
               >
                 {service.title}
               </motion.h3>
-              <p className="text-gray-400 leading-relaxed group-hover:text-gray-300 transition-colors">
+              <p className="text-muted-foreground leading-relaxed group-hover:text-foreground/80 transition-colors">
                 {service.description}
               </p>
               
               {/* Hover overlay effect */}
               <motion.div
-                className="absolute inset-0 bg-gradient-to-r from-blue-600/10 to-purple-600/10 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                className="absolute inset-0 bg-gradient-to-r from-primary/10 to-secondary/10 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                 initial={{ scale: 0.8 }}
                 whileHover={{ scale: 1 }}
               />

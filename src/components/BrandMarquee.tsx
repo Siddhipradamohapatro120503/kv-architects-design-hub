@@ -9,7 +9,7 @@ const BrandMarquee = () => {
   ];
 
   return (
-    <div className="bg-gray-900 py-8 overflow-hidden border-y border-gray-800">
+    <div className="bg-gradient-to-br dark:from-gray-900 dark:via-black dark:to-gray-900 from-gray-50 via-white to-gray-50 py-8 overflow-hidden border-y border-border transition-colors duration-300">
       <div className="relative">
         <motion.div
           className="flex space-x-16 whitespace-nowrap"
@@ -25,7 +25,7 @@ const BrandMarquee = () => {
               {brands.map((brand, index) => (
                 <div
                   key={`${i}-${index}`}
-                  className="text-gray-400 text-lg font-medium hover:text-white transition-colors cursor-default"
+                  className="text-muted-foreground text-lg font-medium hover:text-foreground transition-colors cursor-default"
                 >
                   {brand}
                 </div>
@@ -35,8 +35,8 @@ const BrandMarquee = () => {
         </motion.div>
         
         {/* Gradient overlays */}
-        <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-gray-900 to-transparent z-10"></div>
-        <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-gray-900 to-transparent z-10"></div>
+        <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r dark:from-gray-900 from-gray-50 to-transparent z-10"></div>
+        <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l dark:from-gray-900 from-gray-50 to-transparent z-10"></div>
       </div>
     </div>
   );
