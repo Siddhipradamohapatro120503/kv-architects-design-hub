@@ -104,7 +104,7 @@ const Hero = () => {
             <motion.div className="hidden md:block" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
             <Button 
               variant="outline" 
-              className="border-white text-white hover:bg-white hover:text-black transition-all duration-300"
+              className="border-white text-black bg-white transition-all duration-300"
               onClick={() => scrollToSection('contact')}
             >
               Get in Touch
