@@ -136,13 +136,13 @@ const Hero = () => {
         <img 
           src="https://images.unsplash.com/photo-1487958449943-2429e8be8625?auto=format&fit=crop&w=2000&q=80"
           alt="Modern Architectural Background"
-          className="w-full h-full object-cover"
-          loading="eager"
-          onError={(e) => {
-            const target = e.target as HTMLImageElement;
-            target.onerror = null;
+          className="w-full h-full object-cover" 
+          loading="eager" 
+          onError={(e) => { 
+            const target = e.target as HTMLImageElement; 
+            target.onerror = null; 
             target.src = '/fallback-hero.jpg';
-          }}
+          }} 
         />
         <div className="absolute inset-0 bg-gradient-to-br dark:from-black/80 dark:via-black/60 dark:to-black/40 from-white/80 via-white/60 to-white/40"></div>
       </div>

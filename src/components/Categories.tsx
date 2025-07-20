@@ -13,25 +13,25 @@ const categories: Category[] = [
   {
     title: "Hotels",
     icon: <Building2 className="w-8 h-8" />,
-    image: "/images/categories/hotel.jpg", // Add your hotel image
+    image: "./image/reception.jpg",
     description: "Luxurious and comfortable spaces designed for exceptional hospitality experiences."
   },
   {
     title: "Temples",
     icon: <LandmarkIcon className="w-8 h-8" />,
-    image: "/images/categories/temple.jpg", // Add your temple image
+    image: "./image/achi12.jpg",
     description: "Sacred spaces that blend traditional architecture with modern engineering."
   },
   {
     title: "Schools",
     icon: <School className="w-8 h-8" />,
-    image: "/images/categories/school.jpg", // Add your school image
+    image: "./image/IMG-20250628-WA0011.jpg",
     description: "Educational environments that inspire learning and foster growth."
   },
   {
     title: "Residences",
     icon: <HomeIcon className="w-8 h-8" />,
-    image: "/images/categories/residence.jpg", // Add your residence image
+    image: "./image/Villa.jpg",
     description: "Personalized living spaces that reflect individual style and comfort."
   }
 ];

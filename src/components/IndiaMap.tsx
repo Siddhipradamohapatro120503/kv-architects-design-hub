@@ -42,7 +42,7 @@ const IndiaMap = () => {
   ];
 
   return (
-    <div className="bg-gradient-to-br dark:from-gray-900 dark:to-black from-white to-gray-50 rounded-lg p-8 shadow-2xl border border-border">
+    <div className="bg-gradient-to-br dark:from-blue-950/70 dark:to-gray-950/70 from-blue-50/80 to-blue-100/50 rounded-lg p-8 shadow-lg border border-blue-100/30 dark:border-border/50">
       <div className="text-center mb-8">
         <h3 className="text-3xl font-bold text-foreground mb-2">Our Project Locations</h3>
         <p className="text-primary text-sm">Delivering Excellence Across Northern India</p>
@@ -52,8 +52,8 @@ const IndiaMap = () => {
         <img
           src="/india.svg"
           alt="Map of India"
-          className="w-full h-auto max-w-lg mx-auto dark:invert dark:opacity-80 opacity-90"
-          style={{ filter: 'contrast(1.2)' }}
+          className="w-full h-auto max-w-lg mx-auto dark:invert dark:opacity-70 opacity-75"
+          style={{ filter: 'contrast(1.1) brightness(1.05)' }}
         />
 
         {/* Location markers */}
@@ -70,7 +70,7 @@ const IndiaMap = () => {
               className="relative cursor-pointer"
               whileHover={{ scale: 1.3 }}
             >
-              <div className="w-5 h-5 bg-primary rounded-full border-2 border-background shadow-lg flex items-center justify-center">
+              <div className="w-4 h-4 bg-primary/80 rounded-full border border-background shadow-md flex items-center justify-center">
                 <div className="w-2 h-2 bg-background rounded-full"></div>
               </div>
               <div className="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 bg-popover text-popover-foreground px-4 py-2 rounded-lg text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10 border border-border shadow-xl min-w-[200px] pointer-events-none group-hover:pointer-events-auto">
@@ -90,7 +90,7 @@ const IndiaMap = () => {
             
             {/* Pulse animation */}
             <motion.div
-              className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-5 h-5 bg-primary/40 rounded-full opacity-40"
+              className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-primary/30 rounded-full opacity-30"
               animate={{ scale: [1, 2.5, 1] }}
               transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
             />
@@ -98,17 +98,17 @@ const IndiaMap = () => {
         ))}
       </div>
       
-      <div className="mt-8 text-center border-t border-border pt-6">
+      <div className="mt-8 text-center border-t border-border/40 pt-6">
         <p className="text-muted-foreground text-sm mb-4">
           Delivering architectural excellence across Rajasthan with {locations.reduce((sum, loc) => sum + loc.projects, 0)}+ successful projects
         </p>
         <div className="flex justify-center items-center space-x-6 text-xs">
           <div className="flex items-center space-x-2">
-            <div className="w-3 h-3 bg-primary rounded-full border border-primary/40"></div>
+            <div className="w-3 h-3 bg-primary/70 rounded-full border border-primary/30"></div>
             <span className="text-primary font-medium">Service Locations</span>
           </div>
           <div className="flex items-center space-x-2">
-            <div className="w-3 h-3 bg-primary/30 rounded-full border border-primary/20"></div>
+            <div className="w-3 h-3 bg-primary/20 rounded-full border border-primary/10"></div>
             <span className="text-primary font-medium">Primary Region</span>
           </div>
         </div>

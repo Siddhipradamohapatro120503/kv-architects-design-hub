@@ -89,24 +89,44 @@ const AboutPage: React.FC = () => {
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
               {[
                 {
-                  name: "Anil Bharti",
+                  name: "Amit Jaiswal",
                   role: "Principal Architect",
-                  image: "/images/principal-architect.jpg"
+                  image: "./images/team/Amit Jaiswal.png"
                 },
                 {
-                  name: "Priya Sharma",
+                  name: "Raghvender",
                   role: "Senior Architect",
-                  image: "/testimonials/client2.jpg"
+                  image: "./images/team/Raghvender.jpg"
                 },
                 {
-                  name: "Vikram Malhotra",
+                  name: "Ravinder Tiwari",
                   role: "Project Manager",
-                  image: "/testimonials/client5.jpg"
+                  image: "./images/team/Ravinder Tiwari.jpg"
                 },
                 {
-                  name: "Anita Desai",
+                  name: "Priyanka",
                   role: "Interior Designer",
-                  image: "/testimonials/client6.jpg"
+                  image: "./images/team/priyanka ji.jpg"
+                },
+                {
+                  name: "Subhan",
+                  role: "Design Consultant",
+                  image: "./images/team/Subhan.jpg"
+                },
+                {
+                  name: "S. Mishra",
+                  role: "Senior Designer",
+                  image: "./images/team/S. Mishra.jpg"
+                },
+                {
+                  name: "Sanjay Paswan",
+                  role: "Project Coordinator",
+                  image: "./images/team/SANJAY PASWAN.jpg"
+                },
+                {
+                  name: "Vinit",
+                  role: "Architectural Associate",
+                  image: "./images/team/VINIT.jpg"
                 }
               ].map((member, index) => (
                 <motion.div

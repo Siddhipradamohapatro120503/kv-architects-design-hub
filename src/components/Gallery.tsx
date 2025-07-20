@@ -25,39 +25,75 @@ const Gallery = () => {
   const galleryImages = [
     {
       id: 1,
-      title: "Modern Architecture",
-      image: "https://images.unsplash.com/photo-1487958449943-2429e8be8625?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-      category: "Commercial"
+      title: "Modern Villa Design",
+      image: "/images/architecture/Villa.jpg",
+      category: "Residential"
     },
     {
       id: 2,
-      title: "Interior Spaces",
-      image: "https://images.unsplash.com/photo-1721322800607-8c38375eef04?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      title: "Interior Design",
+      image: "/images/interiors/interior ground floor.jpg",
       category: "Interior"
     },
     {
       id: 3,
-      title: "Structural Design",
-      image: "https://images.unsplash.com/photo-1518005020951-eccb494ad742?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      title: "Apartment Complex",
+      image: "./images/buildings/Apartment.jpg",
       category: "Residential"
     },
     {
       id: 4,
-      title: "Commercial Projects",
-      image: "https://images.unsplash.com/photo-1496307653780-42ee777d4833?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      title: "Factory Design",
+      image: "/images/buildings/1factory.jpg",
       category: "Commercial"
     },
     {
       id: 5,
-      title: "Renovation Works",
-      image: "https://images.unsplash.com/photo-1449157291145-7efd050a4d0e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-      category: "Renovation"
+      title: "Hospital Architecture",
+      image: "./images/buildings/upkar hospital.jpg",
+      category: "Healthcare"
     },
     {
       id: 6,
-      title: "Luxury Interiors",
-      image: "https://images.unsplash.com/photo-1459767129954-1b1c1f9b9ace?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      title: "Reception Area",
+      image: "/images/interiors/reception.jpg",
       category: "Interior"
+    },
+    {
+      id: 7,
+      title: "Educational Institution",
+      image: "./images/buildings/classroom.jpg",
+      category: "Educational"
+    },
+    {
+      id: 8,
+      title: "Living Room Design",
+      image: "/images/interiors/umesh ji living room.jpg",
+      category: "Interior"
+    },
+    {
+      id: 9,
+      title: "Modern Architecture",
+      image: "./images/buildings/achi12.jpg",
+      category: "Commercial"
+    },
+    {
+      id: 10,
+      title: "Healthcare Facility",
+      image: "./images/buildings/hospital11.jpg",
+      category: "Healthcare"
+    },
+    {
+      id: 11,
+      title: "Project Showcase",
+      image: "/images/projects/IMG-20250626-WA0010.jpg",
+      category: "Projects"
+    },
+    {
+      id: 12,
+      title: "Design Concept",
+      image: "/images/projects/IMG-20250626-WA0016.jpg",
+      category: "Projects"
     }
   ];
 
@@ -99,45 +135,7 @@ const Gallery = () => {
             </div>
           </motion.div>
         </motion.div>
-
-        {/* Gallery Carousel */}
-        <motion.div 
-          className="relative"
-          initial={{ opacity: 0, y: 50 }}
-          animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
-        >
-          <Carousel className="w-full max-w-6xl mx-auto">
-            <CarouselContent className="-ml-4">
-              {galleryImages.map((item, index) => (
-                <CarouselItem key={item.id} className="pl-4 md:basis-1/2 lg:basis-1/3">
-                  <motion.div 
-                    className="relative group cursor-pointer"
-                    whileHover={{ scale: 1.05 }}
-                    transition={{ duration: 0.3 }}
-                  >
-                    <div className="aspect-square rounded-lg overflow-hidden bg-muted">
-                      <img 
-                        src={item.image} 
-                        alt={item.title}
-                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                      />
-                      <div className="absolute inset-0 bg-background bg-opacity-0 group-hover:bg-opacity-50 transition-all duration-300 flex items-end">
-                        <div className="p-6 text-foreground transform translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-300">
-                          <span className="text-sm text-muted-foreground mb-2 block">{item.category}</span>
-                          <h3 className="text-xl font-bold">{item.title}</h3>
-                        </div>
-                      </div>
-                    </div>
-                  </motion.div>
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-            <CarouselPrevious className="left-4 bg-white dark:bg-card border-blue-100 dark:border-border hover:bg-blue-50 dark:hover:bg-muted transition-colors duration-300" />
-            <CarouselNext className="right-4 bg-white dark:bg-card border-blue-100 dark:border-border hover:bg-blue-50 dark:hover:bg-muted transition-colors duration-300" />
-          </Carousel>
-        </motion.div>
-
+        
         {/* Additional Gallery Grid */}
         <motion.div 
           className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-16"
@@ -145,7 +143,44 @@ const Gallery = () => {
           animate={isVisible ? { opacity: 1 } : { opacity: 0 }}
           transition={{ duration: 1, delay: 0.8 }}
         >
-          {galleryImages.slice(0, 5).map((item, index) => (
+          {[
+            {
+              id: 101,
+              title: "Factory Design",
+              image: "/images/buildings/1factory.jpg",
+              category: "Industrial"
+            },
+            {
+              id: 102,
+              title: "Hospital Architecture",
+              image: "/images/buildings/hospital11.jpg",
+              category: "Healthcare"
+            },
+            {
+              id: 103,
+              title: "Modern Apartment",
+              image: "/images/buildings/Apartment.jpg",
+              category: "Residential"
+            },
+            {
+              id: 104,
+              title: "Educational Facility",
+              image: "/images/buildings/classroom.jpg",
+              category: "Educational"
+            },
+            {
+              id: 105,
+              title: "Healthcare Center",
+              image: "/images/buildings/upkar hospital.jpg",
+              category: "Healthcare"
+            },
+            {
+              id: 106,
+              title: "Contemporary Design",
+              image: "/images/buildings/achi12.jpg",
+              category: "Commercial"
+            }
+          ].map((item, index) => (
             <motion.div 
               key={`grid-${item.id}`}
               className={`bg-muted rounded-lg overflow-hidden group cursor-pointer ${

@@ -121,11 +121,7 @@ const LeadCapture = ({
         <p className="text-muted-foreground mb-4">
           Our team will contact you within 24 hours to schedule your free consultation.
         </p>
-        {variant === "popup" && onClose && (
-          <Button variant="outline" onClick={onClose}>
-            Close
-          </Button>
-        )}
+        {/* Close button removed to avoid duplication with the X button in the corner */}
       </div>
     );
   }
@@ -138,7 +134,8 @@ const LeadCapture = ({
       {variant === "popup" && onClose && (
         <button 
           onClick={onClose}
-          className="absolute top-4 right-4 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
+          className="absolute top-4 right-4 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 text-xl font-bold"
+          aria-label="Close"
         >
           &times;
         </button>

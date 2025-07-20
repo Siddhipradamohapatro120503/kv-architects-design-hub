@@ -69,7 +69,7 @@ const About = () => {
           >
             <div className="bg-white dark:bg-gray-900/50 p-8 rounded-lg border border-blue-100 dark:border-border shadow-sm hover:border-blue-200 dark:hover:border-border transition-all duration-300">
               <img
-                src="/images/principal-architect.jpg"
+                src="./images/team/Amit Jaiswal.png"
                 alt="Ar. Anil Bharti - Principal Architect"
                 className="w-full h-full object-cover"
               />
