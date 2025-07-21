@@ -152,21 +152,6 @@ const InfiniteImageScroll = () => {
           }
         }}
       >
-        {/* {duplicatedCategories.reverse().map((category, index) => (
-          <div
-            key={`row2-${category.title}-${index}`}
-            className="relative flex-shrink-0 w-[350px] h-[200px] rounded-xl overflow-hidden"
-          >
-            <img
-              src={category.image}
-              alt={category.title}
-              className="w-full h-full object-cover"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-6">
-              <h4 className="text-white text-xl font-bold">{category.title}</h4>
-            </div>
-          </div>
-        ))} */}
       </motion.div>
     </div>
   );

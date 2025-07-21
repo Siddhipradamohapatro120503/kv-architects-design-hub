@@ -24,6 +24,21 @@ const StudioPage = () => {
       id: "video2", 
       embedId: "lG4Rn_hZo_0",
       title: "KV Associate Project Video 2"
+    },
+    { 
+      id: "video3", 
+      embedId: "z-ZyFbe1eQk",
+      title: "KV Associate Project Video 3"
+    },
+    { 
+      id: "video4", 
+      embedId: "Ogp_h4RgqNQ",
+      title: "KV Associate Project Video 4"
+    },
+    { 
+      id: "video5", 
+      embedId: "hrqZP8L_FRc",
+      title: "KV Associate Project Video 5"
     }
   ];
 

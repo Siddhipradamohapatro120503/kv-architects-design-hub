@@ -55,7 +55,55 @@ const About = () => {
                     <li>Former Associate Professor & Head, Faculty of Architecture, HZU</li>
                     <li>Member of COA-Delhi, IIA-Mumbai, IBC-Delhi, IITRAA-Dehradun</li>
                     <li>Published 8+ research papers in national and international journals</li>
+                    <li>
+                      <a 
+                        href="https://scholar.google.com/citations?hl=hi&user=kWomaHsAAAAJ" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 underline transition-colors"
+                      >
+                        View research publications on Google Scholar
+                      </a>
+                    </li>
                   </ul>
+                </div>
+                
+                <div className="mt-8">
+                  <h4 className="text-xl font-bold mb-4">Research Highlights</h4>
+                  <div className="bg-card/50 dark:bg-gray-900/30 p-4 rounded-lg border border-border">
+                    <ul className="space-y-4 text-sm">
+                      <li className="p-2 hover:bg-muted/50 rounded-md transition-colors">
+                        <p className="font-semibold">INTERIOR DESIGNING FOR GENERAL OPERATION THEATER (AN ARCHITECTURAL APPROACH)</p>
+                        <p className="text-muted-foreground">S Anil Bharti</p>
+                        <p className="text-muted-foreground">International Research Journal of Engineering and Technology (IRJET) 5 (11), 6 | 2018</p>
+                      </li>
+                      <li className="p-2 hover:bg-muted/50 rounded-md transition-colors">
+                        <p className="font-semibold">RETROFITTING IN INDIAN RAILWAY STATIONS (THROUGH CONCOURSE AND PLATFORM AREA)</p>
+                        <p className="text-muted-foreground">AVA Bharti</p>
+                        <p className="text-muted-foreground">International Research Journal of Engineering and Technology (IRJET) 5 (11), 12 | 2018</p>
+                      </li>
+                      <li className="p-2 hover:bg-muted/50 rounded-md transition-colors">
+                        <p className="font-semibold">GHAT FOR EVERYONE AT VARANASI</p>
+                        <p className="text-muted-foreground">SYK Anil Bharti</p>
+                        <p className="text-muted-foreground">International Journal of Creative Research Thoughts (IJCRT) 6 (1), 8 | 2018</p>
+                      </li>
+                      <li className="p-2 hover:bg-muted/50 rounded-md transition-colors">
+                        <p className="font-semibold">Pedestrian Accessibility at Dashashwamegh Ghat-Varanasi, India</p>
+                        <p className="text-muted-foreground">ABPSY Kulkarni</p>
+                        <p className="text-muted-foreground">Journal of Civil Engineering and Environmental Technology 5 (7), 6 | 2018</p>
+                      </li>
+                      <li className="p-2 hover:bg-muted/50 rounded-md transition-colors">
+                        <p className="font-semibold">Rejuvenation of Ghats at Varanasi (India)</p>
+                        <p className="text-muted-foreground">A Bharti</p>
+                        <p className="text-muted-foreground">Journal of Energy Research and Environmental Technology (JERET) 3 (2), 7 | 2016</p>
+                      </li>
+                      <li className="p-2 hover:bg-muted/50 rounded-md transition-colors">
+                        <p className="font-semibold">Sustainable development of Dashashawamegh Ghat at Varanasi</p>
+                        <p className="text-muted-foreground">ABPSY Kulkarni</p>
+                        <p className="text-muted-foreground">Sustainable Neighborhoods: Theories and practices 1 (1), 225-234</p>
+                      </li>
+                    </ul>
+                  </div>
                 </div>
               </div>
             </div>
@@ -69,7 +117,7 @@ const About = () => {
           >
             <div className="bg-white dark:bg-gray-900/50 p-8 rounded-lg border border-blue-100 dark:border-border shadow-sm hover:border-blue-200 dark:hover:border-border transition-all duration-300">
               <img
-                src="./images/team/Amit Jaiswal.png"
+                src="./images/team/image.png"
                 alt="Ar. Anil Bharti - Principal Architect"
                 className="w-full h-full object-cover"
               />
@@ -81,7 +129,7 @@ const About = () => {
               animate={isVisible ? { scale: 1, opacity: 1 } : { scale: 0.8, opacity: 0 }}
               transition={{ duration: 0.6, delay: 0.8 }}
             >
-              <div className="text-4xl font-bold mb-2">11+</div>
+              <div className="text-4xl font-bold mb-2">21+</div>
               <div className="text-muted-foreground">Years Experience</div>
             </motion.div>
           </motion.div>

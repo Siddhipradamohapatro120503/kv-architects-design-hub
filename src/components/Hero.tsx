@@ -31,10 +31,16 @@ const HeroScribbleText = () => {
         {/* Self-Drawing SVG Animation */}
         <div className="absolute inset-0 pointer-events-none">
           <svg className="absolute bottom-0 left-0 w-full h-12">
+            <defs>
+              <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+                <feGaussianBlur stdDeviation="4" result="blur" />
+                <feComposite in="SourceGraphic" in2="blur" operator="over" />
+              </filter>
+            </defs>
             <motion.path
               d={scribblePaths.underline}
               fill="none"
-              stroke="rgb(59, 130, 246)"
+              stroke="rgb(37, 99, 235)" // Deeper blue for better contrast
               strokeWidth="3"
               strokeLinecap="round"
               filter="url(#glow)"
@@ -46,8 +52,8 @@ const HeroScribbleText = () => {
         </div>
 
         {/* Main Text with Letter Animation - Only Tagline */}
-        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold leading-tight text-blue-950 dark:text-foreground">
-          <div>
+        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold leading-tight text-blue-950 dark:text-white">
+          <div className="tracking-tight">
             {"We Design".split("").map((char, index) => (
               <motion.span
                 key={index}
@@ -60,7 +66,7 @@ const HeroScribbleText = () => {
               </motion.span>
             ))}
           </div>
-          <div className="text-primary relative inline-block">
+          <div className="text-blue-600 dark:text-blue-400 relative inline-block">
             {"Your Dreams".split("").map((char, index) => (
               <motion.span
                 key={index + 20}
@@ -68,7 +74,7 @@ const HeroScribbleText = () => {
                 animate={isInView ? { 
                   opacity: 1, 
                   scale: 1,
-                  textShadow: "0 0 10px rgba(59, 130, 246, 0.5)"
+                  textShadow: "0 0 15px rgba(37, 99, 235, 0.6)"
                 } : { opacity: 0, scale: 0.5 }}
                 transition={{ 
                   duration: 0.6, 
@@ -82,7 +88,7 @@ const HeroScribbleText = () => {
               </motion.span>
             ))}
             <motion.div 
-              className="absolute -bottom-2 left-0 w-full h-1 bg-primary"
+              className="absolute -bottom-2 left-0 w-full h-1.5 bg-blue-600 dark:bg-blue-400 rounded-full shadow-lg shadow-blue-400/30 dark:shadow-blue-500/30"
               initial={{ scaleX: 0 }}
               animate={isInView ? { scaleX: 1 } : { scaleX: 0 }}
               transition={{ duration: 1, delay: 1.2 }}
@@ -130,7 +136,7 @@ const Hero = () => {
   };
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-background text-foreground transition-colors duration-300">
+    <section className="relative min-h-[90vh] md:min-h-screen flex items-center justify-center overflow-hidden bg-background text-foreground transition-colors duration-300">
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0">
         <img 
@@ -144,7 +150,7 @@ const Hero = () => {
             target.src = '/fallback-hero.jpg';
           }} 
         />
-        <div className="absolute inset-0 bg-gradient-to-br dark:from-black/80 dark:via-black/60 dark:to-black/40 from-white/80 via-white/60 to-white/40"></div>
+        <div className="absolute inset-0 bg-gradient-to-br dark:from-black/90 dark:via-black/70 dark:to-black/50 from-white/90 via-white/70 to-white/50"></div>
       </div>
       {/* Navigation */}
       {/* <motion.nav 
@@ -218,7 +224,7 @@ const Hero = () => {
         transition={{ duration: 2 }}
       >
         <motion.div 
-          className="absolute top-1/4 right-1/4 w-96 h-96 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full blur-3xl"
+          className="absolute top-1/4 right-1/4 w-64 sm:w-96 h-64 sm:h-96 bg-gradient-to-br from-blue-600 to-purple-700 rounded-full blur-3xl"
           animate={{ 
             scale: [1, 1.2, 1],
             rotate: [0, 180, 360]
@@ -230,7 +236,7 @@ const Hero = () => {
           }}
         ></motion.div>
         <motion.div 
-          className="absolute bottom-1/4 left-1/4 w-64 h-64 bg-gradient-to-br from-gray-600 to-gray-800 rounded-full blur-2xl"
+          className="absolute bottom-1/4 left-1/4 w-48 sm:w-64 h-48 sm:h-64 bg-gradient-to-br from-blue-800 to-indigo-900 rounded-full blur-2xl"
           animate={{ 
             scale: [1, 0.8, 1],
             rotate: [0, -180, -360]
@@ -241,23 +247,36 @@ const Hero = () => {
             ease: "linear"
           }}
         ></motion.div>
+        <motion.div 
+          className="absolute top-1/2 left-1/3 w-32 sm:w-48 h-32 sm:h-48 bg-gradient-to-br from-indigo-500 to-blue-400 rounded-full blur-xl hidden sm:block"
+          animate={{ 
+            scale: [0.9, 1.1, 0.9],
+            x: [0, 30, 0],
+            y: [0, -20, 0]
+          }}
+          transition={{ 
+            duration: 18,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+        ></motion.div>
       </motion.div>
 
       <motion.div 
-        className="relative z-10 container mx-auto px-4"
+        className="relative z-10 container mx-auto px-4 py-8 sm:py-12 md:py-16"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
       >
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 items-center">
           {/* Text Content with Self-Drawing Animation */}
           <div className="max-w-4xl">
             <HeroScribbleText />
-            <p className="text-lg sm:text-xl md:text-2xl mb-8 sm:mb-12 text-blue-600 dark:text-muted-foreground max-w-2xl mx-auto px-4 sm:px-0">
+            <p className="text-lg sm:text-xl md:text-2xl mb-8 sm:mb-12 text-blue-700 dark:text-blue-300 max-w-2xl mx-auto px-4 sm:px-0 leading-relaxed">
               At KV Associate, we blend innovative design with sustainable practices to create spaces that inspire, function perfectly, and stand the test of time
             </p>
             <motion.div 
-              className="flex items-center space-x-4"
+              className="flex flex-col sm:flex-row items-center gap-4 sm:space-x-4 px-4 sm:px-0"
               initial={{ y: 50, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.9 }}
@@ -265,13 +284,27 @@ const Hero = () => {
               <motion.div
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
+                className="w-full sm:w-auto"
               >
                 <Button 
-                  className="bg-blue-100 border-blue-200 text-blue-700 hover:bg-blue-200 dark:border-foreground dark:text-foreground dark:hover:bg-foreground dark:hover:text-background transition-all duration-300 px-4 sm:px-6 py-2 sm:py-3 text-sm sm:text-base"
+                  className="w-full sm:w-auto bg-blue-600 text-white hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 dark:text-white transition-all duration-300 px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-medium shadow-lg hover:shadow-xl rounded-md"
                   onClick={() => handleNavigation('about')}
                 >
                   Explore Our Work
-                  <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                  <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                </Button>
+              </motion.div>
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="w-full sm:w-auto"
+              >
+                <Button 
+                  variant="outline"
+                  className="w-full sm:w-auto border-2 border-blue-600 text-blue-600 hover:bg-blue-50 dark:border-blue-400 dark:text-blue-400 dark:hover:bg-blue-900/30 transition-all duration-300 px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-medium"
+                  onClick={() => handleNavigation('contact')}
+                >
+                  Contact Us
                 </Button>
               </motion.div>
             </motion.div>
@@ -300,12 +333,13 @@ const Hero = () => {
         </div>
       </motion.div>
 
-      {/* Floating Geometric Shapes - Moved Down */}
+      {/* Floating Geometric Shapes - Responsive */}
       <motion.div
-        className="absolute bottom-40 left-10 w-4 h-4 bg-white opacity-20"
+        className="absolute bottom-20 sm:bottom-40 left-4 sm:left-10 w-3 h-3 sm:w-4 sm:h-4 bg-blue-400 dark:bg-blue-500 opacity-30 sm:opacity-40 rounded-sm"
         animate={{ 
           y: [0, -20, 0],
-          rotate: [0, 180, 360]
+          rotate: [0, 180, 360],
+          scale: [1, 1.2, 1]
         }}
         transition={{ 
           duration: 6,
@@ -315,10 +349,11 @@ const Hero = () => {
       ></motion.div>
       
       <motion.div
-        className="absolute bottom-20 right-20 w-6 h-6 border border-white opacity-20"
+        className="absolute bottom-10 sm:bottom-20 right-8 sm:right-20 w-4 h-4 sm:w-6 sm:h-6 border-2 border-blue-500 dark:border-blue-400 opacity-30 sm:opacity-40"
         animate={{ 
           y: [0, 20, 0],
-          rotate: [0, -180, -360]
+          rotate: [0, -180, -360],
+          scale: [1, 0.8, 1]
         }}
         transition={{ 
           duration: 8,
@@ -327,14 +362,27 @@ const Hero = () => {
         }}
       ></motion.div>
 
+      <motion.div
+        className="absolute top-1/4 right-8 sm:right-16 w-2 h-8 sm:w-3 sm:h-12 bg-blue-500 dark:bg-blue-400 opacity-20 sm:opacity-30 rounded-full hidden sm:block"
+        animate={{ 
+          height: ["3rem", "2rem", "3rem"],
+          rotate: [0, 5, 0, -5, 0]
+        }}
+        transition={{ 
+          duration: 5,
+          repeat: Infinity,
+          ease: "easeInOut"
+        }}
+      ></motion.div>
+
       {/* Architectural Element */}
       <motion.div 
-        className="absolute bottom-0 right-0 opacity-20"
+        className="absolute bottom-0 right-0 opacity-20 sm:opacity-30"
         initial={{ scale: 0, rotate: 45 }}
         animate={{ scale: 1, rotate: 45 }}
         transition={{ duration: 1.5, delay: 1 }}
       >
-        <div className="w-96 h-96 bg-gradient-to-tl from-gray-700 to-transparent transform rotate-45"></div>
+        <div className="w-64 h-64 sm:w-96 sm:h-96 bg-gradient-to-tl from-blue-700 dark:from-blue-600 to-transparent transform rotate-45"></div>
       </motion.div>
     </section>
   );

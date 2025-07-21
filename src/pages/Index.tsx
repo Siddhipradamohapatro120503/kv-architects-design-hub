@@ -23,7 +23,7 @@ const Index = () => {
       <BrandMarquee />
       <VisitorCounter />
       <Categories />
-      <Services />
+      {/* <Services /> */}
       
       {/* Lead Magnet Section */}
       <section className="py-16 bg-gradient-to-br from-blue-50 via-white to-blue-50 dark:from-gray-900 dark:via-black dark:to-gray-900 transition-colors duration-300">
@@ -113,16 +113,16 @@ const Index = () => {
         </div>
       </section>
       
-      <ServiceLocations />
+     
       <Testimonials />
       <Brands />
       {/* India Map Section */}
-      <section className="py-20 bg-gradient-to-br dark:from-gray-900 dark:via-black dark:to-gray-900 from-gray-50 via-white to-gray-50 transition-colors duration-300">
+      {/* <section className="py-20 bg-gradient-to-br dark:from-gray-900 dark:via-black dark:to-gray-900 from-gray-50 via-white to-gray-50 transition-colors duration-300">
         <div className="container mx-auto px-4">
-          <IndiaMap />
         </div>
-      </section>
+      </section> */}
       <FloatingContact />
+      <IndiaMap />
       <ExitIntentPopup />
     </div>
   );
