@@ -136,12 +136,12 @@ const ExitIntentPopup = () => {
   
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
-      <CustomDialogContent className="sm:max-w-md p-0 border-0 bg-transparent shadow-none">
+      <CustomDialogContent className="sm:max-w-md pt-4 border-0 bg-transparent shadow-none">
         <LeadCapture 
           title="Wait! Don't Miss This Opportunity"
           subtitle="Get expert architectural advice for your project"
           offerText="Schedule a free consultation call with our senior architect"
-          buttonText="Get Free Consultation"
+          buttonText="Get Consultation"
           variant="popup"
           onClose={() => setIsOpen(false)}
         />

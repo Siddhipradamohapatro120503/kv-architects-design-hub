@@ -100,7 +100,7 @@ const Testimonials: React.FC = () => {
                     className="w-[320px] sm:w-[350px] md:w-[400px] flex-shrink-0 bg-card rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 border border-border overflow-hidden"
                   >
               {/* Instagram-style image */}
-              <div className="w-full aspect-square overflow-hidden">
+              <div className="w-full h-[15rem] overflow-hidden">
                 <img
                   src={testimonial.image}
                   alt={testimonial.name}

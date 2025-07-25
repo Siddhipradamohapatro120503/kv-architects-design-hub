@@ -98,7 +98,7 @@ const LeadMagnet = ({
               
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div>
-                  <Label htmlFor="name">Your Name</Label>
+                  <Label className="ml-1" htmlFor="name">Your Name</Label>
                   <Input
                     id="name"
                     value={name}
@@ -109,7 +109,7 @@ const LeadMagnet = ({
                 </div>
                 
                 <div>
-                  <Label htmlFor="email">Email Address</Label>
+                  <Label className="ml-1" htmlFor="email">Email Address</Label>
                   <Input
                     id="email"
                     type="email"
@@ -131,7 +131,7 @@ const LeadMagnet = ({
                       Processing...
                     </span>
                   ) : (
-                    "Get Free Download"
+                    "Download"
                   )}
                 </Button>
                 

@@ -9,6 +9,20 @@ interface Category {
   description: string;
 }
 
+const calculateDuplication = (
+  cardWidth: number,
+  gap: number,
+  screenWidth: number,
+  baseLength: number
+) => {
+  const totalCardWidth = cardWidth + gap;
+  const cardsPerScreen = Math.ceil(screenWidth / totalCardWidth);
+  const totalNeeded = cardsPerScreen * 2; // Cover at least 2 screen widths
+  const times = Math.ceil(totalNeeded / baseLength);
+  return times;
+};
+
+
 const categories: Category[] = [
   {
     title: "Hotels",
@@ -99,23 +113,38 @@ const CategoryCard = ({ category, index }: { category: Category; index: number }
   );
 };
 
+import { useEffect, useState } from "react";
+
 const InfiniteImageScroll = () => {
-  // Duplicate categories to create illusion of infinite scroll
-  const duplicatedCategories = [...categories, ...categories, ...categories];
-  
+  const [duplicateCount, setDuplicateCount] = useState(3); // default fallback
+
+  useEffect(() => {
+    const screenWidth = window.innerWidth;
+    const baseLength = categories.length;
+    const cardWidth = 350; // px
+    const gap = 32; // Tailwind's gap-8 = 32px
+
+    const times = calculateDuplication(cardWidth, gap, screenWidth, baseLength);
+    setDuplicateCount(times);
+  }, []);
+
+  const duplicatedCategories = Array(duplicateCount)
+    .fill(categories)
+    .flat();
+
   return (
     <div className="relative h-[50vh] overflow-hidden">
       {/* First row - moving left */}
       <motion.div
         className="flex gap-8 absolute top-1/3 -translate-y-1/2 w-max"
         animate={{
-          x: ["-25%", "-100%"]
+          x: ["0%", "-50%"]
         }}
         transition={{
           x: {
             repeat: Infinity,
             repeatType: "loop",
-            duration: 40,
+            duration: 30,
             ease: "linear"
           }
         }}
@@ -136,30 +165,14 @@ const InfiniteImageScroll = () => {
           </div>
         ))}
       </motion.div>
-      
-      {/* Second row - moving right */}
-      <motion.div
-        className="flex gap-8 absolute top-2/3 -translate-y-1/2 w-max"
-        animate={{
-          x: ["-100%", "-25%"]
-        }}
-        transition={{
-          x: {
-            repeat: Infinity,
-            repeatType: "loop",
-            duration: 45,
-            ease: "linear"
-          }
-        }}
-      >
-      </motion.div>
     </div>
   );
 };
 
+
 const Categories = () => {
   return (
-    <section className="py-20 relative overflow-hidden">
+    <section className="pt-20 relative overflow-hidden">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -175,14 +188,11 @@ const Categories = () => {
         </motion.div>
 
         {/* Vertical Grid Layout */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {categories.map((category, index) => (
             <CategoryCard key={category.title} category={category} index={index} />
           ))}
         </div>
-
-        {/* Decorative Spacing */}
-        <div className="h-20 my-20"></div>
 
         {/* Infinite Image Scroll Section */}
         <InfiniteImageScroll />

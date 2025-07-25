@@ -39,7 +39,7 @@ const Brands = () => {
               transition={{ duration: 0.5, delay: index * 0.1 }}
               className="relative group"
             >
-              <div className="h-[20rem] sm:h-[25rem] md:h-[30rem] border-t border-border/50 border-r last:border-r-0 md:last-of-type:border-r md:[&:nth-child(4)]:border-r-0">
+              <div className="h-[10rem] sm:h-[15rem] md:h-[20rem] border-t border-border/50 border-r last:border-r-0 md:last-of-type:border-r md:[&:nth-child(4)]:border-r-0">
                 <div className="h-full flex items-center justify-center p-8 transition-all duration-300 group-hover:bg-muted/50">
                   <div className="relative w-full max-w-[90%] sm:max-w-[80%] aspect-[3/2] transition-transform duration-300 group-hover:scale-110">
                     <img
