@@ -54,9 +54,9 @@ const MobileNav: React.FC<MobileNavProps> = ({ isOpen, setIsOpen }) => {
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
               transition={{ type: 'spring', damping: 20 }}
-              className="fixed right-0 top-0 h-full w-[80%] max-w-sm bg-card z-50 shadow-xl"
+              className="fixed right-0 top-0 h-full w-[80%] max-w-sm bg-card z-50 shadow-xl bg-black"
             >
-              <div className="p-5 flex flex-col h-full">
+              <div className="p-5 flex flex-col min-h-screen bg-black">
                 <div className="flex justify-between items-center mb-8">
                   <span className="text-xl font-bold text-foreground">Menu</span>
                   <button
@@ -68,7 +68,7 @@ const MobileNav: React.FC<MobileNavProps> = ({ isOpen, setIsOpen }) => {
                   </button>
                 </div>
 
-                <nav className="flex flex-col space-y-4">
+                <nav className="flex flex-col space-y-4 bg-black">
                   {menuItems.map((item) => (
                     <motion.button
                       key={item.name}

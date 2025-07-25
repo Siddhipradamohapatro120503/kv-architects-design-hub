@@ -104,3 +104,23 @@ All colors MUST be HSL.
     @apply bg-background text-foreground;
   }
 }
+
+/* Hide or thin the scrollbar globally or target via a class */
+
+.custom-scrollbar {
+  scrollbar-width: thin;
+  /* scrollbar-color: transparent transparent; */
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: transparent;
+  border-radius: 20px;
+}

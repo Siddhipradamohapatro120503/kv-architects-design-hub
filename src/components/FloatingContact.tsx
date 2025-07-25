@@ -12,7 +12,7 @@ const FloatingContact = () => {
   };
 
   return (
-    <div className="fixed z-50">
+    <div className="fixed z-10">
       {/* Call Button - Left Side - Lower Position */}
       <motion.button
         onClick={handleCall}
@@ -24,7 +24,7 @@ const FloatingContact = () => {
         whileTap={{ scale: 0.95 }}
       >
         <Phone size={24} className="group-hover:animate-pulse" />
-        <div className="absolute left-full ml-4 top-1/2 -translate-y-1/2 bg-gray-900 text-white px-3 py-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
+        <div className="absolute left-full ml-4 top-1/2 -translate-y-1/2 bg-gray-900 text-white px-3 py-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap pointer-events-none group-hover:pointer-events-auto">
           Call Us Now
           <div className="absolute right-full top-1/2 -translate-y-1/2 border-4 border-transparent border-r-gray-900"></div>
         </div>
@@ -41,7 +41,8 @@ const FloatingContact = () => {
         whileTap={{ scale: 0.95 }}
       >
         <MessageCircle size={24} className="group-hover:animate-pulse" />
-        <div className="absolute right-full mr-4 top-1/2 -translate-y-1/2 bg-gray-900 text-white px-3 py-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
+        <div className="absolute right-full mr-4 top-1/2 -translate-y-1/2 bg-gray-900 text-white px-3 py-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap pointer-events-none group-hover:pointer-events-auto
+">
           Chat on WhatsApp
           <div className="absolute left-full top-1/2 -translate-y-1/2 border-4 border-transparent border-l-gray-900"></div>
         </div>
