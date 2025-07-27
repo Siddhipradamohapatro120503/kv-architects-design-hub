@@ -126,10 +126,10 @@ const Gallery = () => {
               Welcome to a world where spaces transform into works of art. Our architects bring a touch of brilliance to every project.
             </p>
             <div className="flex items-center space-x-4">
-              <button className="bg-white dark:bg-gray-900/50 rounded-lg overflow-hidden border border-blue-100 dark:border-border shadow-sm group hover:border-blue-200 dark:hover:border-border transition-all duration-300">
+              <button className="bg-white pl-3 pr-3 p-1 dark:bg-gray-900/50 rounded-lg overflow-hidden border border-blue-100 dark:border-border shadow-sm group hover:border-blue-200 dark:hover:border-border transition-all duration-300">
                 View More
               </button>
-              <div className="w-8 h-8 border border-muted rounded-full flex items-center justify-center">
+              <div className="w-8 h-8 border border-muted rounded-full text-[0.991rem] flex items-center justify-center">
                 <span className="text-muted-foreground">→</span>
               </div>
             </div>

@@ -272,7 +272,7 @@ const Hero = () => {
           {/* Text Content with Self-Drawing Animation */}
           <div className="max-w-4xl">
             <HeroScribbleText />
-            <p className="text-lg sm:text-xl md:text-2xl mb-8 sm:mb-12 text-blue-700 dark:text-blue-300 max-w-2xl mx-auto px-4 sm:px-0 leading-relaxed">
+            <p className="text-lg sm:text-xl md:text-2xl mb-8 sm:mb-12 text-blue-700 dark:text-blue-300 max-w-2xl ml-0 px-4 sm:px-0 leading-relaxed">
               At KV Associate, we blend innovative design with sustainable practices to create spaces that inspire, function perfectly, and stand the test of time
             </p>
             <motion.div 
@@ -382,7 +382,7 @@ const Hero = () => {
         animate={{ scale: 1, rotate: 45 }}
         transition={{ duration: 1.5, delay: 1 }}
       >
-        <div className="w-64 h-64 sm:w-96 sm:h-96 bg-gradient-to-tl from-blue-700 dark:from-blue-600 to-transparent transform rotate-45"></div>
+        {/* <div className="w-64 h-64 sm:w-96 sm:h-96 bg-gradient-to-tl from-blue-700 dark:from-blue-600 to-transparent transform rotate-45"></div> */}
       </motion.div>
     </section>
   );

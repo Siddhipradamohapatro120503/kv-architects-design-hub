@@ -104,7 +104,7 @@ const Index = () => {
             </div>
             <div>
               <LeadCapture 
-                title="Get Your Free Consultation" 
+                title="Get Consultation" 
                 subtitle="Our expert team will help you bring your vision to life"
                 buttonText="Schedule Consultation"
               />

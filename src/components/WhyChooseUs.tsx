@@ -44,7 +44,7 @@ const WhyChooseUs = () => {
               <div className="flex justify-between items-start mb-6">
                 <span className="text-2xl font-bold text-muted-foreground/60">0{index + 1}</span>
                 <div className="w-6 h-6 border border-muted rounded-full flex items-center justify-center group-hover:border-foreground transition-colors">
-                  <span className="text-muted-foreground group-hover:text-foreground text-sm">↗</span>
+                  <span className="text-muted-foreground group-hover:text-foreground text-[0.875rem]">↗</span>
                 </div>
               </div>
               <h3 className="text-xl font-semibold mb-4 text-blue-950 dark:text-foreground">{reason.title}</h3>
