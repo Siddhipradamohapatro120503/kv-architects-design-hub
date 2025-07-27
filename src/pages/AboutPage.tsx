@@ -89,39 +89,39 @@ const AboutPage: React.FC = () => {
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
               {[
                 {
-                  name: "Amit Jaiswal",
-                  role: "Principal Architect",
-                  image: "./images/team/Amit Jaiswal.png"
+                  name: "Sameer Ansari",
+                  role: "Architectural designer",
+                  image: "./images/team/IMG_4138.JPG"
                 },
                 {
-                  name: "Raghvender",
-                  role: "Senior Architect",
-                  image: "./images/team/Raghvender.jpg"
+                  name: "Sagun Chaudhary",
+                  role: "Architectural designer",
+                  image: "./images/team/sagun.jpeg"
                 },
                 {
-                  name: "Ravinder Tiwari",
-                  role: "Project Manager",
-                  image: "./images/team/Ravinder Tiwari.jpg"
+                  name: "Mridul Kumar",
+                  role: "Computer Operator ( Draftman)",
+                  image: "./images/team/Mridul.jpeg"
                 },
                 {
-                  name: "Priyanka",
-                  role: "Interior Designer",
-                  image: "./images/team/priyanka ji.jpg"
+                  name: "Rahul Kumar",
+                  role: "Personal Assistant",
+                  image: "./images/team/rahul.jpeg"
                 },
                 {
-                  name: "Subhan",
-                  role: "Design Consultant",
-                  image: "./images/team/Subhan.jpg"
+                  name: "Anil Patel",
+                  role: "Computer Operator ( Draftman)",
+                  image: "./images/team/Anil.jpeg"
                 },
                 {
-                  name: "S. Mishra",
-                  role: "Senior Designer",
-                  image: "./images/team/S. Mishra.jpg"
+                  name: "Amit kumar patel",
+                  role: "3D Designer 5 years experience",
+                  image: "./images/team/amit.jpeg"
                 },
                 {
-                  name: "Sanjay Paswan",
-                  role: "Project Coordinator",
-                  image: "./images/team/SANJAY PASWAN.jpg"
+                  name: "Pragya Ratan Maurya",
+                  role: "Assistant Architect",
+                  image: "./images/team/Pragya.jpeg"
                 },
                 {
                   name: "Vinit",

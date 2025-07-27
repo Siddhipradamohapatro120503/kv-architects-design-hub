@@ -9,7 +9,7 @@ import BrandMarquee from "@/components/BrandMarquee";
 import IndiaMap from "@/components/IndiaMap";
 import Brands from "@/components/Brands";
 import Testimonials from "@/components/Testimonials";
-import Categories from "@/components/Categories";
+
 import ScribbleText from "@/components/ScribbleText";
 import VisitorCounter from "@/components/VisitorCounter";
 import LeadCapture from "@/components/LeadCapture";
@@ -22,14 +22,13 @@ const Index = () => {
       <Hero />
       <BrandMarquee />
       <VisitorCounter />
-      <Categories />
       {/* <Services /> */}
-      
+      <Gallery />
       {/* Lead Magnet Section */}
       <section className="py-16 bg-gradient-to-br from-blue-50 via-white to-blue-50 dark:from-gray-900 dark:via-black dark:to-gray-900 transition-colors duration-300">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">Free Resources</h2>
+            <h2 className="text-4xl md:text-5xl font-bold mb-4">Resources</h2>
             <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
               Download our exclusive architectural guides to help with your project
             </p>
@@ -54,8 +53,7 @@ const Index = () => {
         </div>
       </section>
       
-      <Gallery />
-      <WhyChooseUs />
+      {/* <WhyChooseUs /> */}
       
       {/* Lead Capture Section */}
       <section className="py-20 bg-gradient-to-br from-blue-100 to-blue-50 dark:from-blue-950 dark:to-gray-900 transition-colors duration-300">

@@ -7,11 +7,13 @@ const IndiaMap = () => {
       name: "Varanasi", 
       x: "48%", 
       y: "42%", 
-      projects: 3,
+      projects: 8,
       details: [
         "Residence of Mr Ramesh Kumar",
         "Residence of Mr C.L Jaisal",
-        "Residence of Satish Bharti"
+        "Residence of Satish Bharti",
+        "Multiple residential projects",
+        "Commercial developments"
       ]
     },
     { 
@@ -29,16 +31,172 @@ const IndiaMap = () => {
       ]
     },
     { 
-      name: "Selaqui", 
-      x: "34%", 
-      y: "24%", 
+      name: "Azamgarh", 
+      x: "50%", 
+      y: "40%", 
+      projects: 2,
+      details: [
+        "Residential projects",
+        "Commercial developments"
+      ]
+    },
+    { 
+      name: "Robertsganj", 
+      x: "49%", 
+      y: "44%", 
+      projects: 1,
+      details: [
+        "Residential design projects"
+      ]
+    },
+    { 
+      name: "Bhadohi", 
+      x: "48.5%", 
+      y: "43%", 
+      projects: 2,
+      details: [
+        "Residential projects",
+        "Interior design work"
+      ]
+    },
+    { 
+      name: "Gyanpur", 
+      x: "48.2%", 
+      y: "43.5%", 
+      projects: 1,
+      details: [
+        "Residential development"
+      ]
+    },
+    { 
+      name: "Kaimoor", 
+      x: "47%", 
+      y: "44%", 
+      projects: 1,
+      details: [
+        "Architectural consultation"
+      ]
+    },
+    { 
+      name: "Bhabhua", 
+      x: "46%", 
+      y: "44.5%", 
+      projects: 1,
+      details: [
+        "Residential design"
+      ]
+    },
+    { 
+      name: "Basa Ram", 
+      x: "47.5%", 
+      y: "43.8%", 
+      projects: 1,
+      details: [
+        "Local development project"
+      ]
+    },
+    { 
+      name: "Chandauli", 
+      x: "49.5%", 
+      y: "43.2%", 
+      projects: 2,
+      details: [
+        "Residential projects",
+        "Commercial planning"
+      ]
+    },
+    { 
+      name: "Roorkee", 
+      x: "36%", 
+      y: "26%", 
       projects: 3,
       details: [
-        "Factory of Catvision",
-        "Alder BioChem Factory",
-        "Interior of Incraft"
+        "Educational institutions",
+        "Residential complexes",
+        "Commercial projects"
+      ]
+    },
+    { 
+      name: "Dhampur", 
+      x: "38%", 
+      y: "27%", 
+      projects: 1,
+      details: [
+        "Residential development"
+      ]
+    },
+    { 
+      name: "Moradabad", 
+      x: "39%", 
+      y: "28%", 
+      projects: 2,
+      details: [
+        "Commercial projects",
+        "Residential designs"
+      ]
+    },
+    { 
+      name: "Mirzapur", 
+      x: "47.5%", 
+      y: "44.8%", 
+      projects: 2,
+      details: [
+        "Residential projects",
+        "Urban planning"
+      ]
+    },
+    { 
+      name: "Gazipur", 
+      x: "49.8%", 
+      y: "41.5%", 
+      projects: 1,
+      details: [
+        "Residential design"
+      ]
+    },
+    { 
+      name: "Muzaffarnagar", 
+      x: "37%", 
+      y: "28.5%", 
+      projects: 2,
+      details: [
+        "Commercial developments",
+        "Residential projects"
+      ]
+    },
+    { 
+      name: "Sitapur", 
+      x: "44%", 
+      y: "37%", 
+      projects: 1,
+      details: [
+        "Residential planning"
+      ]
+    },
+    { 
+      name: "Buldhana, Maharashtra", 
+      x: "38%", 
+      y: "60%", 
+      projects: 1,
+      details: [
+        "Regional development project"
+      ]
+    },
+    { 
+      name: "Tikamgarh, M.P.", 
+      x: "40%", 
+      y: "52%", 
+      projects: 1,
+      details: [
+        "Architectural consultation"
       ]
     }
+  ];
+
+  const internationalLocations = [
+    { name: "Singapore", region: "Southeast Asia" },
+    { name: "Denmark", region: "Europe" },
+    { name: "USA", region: "North America" }
   ];
 
   return (
@@ -100,20 +258,41 @@ const IndiaMap = () => {
       
       <div className="mt-8 text-center border-t border-border/40 pt-6">
         <p className="text-muted-foreground text-sm mb-4">
-          Delivering architectural excellence across Rajasthan with {locations.reduce((sum, loc) => sum + loc.projects, 0)}+ successful projects
+          Delivering architectural excellence across India with {locations.reduce((sum, loc) => sum + loc.projects, 0)}+ successful projects in {locations.length} cities
         </p>
-        <div className="flex justify-center items-center space-x-6 text-xs">
-          <div className="flex items-center space-x-2">
-            <div className="w-3 h-3 bg-primary/70 rounded-full border border-primary/30"></div>
-            <span className="text-primary font-medium">Service Locations</span>
-          </div>
-          <div className="flex items-center space-x-2">
-            <div className="w-3 h-3 bg-primary/20 rounded-full border border-primary/10"></div>
-            <span className="text-primary font-medium">Primary Region</span>
+        
+        {/* International Locations */}
+        <div className="mb-6">
+          <h4 className="text-lg font-semibold text-foreground mb-3">International Presence</h4>
+          <div className="flex justify-center items-center gap-6 flex-wrap">
+            {internationalLocations.map((location, index) => (
+              <motion.div
+                key={location.name}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.1 + 0.5 }}
+                className="bg-gradient-to-r from-blue-500/10 to-purple-500/10 dark:from-blue-400/20 dark:to-purple-400/20 px-4 py-2 rounded-full border border-blue-200/50 dark:border-blue-400/30"
+              >
+                <div className="text-sm font-medium text-foreground">{location.name}</div>
+                <div className="text-xs text-muted-foreground">{location.region}</div>
+              </motion.div>
+            ))}
           </div>
         </div>
-        <div className="mt-4 text-xs text-muted-foreground">
-          Expanding our reach to serve you better
+        
+        <div className="flex justify-center items-center space-x-6 text-xs mb-4">
+          <div className="flex items-center space-x-2">
+            <div className="w-3 h-3 bg-primary/70 rounded-full border border-primary/30"></div>
+            <span className="text-primary font-medium">Indian Locations</span>
+          </div>
+          <div className="flex items-center space-x-2">
+            <div className="w-3 h-3 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full border border-blue-300"></div>
+            <span className="text-primary font-medium">International Presence</span>
+          </div>
+        </div>
+        
+        <div className="text-xs text-muted-foreground">
+          From local communities to global markets - Building dreams worldwide
         </div>
       </div>
 

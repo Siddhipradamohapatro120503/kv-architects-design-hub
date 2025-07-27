@@ -15,7 +15,7 @@ const Footer: React.FC = () => {
             </p>
             <div className="flex space-x-4 mt-6">
               <motion.a 
-                href="https://facebook.com" 
+                href="https://www.facebook.com/share/1NZ6mGkavg/" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="bg-blue-600 p-2 rounded-full hover:bg-blue-700 transition-colors"
@@ -24,7 +24,7 @@ const Footer: React.FC = () => {
                 <Facebook size={20} />
               </motion.a>
               <motion.a 
-                href="https://instagram.com" 
+                href="https://www.instagram.com/k.v.associate?utm_source=qr&igsh=MTJnaGJ5cW9vNnl4dA==" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="bg-gradient-to-br from-purple-500 via-pink-500 to-orange-500 p-2 rounded-full transition-colors"
@@ -42,7 +42,7 @@ const Footer: React.FC = () => {
                 <Twitter size={20} />
               </motion.a>
               <motion.a 
-                href="https://linkedin.com" 
+                href="https://www.linkedin.com/in/rahul-kumar-66611b26b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="bg-blue-800 p-2 rounded-full hover:bg-blue-900 transition-colors"
@@ -109,11 +109,11 @@ const Footer: React.FC = () => {
             <div className="space-y-4">
               <div className="flex items-start space-x-3">
                 <MapPin className="text-blue-400 mt-1 flex-shrink-0" size={18} />
-                <p className="text-muted-foreground">123 Architecture Plaza, Design District, Mumbai, India 400001</p>
+                <p className="text-muted-foreground">N-10/79, B3, Kakarmataa, (New Colony) Opp. to Bangal Sweet House DLW-Lanka Road, Varanasi - 221004</p>
               </div>
               <div className="flex items-center space-x-3">
                 <Phone className="text-blue-400 flex-shrink-0" size={18} />
-                <p className="text-muted-foreground">+91 98765 43210</p>
+                <p className="text-muted-foreground">+91 9120333520</p>
               </div>
               <div className="flex items-center space-x-3">
                 <Mail className="text-blue-400 flex-shrink-0" size={18} />
@@ -131,7 +131,7 @@ const Footer: React.FC = () => {
             </p>
             <div className="flex space-x-6">
               <motion.a 
-                href="https://facebook.com" 
+                href="https://www.facebook.com/share/1NZ6mGkavg/" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="text-muted-foreground hover:text-blue-500 transition-colors"
@@ -140,7 +140,7 @@ const Footer: React.FC = () => {
                 <Facebook size={18} />
               </motion.a>
               <motion.a 
-                href="https://instagram.com" 
+                href="https://www.instagram.com/k.v.associate?utm_source=qr&igsh=MTJnaGJ5cW9vNnl4dA==" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="text-muted-foreground hover:text-pink-500 transition-colors"
@@ -158,7 +158,7 @@ const Footer: React.FC = () => {
                 <Twitter size={18} />
               </motion.a>
               <motion.a 
-                href="https://linkedin.com" 
+                href="https://www.linkedin.com/in/rahul-kumar-66611b26b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="text-muted-foreground hover:text-blue-700 transition-colors"

@@ -4,11 +4,11 @@ import { Phone, MessageCircle } from "lucide-react";
 
 const FloatingContact = () => {
   const handleCall = () => {
-    window.open("tel:+919829000000", "_self");
+    window.open("tel:+919120333520", "_self");
   };
 
   const handleWhatsApp = () => {
-    window.open("https://wa.me/919829000000?text=Hello! I'm interested in your architectural services.", "_blank");
+    window.open("https://wa.me/919120333520?text=Hello! I'm interested in your architectural services.", "_blank");
   };
 
   return (

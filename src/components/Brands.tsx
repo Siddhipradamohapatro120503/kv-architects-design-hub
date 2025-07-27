@@ -2,14 +2,17 @@ import React from 'react';
 import { motion } from 'framer-motion';
 
 const brandImages = [
-  { id: 1, src: '/images/brands-1.png', alt: 'Brand 1' },
-  { id: 2, src: '/images/brands-2.png', alt: 'Brand 2' },
-  { id: 3, src: '/images/brands-3.png', alt: 'Brand 3' },
-  { id: 4, src: '/images/brands-4.png', alt: 'Brand 4' },
-  { id: 5, src: '/images/brands-5.png', alt: 'Brand 5' },
-  { id: 6, src: '/images/brands-6.png', alt: 'Brand 6' },
-  { id: 7, src: '/images/brands-7.png', alt: 'Brand 7' },
-  { id: 8, src: '/images/brands-8.png', alt: 'Brand 8' }
+  { id: 1, src: '/images/brands/20250724_234214.png', alt: 'Partner Brand 1' },
+  { id: 2, src: '/images/brands/20250724_234336.png', alt: 'Partner Brand 2' },
+  { id: 3, src: '/images/brands/20250724_234448.png', alt: 'Partner Brand 3' },
+  { id: 4, src: '/images/brands/20250724_234538.png', alt: 'Partner Brand 4' },
+  { id: 5, src: '/images/brands/20250724_234634.png', alt: 'Partner Brand 5' },
+  { id: 6, src: '/images/brands/20250724_234815.png', alt: 'Partner Brand 6' },
+  { id: 7, src: '/images/brands/20250725_195744.png', alt: 'Partner Brand 7' },
+  { id: 8, src: '/images/brands/20250725_195811.png', alt: 'Partner Brand 8' },
+  { id: 9, src: '/images/brands/20250725_195847.png', alt: 'Partner Brand 9' },
+  { id: 10, src: '/images/brands/20250725_200300.png', alt: 'Partner Brand 10' },
+  { id: 11, src: '/images/brands/20250725_200325.png', alt: 'Partner Brand 11' }
 ];
 
 const Brands = () => {
@@ -30,7 +33,7 @@ const Brands = () => {
           </motion.div>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-4">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
           {brandImages.map((brand, index) => (
             <motion.div
               key={brand.id}
@@ -39,7 +42,7 @@ const Brands = () => {
               transition={{ duration: 0.5, delay: index * 0.1 }}
               className="relative group"
             >
-              <div className="h-[10rem] sm:h-[15rem] md:h-[20rem] border-t border-border/50 border-r last:border-r-0 md:last-of-type:border-r md:[&:nth-child(4)]:border-r-0">
+              <div className="h-[10rem] sm:h-[15rem] md:h-[18rem] border-t border-border/50 border-r last:border-r-0 md:[&:nth-child(3n)]:border-r-0 lg:[&:nth-child(3n)]:border-r lg:[&:nth-child(4n)]:border-r-0">
                 <div className="h-full flex items-center justify-center p-8 transition-all duration-300 group-hover:bg-muted/50">
                   <div className="relative w-full max-w-[90%] sm:max-w-[80%] aspect-[3/2] transition-transform duration-300 group-hover:scale-110">
                     <img

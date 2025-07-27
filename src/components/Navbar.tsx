@@ -18,10 +18,14 @@ const Navbar = () => {
   ];
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container flex h-16 items-center">
-        <div className="mr-8 cursor-pointer" onClick={() => navigate('/')}>
-          <span className="text-xl font-bold text-foreground">KV Associate</span>
+    <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-blue-950/95 dark:bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-blue-650/60 dark:supports-[backdrop-filter]:bg-background/60">
+      <div className="container flex h-20 items-center">
+        <div className="mr-8 cursor-pointer flex items-center" onClick={() => navigate('/')}>
+          <img 
+            src="/images/LOGO-KV.png" 
+            alt="KV Associate Logo" 
+            className="h-28 w-auto"
+          />
         </div>
 
         {/* Desktop Navigation */}
@@ -31,19 +35,19 @@ const Navbar = () => {
               <button
                 key={item.name}
                 onClick={() => navigate(item.path)}
-                className="text-muted-foreground hover:text-foreground transition-colors"
+                className="text-blue-100 dark:text-muted-foreground hover:text-white dark:hover:text-foreground transition-colors"
               >
                 {item.name}
               </button>
             ))}
           </div>
           
-          <div className="flex items-center space-x-4">
+          <div className="flex items-center space-x-6">
             <ThemeToggle />
             <Button
               variant="default"
               onClick={() => navigate('/contact')}
-              className="bg-foreground text-background hover:bg-muted-foreground transition-colors"
+              className="bg-white text-blue-600 hover:bg-blue-50 dark:bg-foreground dark:text-background dark:hover:bg-muted-foreground transition-colors"
             >
               Let's talk
             </Button>

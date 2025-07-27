@@ -1,16 +1,17 @@
 import { motion } from "framer-motion";
-import { Facebook, Instagram, Youtube } from "lucide-react";
+import { Facebook, Instagram, Youtube, Linkedin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Carousel } from "@/components/ui/carousel";
 import { useEffect, useState } from "react";
 
 const StudioPage = () => {
-  const [activeTab, setActiveTab] = useState<'youtube' | 'instagram' | 'facebook'>('youtube');
+  const [activeTab, setActiveTab] = useState<'youtube' | 'instagram' | 'facebook' | 'linkedin'>('youtube');
 
   const socialLinks = {
     youtube: "https://youtube.com/@k.v.associate",
-    instagram: "https://www.instagram.com/k.v.associate",
-    facebook: "https://facebook.com/kvassociate" // Replace with actual Facebook URL
+    instagram: "https://www.instagram.com/k.v.associate?utm_source=qr&igsh=MTJnaGJ5cW9vNnl4dA==",
+    facebook: "https://www.facebook.com/share/1NZ6mGkavg/",
+    linkedin: "https://www.linkedin.com/in/rahul-kumar-66611b26b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
   };
 
   // YouTube videos data
@@ -96,6 +97,14 @@ const StudioPage = () => {
             >
               <Facebook className="w-5 h-5" />
               Facebook
+            </Button>
+            <Button
+              variant={activeTab === 'linkedin' ? 'default' : 'outline'}
+              onClick={() => setActiveTab('linkedin')}
+              className="flex items-center gap-2"
+            >
+              <Linkedin className="w-5 h-5" />
+              LinkedIn
             </Button>
           </div>
 
@@ -220,6 +229,28 @@ const StudioPage = () => {
                   >
                     <Facebook className="w-5 h-5" />
                     Visit our Facebook Page
+                  </Button>
+                </div>
+              </motion.div>
+            )}
+
+            {/* LinkedIn Feed */}
+            {activeTab === 'linkedin' && (
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                className="space-y-8"
+              >
+                {/* LinkedIn Feed will be implemented here */}
+                <div className="text-center">
+                  <Button
+                    variant="outline"
+                    onClick={() => window.open(socialLinks.linkedin, '_blank')}
+                    className="flex items-center gap-2"
+                  >
+                    <Linkedin className="w-5 h-5" />
+                    Connect with us on LinkedIn
                   </Button>
                 </div>
               </motion.div>

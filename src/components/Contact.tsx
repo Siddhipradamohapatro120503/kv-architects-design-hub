@@ -97,7 +97,8 @@ const Contact = () => {
                   <p className="font-semibold mb-2 text-foreground">Address</p>
                   <p className="text-muted-foreground leading-relaxed">
                     KV Associate<br />
-                    Opp. to Bangal Sweet,<br />
+                    N-10/79, B3, Kakarmataa, (New Colony)<br />
+                    Opp. to Bangal Sweet House<br />
                     DLW-Lanka Road, Varanasi - 221004
                   </p>
                 </div>
@@ -107,7 +108,7 @@ const Contact = () => {
                 <Phone className="text-muted-foreground flex-shrink-0" size={20} />
                 <div>
                   <p className="font-semibold mb-2 text-foreground">Phone</p>
-                  <p className="text-muted-foreground">+91-8449 299 109, +91-9621 833 599</p>
+                  <p className="text-muted-foreground">+91 9120333520</p>
                 </div>
               </div>
               
@@ -132,7 +133,7 @@ const Contact = () => {
             <div className="mt-8">
               <div className="relative w-full h-[300px] rounded-lg overflow-hidden shadow-xl">
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3608.3015305271784!2d82.9768813!3d25.2825697!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x398e33ef9b1f7e5d%3A0x7d1e86e0471cf44f!2sLanka%2C%20Varanasi%2C%20Uttar%20Pradesh!5e0!3m2!1sen!2sin!4v1688641458899!5m2!1sen!2sin"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3608.3015305271784!2d82.9639505!3d25.2854089!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x398e33ef9b1f7e5d%3A0x7d1e86e0471cf44f!2sN-10%2F79%2C%20B3%2C%20Kakarmatta%2C%20Opp.%20to%20Bangal%20Sweet%20House%20DLW-Lanka%20Road%2C%20Varanasi%20-%20221004!5e0!3m2!1sen!2sin!4v1688641458899!5m2!1sen!2sin"
                   width="100%"
                   height="300"
                   style={{ border: 0 }}
