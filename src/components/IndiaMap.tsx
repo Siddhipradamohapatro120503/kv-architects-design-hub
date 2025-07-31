@@ -200,7 +200,7 @@ const IndiaMap = () => {
   ];
 
   return (
-    <div className="bg-gradient-to-br dark:from-blue-950/70 dark:to-gray-950/70 from-blue-50/80 to-blue-100/50 rounded-lg p-8 shadow-lg border border-blue-100/30 dark:border-border/50">
+    <div className="bg-gradient-to-br dark:from-blue-400/10 dark:to-blue-600/5 from-blue-50/80 to-blue-100/50 rounded-lg p-8 shadow-lg border border-blue-100/30 dark:border-blue-400/20">
       <div className="text-center mb-8">
         <h3 className="text-3xl font-bold text-foreground mb-2">Our Project Locations</h3>
         <p className="text-primary text-sm">Delivering Excellence Across Northern India</p>
@@ -210,8 +210,11 @@ const IndiaMap = () => {
         <img
           src="/india.svg"
           alt="Map of India"
-          className="w-full h-auto max-w-lg mx-auto dark:invert dark:opacity-70 opacity-75"
-          style={{ filter: 'contrast(1.1) brightness(1.05)' }}
+          className="w-full h-auto max-w-lg mx-auto opacity-75 dark:brightness-[2] dark:invert dark:opacity-100 dark:contrast-[1.5]"
+          style={{ 
+            filter: 'contrast(1.1) drop-shadow(0 0 8px rgba(255, 255, 255, 0.8)) brightness(1.5)',
+            WebkitFilter: 'contrast(1.1) drop-shadow(0 0 8px rgba(255, 255, 255, 0.8)) brightness(1.5)'
+          }}
         />
 
         {/* Location markers */}

@@ -288,7 +288,7 @@ const Hero = () => {
               >
                 <Button 
                   className="w-full sm:w-auto bg-blue-600 text-white hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 dark:text-white transition-all duration-300 px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-medium shadow-lg hover:shadow-xl rounded-md"
-                  onClick={() => handleNavigation('about')}
+                  onClick={() => handleNavigation('/about')}
                 >
                   Explore Our Work
                   <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
@@ -302,7 +302,7 @@ const Hero = () => {
                 <Button 
                   variant="outline"
                   className="w-full sm:w-auto border-2 border-blue-600 text-blue-600 hover:bg-blue-50 dark:border-blue-400 dark:text-blue-400 dark:hover:bg-blue-900/30 transition-all duration-300 px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-medium"
-                  onClick={() => handleNavigation('contact')}
+                  onClick={() => handleNavigation('/contact')}
                 >
                   Contact Us
                 </Button>

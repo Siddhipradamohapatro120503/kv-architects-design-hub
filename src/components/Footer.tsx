@@ -1,8 +1,10 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Facebook, Instagram, Twitter, Linkedin, Mail, MapPin, Phone } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 const Footer: React.FC = () => {
+  const navigate = useNavigate();
   return (
     <footer className="bg-gradient-to-br dark:from-gray-900 dark:via-black dark:to-gray-900 from-blue-50 via-gray-100 to-blue-50 text-foreground transition-colors duration-300">
       <div className="container mx-auto px-4 py-16">
@@ -58,22 +60,22 @@ const Footer: React.FC = () => {
             <h3 className="text-xl font-semibold mb-6">Quick Links</h3>
             <ul className="space-y-3">
               <li>
-                <a href="#" className="text-muted-foreground hover:text-foreground transition-colors">Home</a>
+                <button onClick={() => navigate('/')} className="text-muted-foreground hover:text-foreground transition-colors">Home</button>
               </li>
               <li>
-                <a href="#" className="text-muted-foreground hover:text-foreground transition-colors">About Us</a>
+                <button onClick={() => navigate('/about')} className="text-muted-foreground hover:text-foreground transition-colors">About Us</button>
               </li>
               <li>
-                <a href="#" className="text-muted-foreground hover:text-foreground transition-colors">Services</a>
+                <button onClick={() => navigate('/services')} className="text-muted-foreground hover:text-foreground transition-colors">Services</button>
               </li>
               <li>
-                <a href="#" className="text-muted-foreground hover:text-foreground transition-colors">Projects</a>
+                <button onClick={() => navigate('/studio')} className="text-muted-foreground hover:text-foreground transition-colors">Studio</button>
               </li>
               <li>
-                <a href="#" className="text-muted-foreground hover:text-foreground transition-colors">Testimonials</a>
+                <button onClick={() => navigate('/#testimonials')} className="text-muted-foreground hover:text-foreground transition-colors">Testimonials</button>
               </li>
               <li>
-                <a href="#" className="text-muted-foreground hover:text-foreground transition-colors">Contact</a>
+                <button onClick={() => navigate('/contact')} className="text-muted-foreground hover:text-foreground transition-colors">Contact</button>
               </li>
             </ul>
           </div>
@@ -83,22 +85,22 @@ const Footer: React.FC = () => {
             <h3 className="text-xl font-semibold mb-6">Our Services</h3>
             <ul className="space-y-3">
               <li>
-                <a href="#" className="text-muted-foreground hover:text-foreground transition-colors">Residential Design</a>
+                <button onClick={() => navigate('/services#residential')} className="text-muted-foreground hover:text-foreground transition-colors">Residential Design</button>
               </li>
               <li>
-                <a href="#" className="text-muted-foreground hover:text-foreground transition-colors">Commercial Architecture</a>
+                <button onClick={() => navigate('/services#commercial')} className="text-muted-foreground hover:text-foreground transition-colors">Commercial Architecture</button>
               </li>
               <li>
-                <a href="#" className="text-muted-foreground hover:text-foreground transition-colors">Interior Design</a>
+                <button onClick={() => navigate('/services#interior')} className="text-muted-foreground hover:text-foreground transition-colors">Interior Design</button>
               </li>
               <li>
-                <a href="#" className="text-muted-foreground hover:text-foreground transition-colors">Landscape Planning</a>
+                <button onClick={() => navigate('/services#landscape')} className="text-muted-foreground hover:text-foreground transition-colors">Landscape Planning</button>
               </li>
               <li>
-                <a href="#" className="text-muted-foreground hover:text-foreground transition-colors">Urban Planning</a>
+                <button onClick={() => navigate('/services#urban')} className="text-muted-foreground hover:text-foreground transition-colors">Urban Planning</button>
               </li>
               <li>
-                <a href="#" className="text-muted-foreground hover:text-foreground transition-colors">3D Visualization</a>
+                <button onClick={() => navigate('/services#visualization')} className="text-muted-foreground hover:text-foreground transition-colors">3D Visualization</button>
               </li>
             </ul>
           </div>

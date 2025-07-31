@@ -6,7 +6,6 @@ interface Testimonial {
   name: string;
   role: string;
   content: string;
-  image: string;
   location?: string;
   date?: string;
   rating?: number;
@@ -20,7 +19,7 @@ const testimonials: Testimonial[] = [
     name: "Mr Taank",
     role: "Client",
     content: "Good service",
-    image: "/testimonials/client1.jpg",
+
     location: "Gyanpur, Bhadohi",
     date: "19 Jan 2024",
     rating: 5.0
@@ -30,7 +29,7 @@ const testimonials: Testimonial[] = [
     name: "Neetu Kumari",
     role: "Client",
     content: "My experience at K V Associates was excellent! Their repair and services are not only top-notch but also incredibly cost-efficient. They prioritize quality while keeping prices affordable, ensuring great value for every service. The team is knowledgeable, friendly, and quick to respond, making the entire process smooth and satisfying. Highly recommend!",
-    image: "/testimonials/client2.jpg",
+
     location: "Chitaipur Road – Sunderpur",
     date: "19 Jul 2025",
     rating: 5.0
@@ -40,7 +39,7 @@ const testimonials: Testimonial[] = [
     name: "Sujit Tiwari",
     role: "Client",
     content: "Great service and professional work!",
-    image: "/testimonials/client3.jpg",
+
     date: "19 Feb 2021",
     rating: 4.5
   },
@@ -49,7 +48,7 @@ const testimonials: Testimonial[] = [
     name: "Ahaan Panday",
     role: "Client",
     content: "Sir 🙏 sir bahut saare good compliments mil rahe hai thanks sir ki aapne mere ghar ko achchha design diya. Ab sir mere ghar ka interior de dijiye taki aage ka kaam ham usi ke mutabik karawa sake.",
-    image: "/testimonials/client4.jpg",
+
     date: "20 May",
     isWhatsApp: true
   },
@@ -58,7 +57,7 @@ const testimonials: Testimonial[] = [
     name: "Ravi Bharti",
     role: "Client",
     content: "I had a great experience with Kv Associates! They are very flexible with appointments, which helped me a lot. I could choose a time that worked best for me. The service was fast and friendly. They fixed my problem quickly and made sure I was happy. I highly recommend Kv Associates for anyone needing repair services!",
-    image: "/testimonials/client5.jpg",
+
     location: "DLW, Varanasi",
     date: "25 Jul 2025",
     rating: 5.0
@@ -68,7 +67,7 @@ const testimonials: Testimonial[] = [
     name: "Ramashray",
     role: "Client",
     content: "Excellent service and professional approach!",
-    image: "/testimonials/client6.jpg",
+
     location: "DLW, Varanasi",
     date: "9 Feb 2021",
     rating: 5.0
@@ -78,7 +77,7 @@ const testimonials: Testimonial[] = [
     name: "Divya",
     role: "Client",
     content: "Good experience with the team!",
-    image: "/testimonials/client7.jpg",
+
     location: "DLW, Varanasi",
     date: "31 Dec 2020",
     rating: 4.0
@@ -88,7 +87,7 @@ const testimonials: Testimonial[] = [
     name: "Ar. Anil",
     role: "Architect",
     content: "Professional collaboration and great results!",
-    image: "/testimonials/client8.jpg",
+
     location: "DLW, Varanasi",
     date: "11 Dec 2020",
     rating: 4.5
@@ -98,7 +97,7 @@ const testimonials: Testimonial[] = [
     name: "Deepak",
     role: "Client",
     content: "Best architect",
-    image: "/testimonials/client9.jpg",
+
     location: "DLW, Varanasi",
     date: "21 Nov 2020",
     rating: 5.0
@@ -136,24 +135,13 @@ const Testimonials: React.FC = () => {
                     key={`${i}-${testimonial.id}`}
                     className="w-[320px] sm:w-[350px] md:w-[400px] flex-shrink-0 bg-card rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 border border-border overflow-hidden"
                   >
-              {/* Instagram-style image */}
-              <div className="w-full h-[15rem] overflow-hidden">
-                <img
-                  src={testimonial.image}
-                  alt={testimonial.name}
-                  className="h-full w-full object-cover"
-                />
-              </div>
+
               
               {/* Instagram-style caption area */}
               <div className="p-4">
                 <div className="flex items-center mb-3">
-                  <div className="h-8 w-8 rounded-full overflow-hidden border border-gray-200 dark:border-gray-700">
-                    <img
-                      src={testimonial.image}
-                      alt={testimonial.name}
-                      className="h-full w-full object-cover"
-                    />
+                  <div className="h-8 w-8 rounded-full overflow-hidden border border-gray-200 dark:border-gray-700 bg-primary flex items-center justify-center text-white font-bold">
+                    {testimonial.name.charAt(0)}
                   </div>
                   <div className="ml-2 flex items-center justify-between w-full">
                     <div>

@@ -14,6 +14,7 @@ const MobileNav: React.FC<MobileNavProps> = ({ isOpen, setIsOpen }) => {
   const navigate = useNavigate();
   const menuItems = [
     { name: 'Home', path: '/' },
+    { name: 'About', path: '/about' },
     { name: 'Studio', path: '/studio' },
     { name: 'Services', path: '/services' },
     { name: 'Contact', path: '/contact' },
@@ -27,7 +28,9 @@ const MobileNav: React.FC<MobileNavProps> = ({ isOpen, setIsOpen }) => {
   return (
     <>
       <div className="flex items-center gap-4 md:hidden">
-        <ThemeToggle />
+        <div className="bg-white/10 dark:bg-gray-800/50 p-1.5 rounded-md">
+          <ThemeToggle />
+        </div>
         <button
           onClick={() => setIsOpen(true)}
           className="text-foreground p-2"
@@ -54,9 +57,9 @@ const MobileNav: React.FC<MobileNavProps> = ({ isOpen, setIsOpen }) => {
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
               transition={{ type: 'spring', damping: 20 }}
-              className="fixed right-0 top-0 h-full w-[80%] max-w-sm bg-card z-50 shadow-xl bg-black"
+              className="fixed right-0 top-0 h-full w-[80%] max-w-sm z-50 shadow-xl bg-white dark:bg-gray-900"
             >
-              <div className="p-5 flex flex-col min-h-screen bg-black">
+              <div className="p-5 flex flex-col min-h-screen bg-white dark:bg-gray-900">
                 <div className="flex justify-between items-center mb-8">
                   <span className="text-xl font-bold text-foreground">Menu</span>
                   <button
@@ -68,7 +71,7 @@ const MobileNav: React.FC<MobileNavProps> = ({ isOpen, setIsOpen }) => {
                   </button>
                 </div>
 
-                <nav className="flex flex-col space-y-4 bg-black">
+                <nav className="flex flex-col space-y-4">
                   {menuItems.map((item) => (
                     <motion.button
                       key={item.name}
