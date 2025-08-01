@@ -263,7 +263,7 @@ const Hero = () => {
       </motion.div>
 
       <motion.div 
-        className="relative z-10 container mx-auto px-4 py-8 sm:py-12 md:py-16"
+        className="relative z-10 container mx-auto py-8 sm:py-12 md:py-16"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
@@ -272,11 +272,11 @@ const Hero = () => {
           {/* Text Content with Self-Drawing Animation */}
           <div className="max-w-4xl">
             <HeroScribbleText />
-            <p className="text-lg sm:text-xl md:text-2xl mb-8 sm:mb-12 text-blue-700 dark:text-blue-300 max-w-2xl ml-0 px-4 sm:px-0 leading-relaxed">
+            <p className="text-lg sm:text-xl md:text-2xl mb-8 sm:mb-12 text-blue-700 dark:text-blue-300 max-w-2xl ml-0 sm:px-0 leading-relaxed">
               At KV Associate, we blend innovative design with sustainable practices to create spaces that inspire, function perfectly, and stand the test of time
             </p>
             <motion.div 
-              className="flex flex-col sm:flex-row items-center gap-4 sm:space-x-4 px-4 sm:px-0"
+              className="flex flex-col sm:flex-row items-center gap-4 sm:space-x-4 sm:px-0"
               initial={{ y: 50, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.9 }}

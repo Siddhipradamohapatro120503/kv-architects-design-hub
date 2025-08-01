@@ -101,7 +101,7 @@ const Gallery = () => {
     <section id="gallery" className="py-20 bg-gradient-to-br dark:from-black dark:via-gray-900 dark:to-black from-blue-50 via-white to-blue-50 transition-colors duration-300">
       <div className="container mx-auto px-4">
         <motion.div 
-          className="grid lg:grid-cols-2 gap-16 items-start mb-16"
+          className="grid lg:grid-cols-2 lg:gap-16 items-start mb-16"
           initial={{ opacity: 0, y: 50 }}
           animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
           transition={{ duration: 0.8 }}
@@ -122,11 +122,11 @@ const Gallery = () => {
             animate={isVisible ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-            <p className="text-blue-600 dark:text-muted-foreground text-lg max-w-2xl mx-auto mb-16">
+            <p className="text-blue-600 dark:text-muted-foreground text-lg max-w-2xl lg:mx-auto mb-16">
               Welcome to a world where spaces transform into works of art. Our architects bring a touch of brilliance to every project.
             </p>
             <div className="flex items-center space-x-4">
-              <button className="bg-white pl-3 pr-3 p-1 dark:bg-gray-900/50 rounded-lg overflow-hidden border border-blue-100 dark:border-border shadow-sm group hover:border-blue-200 dark:hover:border-border transition-all duration-300">
+              <button className="bg-white px-3 p-1 dark:bg-gray-900/50 rounded-lg overflow-hidden border border-blue-100 dark:border-border shadow-sm group hover:border-blue-200 dark:hover:border-border transition-all duration-300">
                 View More
               </button>
               <div className="w-8 h-8 border border-muted rounded-full text-[0.991rem] flex items-center justify-center">

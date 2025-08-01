@@ -19,12 +19,12 @@ const Navbar = () => {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-blue-950/95 dark:bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-blue-650/60 dark:supports-[backdrop-filter]:bg-background/60">
-      <div className="container flex h-20 items-center">
+      <div className="pr-4 flex h-16 items-center">
         <div className="mr-8 cursor-pointer flex items-center" onClick={() => navigate('/')}>
           <img 
             src="/images/LOGO-KV.png" 
             alt="KV Associate Logo" 
-            className="h-28 w-auto"
+            className="h-16 w-auto"
           />
         </div>
 
