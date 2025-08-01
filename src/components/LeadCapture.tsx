@@ -6,6 +6,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { toast } from "@/components/ui/use-toast";
 import { CheckCircle2, Phone } from "lucide-react";
 import { motion } from "framer-motion";
+import { sendLeadNotification, sendLeadConfirmation } from "@/services/emailService";
 
 type LeadCaptureProps = {
   title?: string;
@@ -67,16 +68,8 @@ const LeadCapture = ({
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    // Here you would typically send this data to your backend or a third-party service
-    // For now, we'll just simulate a successful submission
-
     try {
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 1000));
-
-      // Store lead in localStorage for demonstration purposes
-      // In a real implementation, you would send this to your backend
-      const existingLeads = JSON.parse(localStorage.getItem("kvLeads") || "[]");
+      // Create a new lead object
       const newLead = {
         ...formData,
         id: Date.now(),
@@ -84,13 +77,34 @@ const LeadCapture = ({
         status: "new"
       };
 
+      // Store lead in localStorage
+      const existingLeads = JSON.parse(localStorage.getItem("kvLeads") || "[]");
       localStorage.setItem("kvLeads", JSON.stringify([...existingLeads, newLead]));
 
-      // Show success message
-      toast({
-        title: "Thank you for your interest!",
-        description: "Our team will contact you within 24 hours to schedule your free consultation.",
-      });
+      // Send email notifications
+      const adminNotificationSent = await sendLeadNotification(newLead);
+      const leadConfirmationSent = await sendLeadConfirmation(newLead);
+      
+      // Show appropriate success message
+      if (adminNotificationSent && leadConfirmationSent) {
+        toast({
+          title: "Thank you for your interest!",
+          description: "Our team will contact you within 24 hours to schedule your free consultation.",
+        });
+      } else {
+        toast({
+          title: "Form submitted successfully",
+          description: "We've received your information and will be in touch soon.",
+        });
+        
+        // Log email sending issues for debugging
+        if (!adminNotificationSent) {
+          console.warn("Failed to send admin notification email");
+        }
+        if (!leadConfirmationSent) {
+          console.warn("Failed to send lead confirmation email");
+        }
+      }
 
       setSubmitted(true);
 
@@ -101,6 +115,7 @@ const LeadCapture = ({
         }, 3000);
       }
     } catch (error) {
+      console.error("Error submitting lead:", error);
       toast({
         title: "Something went wrong",
         description: "Please try again or contact us directly.",
