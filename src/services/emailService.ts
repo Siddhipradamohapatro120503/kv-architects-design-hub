@@ -10,7 +10,8 @@ interface LeadData {
 }
 
 // API URL for the email service
-const API_URL = import.meta.env.DEV ? 'http://localhost:3001/api' : '/api';
+// Force using relative path for production site
+const API_URL = window.location.hostname === 'localhost' ? 'http://localhost:3001/api' : '/api';
 
 /**
  * Send a notification email to the admin when a new lead is captured
