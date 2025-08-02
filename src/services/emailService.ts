@@ -10,10 +10,10 @@ interface LeadData {
 }
 
 // API URL for the email service
-// Use the full EC2 instance URL for production with HTTP
+// Use relative path in production to match current domain
 const API_URL = window.location.hostname === 'localhost' 
   ? 'http://localhost:3001/api' 
-  : 'http://13.233.38.140:3001/api';
+  : '/api';
 
 /**
  * Send a notification email to the admin when a new lead is captured
