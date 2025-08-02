@@ -30,10 +30,16 @@ export const sendLeadNotification = async (leadData: LeadData): Promise<boolean>
       body: JSON.stringify(leadData),
     });
 
+    if (!response.ok) {
+      const errorText = await response.text();
+      console.error('Server responded with status:', response.status, 'Response:', errorText);
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
     const result = await response.json();
     return result.success;
   } catch (error) {
-    console.error('Error sending admin notification:', error);
+    console.error('Error in sendLeadNotification:', error);
     return false;
   }
 };
@@ -53,10 +59,16 @@ export const sendLeadConfirmation = async (leadData: LeadData): Promise<boolean>
       body: JSON.stringify(leadData),
     });
 
+    if (!response.ok) {
+      const errorText = await response.text();
+      console.error('Server responded with status:', response.status, 'Response:', errorText);
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
     const result = await response.json();
     return result.success;
   } catch (error) {
-    console.error('Error sending lead confirmation:', error);
+    console.error('Error in sendLeadConfirmation:', error);
     return false;
   }
 };
