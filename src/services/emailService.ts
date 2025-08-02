@@ -10,7 +10,7 @@ interface LeadData {
 }
 
 // API URL for the email service
-const API_URL = 'http://13.233.38.140:3001'; // Direct IP with port for API server
+const API_URL = 'https://kvassociate.in/api'; // Using the main domain with HTTPS for API calls
 
 /**
  * Send a notification email to the admin when a new lead is captured
