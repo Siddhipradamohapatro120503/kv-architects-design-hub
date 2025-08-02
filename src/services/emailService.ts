@@ -10,10 +10,7 @@ interface LeadData {
 }
 
 // API URL for the email service
-// Use relative path in production to match current domain
-const API_URL = window.location.hostname === 'localhost' 
-  ? 'http://localhost:3001/api' 
-  : '/api';
+const API_URL = 'http://13.233.38.140:3001'; // Direct IP with port for API server
 
 /**
  * Send a notification email to the admin when a new lead is captured
@@ -22,7 +19,7 @@ const API_URL = window.location.hostname === 'localhost'
  */
 export const sendLeadNotification = async (leadData: LeadData): Promise<boolean> => {
   try {
-    const response = await fetch(`${API_URL}/send-lead-notification`, {
+    const response = await fetch(`${API_URL}/api/send-lead-notification`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -51,7 +48,7 @@ export const sendLeadNotification = async (leadData: LeadData): Promise<boolean>
  */
 export const sendLeadConfirmation = async (leadData: LeadData): Promise<boolean> => {
   try {
-    const response = await fetch(`${API_URL}/send-lead-confirmation`, {
+    const response = await fetch(`${API_URL}/api/send-lead-confirmation`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
