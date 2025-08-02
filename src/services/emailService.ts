@@ -10,8 +10,10 @@ interface LeadData {
 }
 
 // API URL for the email service
-// Force using relative path for production site
-const API_URL = window.location.hostname === 'localhost' ? 'http://localhost:3001/api' : '/api';
+// Use the full EC2 instance URL for production
+const API_URL = window.location.hostname === 'localhost' 
+  ? 'http://localhost:3001/api' 
+  : 'https://kvassociate.in:3001/api';
 
 /**
  * Send a notification email to the admin when a new lead is captured
