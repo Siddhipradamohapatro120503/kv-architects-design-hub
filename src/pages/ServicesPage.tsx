@@ -3,6 +3,7 @@ import { Building2, PenTool, HomeIcon, Trees, Box, PaintBucket, Hammer, KeyRound
 import ServicesOffered from "@/components/ServicesOffered";
 import BeforeAfterSlider from "@/components/BeforeAfterSlider";
 import Categories from "@/components/Categories";
+import Faq from "@/components/Faq";
 
 const ServicesPage = () => {
   return (
@@ -10,6 +11,7 @@ const ServicesPage = () => {
       <Categories />
       {/* <ServicesOffered /> */}
       <BeforeAfterSlider />
+      <Faq />
     </div>
   );
 };
