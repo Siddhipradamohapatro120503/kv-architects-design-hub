@@ -20,22 +20,29 @@ const BeforeAfterSlider: React.FC = () => {
   const beforeAfterData: BeforeAfterImage[] = [
     {
       id: 1,
-      beforeImage: '/images/projects/IMG-20250626-WA0010.jpg',
-      afterImage: '/images/projects/IMG-20250626-WA0016.jpg',
+      beforeImage: '/images/projects/before1.jpg',
+      afterImage: '/images/projects/after1.jpg',
       title: 'Residential Renovation',
       description: 'Complete transformation of a traditional home into a modern living space'
     },
     {
       id: 2,
-      beforeImage: '/images/projects/IMG-20250626-WA0025.jpg',
-      afterImage: '/images/projects/IMG-20250628-WA0001.jpg',
+      beforeImage: '/images/projects/before2.jpg',
+      afterImage: '/images/projects/after2.jpg',
       title: 'Commercial Space Design',
       description: 'Converting an old building into a contemporary commercial space'
     },
     {
       id: 3,
-      beforeImage: '/images/projects/IMG-20250628-WA0010.jpg',
-      afterImage: '/images/projects/IMG-20250628-WA0011.jpg',
+      beforeImage: '/images/projects/before3.jpg',
+      afterImage: '/images/projects/after3.jpg',
+      title: 'Interior Makeover',
+      description: 'Modern interior design transformation with contemporary elements'
+    },
+    {
+      id: 4,
+      beforeImage: '/images/projects/before4.jpg',
+      afterImage: '/images/projects/after4.jpg',
       title: 'Interior Makeover',
       description: 'Modern interior design transformation with contemporary elements'
     }
@@ -156,7 +163,7 @@ const BeforeAfterSlider: React.FC = () => {
                 <img
                   src={currentItem.beforeImage}
                   alt="Before"
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-contain bg-black"
                   draggable={false}
                 />
                 <div className="absolute top-4 left-4 bg-red-500 text-white px-3 py-1 rounded-full text-sm font-semibold">
@@ -172,7 +179,7 @@ const BeforeAfterSlider: React.FC = () => {
                 <img
                   src={currentItem.afterImage}
                   alt="After"
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-contain bg-black"
                   draggable={false}
                 />
                 <div className="absolute top-4 right-4 bg-green-500 text-white px-3 py-1 rounded-full text-sm font-semibold">
@@ -221,11 +228,10 @@ const BeforeAfterSlider: React.FC = () => {
                   setCurrentIndex(index);
                   setSliderPosition(50);
                 }}
-                className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                  index === currentIndex
-                    ? 'bg-blue-500 w-8'
-                    : 'bg-gray-300 dark:bg-gray-600 hover:bg-gray-400 dark:hover:bg-gray-500'
-                }`}
+                className={`w-3 h-3 rounded-full transition-all duration-300 ${index === currentIndex
+                  ? 'bg-blue-500 w-8'
+                  : 'bg-gray-300 dark:bg-gray-600 hover:bg-gray-400 dark:hover:bg-gray-500'
+                  }`}
               />
             ))}
           </div>
