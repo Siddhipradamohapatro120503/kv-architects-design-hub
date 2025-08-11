@@ -21,7 +21,7 @@ const Contact = () => {
   });
   
   const [phoneValid, setPhoneValid] = useState(false);
-  
+  const [isLoading, setIsLoading] = useState(false);
   const { toast } = useToast();
 
   const validatePhoneNumber = (phone: string) => {
@@ -30,7 +30,7 @@ const Contact = () => {
     return phoneRegex.test(phone);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
     // Validate phone number before submission
@@ -42,16 +42,48 @@ const Contact = () => {
       return;
     }
     
-    toast({
-      title: "Message Sent!",
-      description: "Thank you for contacting us. We'll get back to you soon.",
-      variant: "default",
-    });
+    setIsLoading(true);
     
-    // Reset form
-    setFormData({ name: "", email: "", phone: "", message: "" });
-    setErrors({ phone: "" });
-    setPhoneValid(false);
+    try {
+      const response = await fetch('https://kvassociate.in/api/send-contact-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          message: formData.message,
+          date: new Date().toISOString()
+        }),
+      });
+      
+      if (!response.ok) {
+        throw new Error('Failed to send message');
+      }
+      
+      toast({
+        title: "Message Sent!",
+        description: "Thank you for contacting us. We'll get back to you soon.",
+        variant: "default",
+      });
+      
+      // Reset form
+      setFormData({ name: "", email: "", phone: "", message: "" });
+      setErrors({ phone: "" });
+      setPhoneValid(false);
+      
+    } catch (error) {
+      console.error('Error sending message:', error);
+      toast({
+        title: "Error",
+        description: "Failed to send message. Please try again later.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -229,10 +261,18 @@ const Contact = () => {
               
               <Button 
                 type="submit" 
-                disabled={!formData.name || !formData.email || !phoneValid || !formData.message}
-                className="w-full bg-blue-600 dark:bg-foreground text-white dark:text-background hover:bg-blue-700 dark:hover:bg-foreground/90 py-3 text-lg font-semibold rounded-lg transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                disabled={!formData.name || !formData.email || !phoneValid || !formData.message || isLoading}
+                className="w-full bg-blue-600 dark:bg-foreground text-white dark:text-background hover:bg-blue-700 dark:hover:bg-foreground/90 py-6 text-lg font-semibold rounded-lg transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                {!phoneValid && formData.phone ? 'Please Enter Valid Phone Number' : 'Send Message'}
+                {isLoading ? (
+                  <>
+                    <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                    Sending...
+                  </>
+                ) : 'Send Message'}
               </Button>
               <p className="text-sm text-muted-foreground mt-2 text-center">
                 By submitting this form, you agree to be contacted via phone or email.

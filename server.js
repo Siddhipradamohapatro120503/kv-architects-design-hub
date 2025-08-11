@@ -248,6 +248,61 @@ app.post('/api/send-lead-confirmation', async (req, res) => {
   }
 });
 
+// Handle contact form submissions
+app.post('/api/send-contact-email', async (req, res) => {
+  try {
+    const { name, email, phone, message } = req.body;
+    
+    if (!name || !email || !phone || !message) {
+      return res.status(400).json({ success: false, message: 'All fields are required' });
+    }
+
+    const subject = `New Contact Form Submission from ${name}`;
+    const html = `
+      <h2>New Contact Form Submission</h2>
+      <p><strong>Name:</strong> ${name}</p>
+      <p><strong>Email:</strong> ${email}</p>
+      <p><strong>Phone:</strong> ${phone}</p>
+      <p><strong>Message:</strong> ${message}</p>
+      <p><strong>Date:</strong> ${new Date().toLocaleString()}</p>
+      <p>This message was sent from the contact form on KV Associates website.</p>
+    `;
+
+    const mailOptions = {
+      from: 'KV Associates <kvassociatemarketing@gmail.com>',
+      to: 'design@kvassociate.com, info@kvassociate.com',
+      replyTo: email,
+      subject: subject,
+      html: html,
+    };
+
+    await transporter.sendMail(mailOptions);
+    
+    // Send confirmation email to the user
+    const userMailOptions = {
+      from: 'KV Associates <kvassociatemarketing@gmail.com>',
+      to: email,
+      subject: 'Thank you for contacting KV Associates',
+      html: `
+        <p>Dear ${name},</p>
+        <p>Thank you for reaching out to KV Associates. We have received your message and our team will get back to you shortly.</p>
+        <p><strong>Your Message:</strong></p>
+        <p>${message}</p>
+        <p>We'll contact you on ${phone} or reply to this email.</p>
+        <p>Best regards,<br>KV Associates Team</p>
+        <p><small>This is an automated message. Please do not reply to this email.</small></p>
+      `
+    };
+
+    await transporter.sendMail(userMailOptions);
+    
+    res.status(200).json({ success: true, message: 'Message sent successfully' });
+  } catch (error) {
+    console.error('Error sending contact email:', error);
+    res.status(500).json({ success: false, message: 'Failed to send message. Please try again later.' });
+  }
+});
+
 // Catch-all route to serve the React app
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'dist', 'index.html'));
