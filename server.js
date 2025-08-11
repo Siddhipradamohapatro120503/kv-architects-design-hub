@@ -1,8 +1,22 @@
 const express = require('express');
 const cors = require('cors');
-const dotenv = require('dotenv');
 const nodemailer = require('nodemailer');
 const path = require('path');
+require('dotenv').config();
+
+// Create Express app
+const app = express();
+const PORT = process.env.PORT || 3001;
+
+// Middleware
+app.use(cors({
+  origin: ['https://kvassociate.in', 'http://localhost:3000'],
+  methods: ['GET', 'POST'],
+  credentials: true
+}));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(express.static(path.join(__dirname, 'dist')));
 
 // Simple in-memory cache to prevent duplicate emails
 const emailCache = {
@@ -33,16 +47,7 @@ const emailCache = {
 // Run cleanup every 5 minutes
 setInterval(() => emailCache.cleanup(), 300000);
 
-// Load environment variables
-dotenv.config();
 
-const app = express();
-const PORT = process.env.PORT || 3001;
-
-// Middleware
-app.use(cors());
-app.use(express.json());
-app.use(express.static(path.join(__dirname, 'dist')));
 
 // Create email transporter
 const transporter = nodemailer.createTransport({
@@ -246,6 +251,12 @@ app.post('/api/send-lead-confirmation', async (req, res) => {
     console.error('Error sending lead confirmation:', error);
     res.status(500).json({ success: false, message: 'Failed to send lead confirmation' });
   }
+});
+
+// Test endpoint
+app.get('/api/test', (req, res) => {
+  console.log('Test endpoint hit');
+  res.json({ status: 'API is working', timestamp: new Date().toISOString() });
 });
 
 // Handle contact form submissions
