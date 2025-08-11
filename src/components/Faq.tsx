@@ -1,7 +1,18 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import DropDownIcon from "../assets/dropdown.svg"; // down arrow SVG
-import DropUpIcon from "../assets/Dropup.svg";     // up arrow SVG
+
+// Inline SVG components
+const DropDownIcon = () => (
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M19 9L12 16L5 9" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+  </svg>
+);
+
+const DropUpIcon = () => (
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M5 15L12 8L19 15" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+  </svg>
+);
 
 const faqData = [
   { 
@@ -60,13 +71,13 @@ const Faq = () => {
             onClick={() => toggleFAQ(index)}
           >
             <h3 className="font-semibold">{item.title}</h3>
-            <motion.img
-              src={activeIndex === index ? DropUpIcon : DropDownIcon}
-              alt="toggle"
-              className="w-3 h-3"
+            <motion.div
               animate={{ rotate: activeIndex === index ? 180 : 0 }}
               transition={{ duration: 0.3 }}
-            />
+              className="w-6 h-6 flex items-center justify-center"
+            >
+              {activeIndex === index ? <DropUpIcon /> : <DropDownIcon />}
+            </motion.div>
           </div>
 
           <AnimatePresence initial={false}>
