@@ -8,15 +8,20 @@ require('dotenv').config();
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-// Middleware
+// Middleware - Must be before routes
 app.use(cors({
   origin: ['https://kvassociate.in', 'http://localhost:3000'],
-  methods: ['GET', 'POST'],
+  methods: ['GET', 'POST', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true
 }));
+
+// Handle preflight requests
+app.options('*', cors());
+
+// Body parsing middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static(path.join(__dirname, 'dist')));
 
 // Simple in-memory cache to prevent duplicate emails
 const emailCache = {
@@ -314,9 +319,23 @@ app.post('/api/send-contact-email', async (req, res) => {
   }
 });
 
-// Catch-all route to serve the React app
+// Serve static files from the React app
+app.use(express.static(path.join(__dirname, 'dist')));
+
+// The "catchall" handler: for any request that doesn't
+// match one above, send back React's index.html file.
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'dist', 'index.html'));
+});
+
+// Error handling middleware
+app.use((err, req, res, next) => {
+  console.error('Error:', err);
+  res.status(500).json({
+    success: false,
+    message: 'Internal server error',
+    error: process.env.NODE_ENV === 'development' ? err.message : {}
+  });
 });
 
 // Start the server

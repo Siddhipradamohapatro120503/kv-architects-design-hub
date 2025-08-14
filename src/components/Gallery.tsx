@@ -146,27 +146,9 @@ const Gallery = () => {
           {[
             {
               id: 101,
-              title: "Factory Design",
-              image: "/images/buildings/1factory.jpg",
-              category: "Industrial"
-            },
-            {
-              id: 102,
-              title: "Hospital Architecture",
-              image: "/images/buildings/hospital11.jpg",
-              category: "Healthcare"
-            },
-            {
-              id: 103,
-              title: "Modern Apartment",
+              title: "Duplex House",
               image: "/images/buildings/Apartment.jpg",
               category: "Residential"
-            },
-            {
-              id: 104,
-              title: "Educational Facility",
-              image: "/images/buildings/classroom.jpg",
-              category: "Educational"
             },
             {
               id: 105,
