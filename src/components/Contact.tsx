@@ -1,19 +1,23 @@
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useToast } from "@/components/ui/use-toast";
 import { Phone, Mail, MapPin, Clock, AlertCircle, CheckCircle2 } from "lucide-react";
 import { motion } from "framer-motion";
+import { sendLeadNotification, sendLeadConfirmation } from "@/services/emailService";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     phone: "",
-    message: ""
+    message: "",
+    projectType: "",
+    budget: "",
+    timeframe: ""
   });
   
   const [errors, setErrors] = useState({
@@ -45,40 +49,53 @@ const Contact = () => {
     setIsLoading(true);
     
     try {
-      const response = await fetch('https://kvassociate.in/api/send-contact-email', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          name: formData.name,
-          email: formData.email,
-          phone: formData.phone,
-          message: formData.message,
-          date: new Date().toISOString()
-        }),
-      });
+      // Create a new lead object
+      const newLead = {
+        ...formData,
+        id: Date.now(),
+        date: new Date().toISOString(),
+        status: "new"
+      };
+
+      // Store lead in localStorage
+      const existingLeads = JSON.parse(localStorage.getItem("kvLeads") || "[]");
+      localStorage.setItem("kvLeads", JSON.stringify([...existingLeads, newLead]));
+
+      // Send email notifications
+      const adminNotificationSent = await sendLeadNotification(newLead);
+      const leadConfirmationSent = await sendLeadConfirmation(newLead);
       
-      if (!response.ok) {
-        throw new Error('Failed to send message');
+      // Show appropriate success message
+      if (adminNotificationSent && leadConfirmationSent) {
+        toast({
+          title: "Thank you for your interest!",
+          description: "Our team will contact you within 24 hours to schedule your free consultation.",
+        });
+      } else {
+        toast({
+          title: "Form submitted successfully",
+          description: "We've received your information and will be in touch soon.",
+        });
+        
+        // Log email sending issues for debugging
+        if (!adminNotificationSent) {
+          console.warn("Failed to send admin notification email");
+        }
+        if (!leadConfirmationSent) {
+          console.warn("Failed to send lead confirmation email");
+        }
       }
       
-      toast({
-        title: "Message Sent!",
-        description: "Thank you for contacting us. We'll get back to you soon.",
-        variant: "default",
-      });
-      
       // Reset form
-      setFormData({ name: "", email: "", phone: "", message: "" });
+      setFormData({ name: "", email: "", phone: "", message: "", projectType: "", budget: "", timeframe: "" });
       setErrors({ phone: "" });
       setPhoneValid(false);
       
     } catch (error) {
-      console.error('Error sending message:', error);
+      console.error('Error submitting lead:', error);
       toast({
-        title: "Error",
-        description: "Failed to send message. Please try again later.",
+        title: "Something went wrong",
+        description: "Please try again or contact us directly.",
         variant: "destructive",
       });
     } finally {
@@ -103,6 +120,13 @@ const Contact = () => {
         phone: isValid ? "" : "Please enter a valid 10-digit Indian mobile number"
       });
     }
+  };
+
+  const handleSelectChange = (value: string, name: string) => {
+    setFormData({
+      ...formData,
+      [name]: value
+    });
   };
 
   return (
@@ -258,10 +282,58 @@ const Contact = () => {
                   className="bg-blue-50/50 dark:bg-muted border-blue-100 dark:border-input text-foreground focus:border-blue-200 dark:focus:border-foreground transition-colors duration-300"
                 />
               </div>
+
+              <div>
+                <Label htmlFor="projectType" className="text-foreground mb-2 block">Project Type</Label>
+                <Select onValueChange={(value) => handleSelectChange(value, "projectType")}>
+                  <SelectTrigger className="bg-blue-50/50 dark:bg-muted border-blue-100 dark:border-input text-foreground focus:border-blue-200 dark:focus:border-foreground transition-colors duration-300">
+                    <SelectValue placeholder="Select project type" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="residential">Residential Design</SelectItem>
+                    <SelectItem value="commercial">Commercial Design</SelectItem>
+                    <SelectItem value="interior">Interior Design</SelectItem>
+                    <SelectItem value="renovation">Renovation</SelectItem>
+                    <SelectItem value="other">Other</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+
+              <div>
+                <Label htmlFor="budget" className="text-foreground mb-2 block">Budget Range</Label>
+                <Select onValueChange={(value) => handleSelectChange(value, "budget")}>
+                  <SelectTrigger className="bg-blue-50/50 dark:bg-muted border-blue-100 dark:border-input text-foreground focus:border-blue-200 dark:focus:border-foreground transition-colors duration-300">
+                    <SelectValue placeholder="Select budget range" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="below-5L">Below ₹5 Lakhs</SelectItem>
+                    <SelectItem value="5L-10L">₹5 Lakhs - ₹10 Lakhs</SelectItem>
+                    <SelectItem value="10L-25L">₹10 Lakhs - ₹25 Lakhs</SelectItem>
+                    <SelectItem value="25L-50L">₹25 Lakhs - ₹50 Lakhs</SelectItem>
+                    <SelectItem value="above-50L">Above ₹50 Lakhs</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+
+              <div>
+                <Label htmlFor="timeframe" className="text-foreground mb-2 block">Timeframe</Label>
+                <Select onValueChange={(value) => handleSelectChange(value, "timeframe")}>
+                  <SelectTrigger className="bg-blue-50/50 dark:bg-muted border-blue-100 dark:border-input text-foreground focus:border-blue-200 dark:focus:border-foreground transition-colors duration-300">
+                    <SelectValue placeholder="When do you want to start?" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="immediately">Immediately</SelectItem>
+                    <SelectItem value="1-3-months">1-3 Months</SelectItem>
+                    <SelectItem value="3-6-months">3-6 Months</SelectItem>
+                    <SelectItem value="6-12-months">6-12 Months</SelectItem>
+                    <SelectItem value="planning">Just Planning</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
               
               <Button 
                 type="submit" 
-                disabled={!formData.name || !formData.email || !phoneValid || !formData.message || isLoading}
+                disabled={!formData.name || !formData.email || !phoneValid || !formData.projectType || !formData.budget || !formData.timeframe || isLoading}
                 className="w-full bg-blue-600 dark:bg-foreground text-white dark:text-background hover:bg-blue-700 dark:hover:bg-foreground/90 py-6 text-lg font-semibold rounded-lg transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {isLoading ? (

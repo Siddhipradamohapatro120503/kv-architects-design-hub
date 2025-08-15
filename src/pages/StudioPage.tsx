@@ -10,7 +10,7 @@ const StudioPage = () => {
   const socialLinks = {
     youtube: "https://youtube.com/@k.v.associate",
     instagram: "https://www.instagram.com/k.v.associate?utm_source=qr&igsh=MTJnaGJ5cW9vNnl4dA==",
-    facebook: "https://www.facebook.com/share/1NZ6mGkavg/",
+    facebook: "https://www.facebook.com/profile.php?id=61579171357164",
     linkedin: "https://www.linkedin.com/in/rahul-kumar-66611b26b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
   };
 
@@ -40,6 +40,37 @@ const StudioPage = () => {
       id: "video5", 
       embedId: "hrqZP8L_FRc",
       title: "KV Associate Project Video 5"
+    },
+    // New videos added August 2025
+    { 
+      id: "video6", 
+      embedId: "dsSuWeNsNAM",
+      title: "KV Associate Project Showcase"
+    },
+    { 
+      id: "video7", 
+      embedId: "8-nOsvndXiA",
+      title: "Architectural Design Process"
+    },
+    { 
+      id: "video8", 
+      embedId: "UXn38Hzurac",
+      title: "Interior Design Transformation"
+    },
+    { 
+      id: "video9", 
+      embedId: "65xbTH9eQVg",
+      title: "Modern Home Design Solutions"
+    },
+    { 
+      id: "video10", 
+      embedId: "gdQc-Jd52ks",
+      title: "Commercial Space Planning"
+    },
+    { 
+      id: "video11", 
+      embedId: "DoSHeOzXZL0",
+      title: "Sustainable Architecture Features"
     }
   ];
 
