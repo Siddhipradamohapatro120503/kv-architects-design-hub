@@ -114,6 +114,16 @@ const AboutPage: React.FC = () => {
                   image: "./images/team/Anil.jpeg"
                 },
                 {
+                  name: "Priya Bharti",
+                  role: "Interior Designer",
+                  image: "./images/team/priya1.jpeg"
+                },
+                {
+                  name: "Satish Kulkarni",
+                  role: "Mentor",
+                  image: "./images/team/satish1.jpeg"
+                },
+                {
                   name: "Amit kumar patel",
                   role: "3D Designer 5 years experience",
                   image: "./images/team/amit.jpeg"
@@ -123,11 +133,7 @@ const AboutPage: React.FC = () => {
                   role: "Assistant Architect",
                   image: "./images/team/Pragya.jpeg"
                 },
-                {
-                  name: "Vinit",
-                  role: "Architectural Associate",
-                  image: "./images/team/VINIT.jpg"
-                }
+               
               ].map((member, index) => (
                 <motion.div
                   key={index}
