@@ -9,6 +9,12 @@ interface LeadData {
   status?: string;
 }
 
+// Email configuration
+const EMAIL_CONFIG = {
+  adminEmail: "kvassociatemarketing@gmail.com",
+  forwardEmail: "kvassociateblw@gmail.com"
+};
+
 // API URL for the email service
 const API_URL = 'https://kvassociate.in/api'; // Using the main domain with HTTPS for API calls
 
@@ -24,7 +30,11 @@ export const sendLeadNotification = async (leadData: LeadData): Promise<boolean>
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(leadData),
+      body: JSON.stringify({
+        ...leadData,
+        adminEmail: EMAIL_CONFIG.adminEmail,
+        forwardEmail: EMAIL_CONFIG.forwardEmail
+      }),
     });
 
     if (!response.ok) {
@@ -71,3 +81,15 @@ export const sendLeadConfirmation = async (leadData: LeadData): Promise<boolean>
 };
 
 // Note: Formatting functions are now handled on the server side
+
+/**
+ * Updates the email configuration for lead notifications
+ * @param config New email configuration
+ */
+export const updateEmailConfig = (config: { adminEmail?: string; forwardEmail?: string }) => {
+  if (config.adminEmail) EMAIL_CONFIG.adminEmail = config.adminEmail;
+  if (config.forwardEmail) EMAIL_CONFIG.forwardEmail = config.forwardEmail;
+  
+  console.log('Email configuration updated:', EMAIL_CONFIG);
+  return EMAIL_CONFIG;
+};
