@@ -15,8 +15,10 @@ const EMAIL_CONFIG = {
   forwardEmail: "kvassociateblw@gmail.com"
 };
 
-// API URL for the email service
-const API_URL = 'https://kvassociate.in/api'; // Using the main domain with HTTPS for API calls
+// API URL for the email service - dynamically set based on environment
+const API_URL = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
+  ? 'http://localhost:3001/api'
+  : 'https://kvassociate.in/api'; // Using the main domain with HTTPS for production
 
 /**
  * Send a notification email to the admin when a new lead is captured
@@ -25,7 +27,7 @@ const API_URL = 'https://kvassociate.in/api'; // Using the main domain with HTTP
  */
 export const sendLeadNotification = async (leadData: LeadData): Promise<boolean> => {
   try {
-    const response = await fetch(`${API_URL}/api/send-lead-notification`, {
+    const response = await fetch(`${API_URL}/send-lead-notification`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -58,7 +60,7 @@ export const sendLeadNotification = async (leadData: LeadData): Promise<boolean>
  */
 export const sendLeadConfirmation = async (leadData: LeadData): Promise<boolean> => {
   try {
-    const response = await fetch(`${API_URL}/api/send-lead-confirmation`, {
+    const response = await fetch(`${API_URL}/send-lead-confirmation`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
