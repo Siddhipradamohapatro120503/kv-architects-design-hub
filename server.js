@@ -106,7 +106,8 @@ app.post('/api/send-lead-notification', async (req, res) => {
       return res.status(400).json({ success: false, message: 'Missing required lead data' });
     }
 
-    const adminEmail = 'kvassociatemarketing@gmail.com'; // Can be changed to any admin email
+    const adminEmail = leadData.adminEmail || 'kvassociatemarketing@gmail.com';
+    const forwardEmail = leadData.forwardEmail || 'kvassociateblw@gmail.com';
     
     // Check if this email was recently sent to prevent duplicates
     if (emailCache.isRecentlySent(adminEmail, 'notification', leadData)) {
@@ -161,17 +162,51 @@ app.post('/api/send-lead-notification', async (req, res) => {
 
     const mailOptions = {
       from: 'KV Associates <kvassociatemarketing@gmail.com>',
-      to: adminEmail,
+      to: [adminEmail, forwardEmail].filter(Boolean).join(', '),
       subject,
       html,
     };
 
-    await transporter.sendMail(mailOptions);
+    // Set a timeout for the email sending operation
+    const emailPromise = transporter.sendMail(mailOptions);
+    const timeoutPromise = new Promise((_, reject) => {
+      setTimeout(() => reject(new Error('Email sending timed out')), 15000); // 15 second timeout
+    });
     
+    // Race the email sending against the timeout
+    await Promise.race([emailPromise, timeoutPromise]);
+    
+    console.log(`Lead notification sent successfully to ${adminEmail}`);
     res.status(200).json({ success: true, message: 'Admin notification sent successfully' });
   } catch (error) {
     console.error('Error sending admin notification:', error);
-    res.status(500).json({ success: false, message: 'Failed to send admin notification' });
+    
+    // Provide more specific error messages based on the error type
+    if (error.code === 'ECONNREFUSED') {
+      return res.status(503).json({ 
+        success: false, 
+        message: 'Email service unavailable', 
+        error: 'Connection to mail server failed'
+      });
+    } else if (error.message === 'Email sending timed out') {
+      return res.status(504).json({ 
+        success: false, 
+        message: 'Email sending timed out', 
+        error: 'Operation took too long to complete'
+      });
+    } else if (error.responseCode >= 400) {
+      return res.status(502).json({ 
+        success: false, 
+        message: 'Email server rejected the request', 
+        error: `SMTP error: ${error.response || 'Unknown error'}`
+      });
+    }
+    
+    res.status(500).json({ 
+      success: false, 
+      message: 'Failed to send admin notification', 
+      error: process.env.NODE_ENV === 'development' ? error.message : 'Internal server error'
+    });
   }
 });
 
@@ -249,12 +284,46 @@ app.post('/api/send-lead-confirmation', async (req, res) => {
       html,
     };
 
-    await transporter.sendMail(mailOptions);
+    // Set a timeout for the email sending operation
+    const emailPromise = transporter.sendMail(mailOptions);
+    const timeoutPromise = new Promise((_, reject) => {
+      setTimeout(() => reject(new Error('Email sending timed out')), 15000); // 15 second timeout
+    });
     
+    // Race the email sending against the timeout
+    await Promise.race([emailPromise, timeoutPromise]);
+    
+    console.log(`Lead confirmation sent successfully to ${leadData.email}`);
     res.status(200).json({ success: true, message: 'Lead confirmation sent successfully' });
   } catch (error) {
     console.error('Error sending lead confirmation:', error);
-    res.status(500).json({ success: false, message: 'Failed to send lead confirmation' });
+    
+    // Provide more specific error messages based on the error type
+    if (error.code === 'ECONNREFUSED') {
+      return res.status(503).json({ 
+        success: false, 
+        message: 'Email service unavailable', 
+        error: 'Connection to mail server failed'
+      });
+    } else if (error.message === 'Email sending timed out') {
+      return res.status(504).json({ 
+        success: false, 
+        message: 'Email sending timed out', 
+        error: 'Operation took too long to complete'
+      });
+    } else if (error.responseCode >= 400) {
+      return res.status(502).json({ 
+        success: false, 
+        message: 'Email server rejected the request', 
+        error: `SMTP error: ${error.response || 'Unknown error'}`
+      });
+    }
+    
+    res.status(500).json({ 
+      success: false, 
+      message: 'Failed to send lead confirmation', 
+      error: process.env.NODE_ENV === 'development' ? error.message : 'Internal server error'
+    });
   }
 });
 
