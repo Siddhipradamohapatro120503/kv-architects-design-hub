@@ -20,7 +20,7 @@ const EMAIL_CONFIG = {
 // For local: Direct connection to the API server
 export const API_URL = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
   ? 'http://localhost:3001/api'
-  : 'https://kvassociate.in/api'; // Using the main domain with HTTPS for production
+  : '/api'; // Use relative path for production to avoid CORS issues
 
 /**
  * Send a notification email to the admin when a new lead is captured
