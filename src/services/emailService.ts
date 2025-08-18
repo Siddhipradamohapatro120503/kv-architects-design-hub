@@ -33,20 +33,28 @@ export const sendLeadNotification = async (leadData: LeadData): Promise<boolean>
     const controller = new AbortController();
     const timeoutId = setTimeout(() => controller.abort(), 10000); // 10 second timeout
     
-    const response = await fetch(`${API_URL}/send-lead-notification`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        ...leadData,
-        adminEmail: EMAIL_CONFIG.adminEmail,
-        forwardEmail: EMAIL_CONFIG.forwardEmail
-      }),
-      signal: controller.signal
-    }).catch(error => {
+    let response: Response | null = null;
+    
+    try {
+      response = await fetch(`${API_URL}/send-lead-notification`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          ...leadData,
+          adminEmail: EMAIL_CONFIG.adminEmail,
+          forwardEmail: EMAIL_CONFIG.forwardEmail
+        }),
+        signal: controller.signal
+      });
+      
+      clearTimeout(timeoutId);
+    } catch (error: any) {
+      clearTimeout(timeoutId);
+      
       if (error.name === 'AbortError') {
-        console.warn('Request timed out - storing lead in localStorage for later submission');
+        console.info('API request timed out - storing lead in localStorage for later submission');
         // Store the lead in localStorage for later submission attempts
         const pendingLeads = JSON.parse(localStorage.getItem('kvPendingLeads') || '[]');
         pendingLeads.push({
@@ -55,40 +63,43 @@ export const sendLeadNotification = async (leadData: LeadData): Promise<boolean>
           timestamp: Date.now()
         });
         localStorage.setItem('kvPendingLeads', JSON.stringify(pendingLeads));
-        throw new Error('Request timed out');
+        
+        // Return true since we've handled the error by storing in localStorage
+        return true;
       }
       throw error;
-    });
-    
-    clearTimeout(timeoutId);
+    }
 
-    if (!response.ok) {
-      const errorText = await response.text();
-      console.error('Server responded with status:', response.status, 'Response:', errorText);
-      
-      // Handle specific error codes
-      if (response.status === 504) {
-        console.warn('Gateway timeout - storing lead in localStorage for later submission');
-        // Store the lead in localStorage for later submission attempts
-        const pendingLeads = JSON.parse(localStorage.getItem('kvPendingLeads') || '[]');
-        pendingLeads.push({
-          type: 'notification',
-          data: leadData,
-          timestamp: Date.now()
-        });
-        localStorage.setItem('kvPendingLeads', JSON.stringify(pendingLeads));
-        return true; // Return true to prevent showing error to user
+    if (!response || !response.ok) {
+      if (response) {
+        const errorText = await response.text();
+        console.error('Server responded with status:', response.status, 'Response:', errorText);
+        
+        // Handle specific error codes
+        if (response.status === 504) {
+          console.warn('Gateway timeout - storing lead in localStorage for later submission');
+          // Store the lead in localStorage for later submission attempts
+          const pendingLeads = JSON.parse(localStorage.getItem('kvPendingLeads') || '[]');
+          pendingLeads.push({
+            type: 'notification',
+            data: leadData,
+            timestamp: Date.now()
+          });
+          localStorage.setItem('kvPendingLeads', JSON.stringify(pendingLeads));
+          return true; // Return true to prevent showing error to user
+        }
+        
+        throw new Error(`HTTP error! status: ${response.status}`);
       }
-      
-      throw new Error(`HTTP error! status: ${response.status}`);
+      return false;
     }
 
     const result = await response.json();
-    return result.success;
-  } catch (error) {
+    return result.success === true;
+  } catch (error: any) {
     console.error('Error in sendLeadNotification:', error);
     // Return true if we've handled the error by storing in localStorage
-    return error.message === 'Request timed out' || localStorage.getItem('kvPendingLeads') ? true : false;
+    return Boolean(error.message === 'Request timed out' || localStorage.getItem('kvPendingLeads'));
   }
 };
 
@@ -103,16 +114,24 @@ export const sendLeadConfirmation = async (leadData: LeadData): Promise<boolean>
     const controller = new AbortController();
     const timeoutId = setTimeout(() => controller.abort(), 10000); // 10 second timeout
     
-    const response = await fetch(`${API_URL}/send-lead-confirmation`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(leadData),
-      signal: controller.signal
-    }).catch(error => {
+    let response: Response | null = null;
+    
+    try {
+      response = await fetch(`${API_URL}/send-lead-confirmation`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(leadData),
+        signal: controller.signal
+      });
+      
+      clearTimeout(timeoutId);
+    } catch (error: any) {
+      clearTimeout(timeoutId);
+      
       if (error.name === 'AbortError') {
-        console.warn('Request timed out - storing lead confirmation in localStorage for later submission');
+        console.info('API request timed out - storing lead confirmation in localStorage for later submission');
         // Store the lead confirmation in localStorage for later submission attempts
         const pendingLeads = JSON.parse(localStorage.getItem('kvPendingLeads') || '[]');
         pendingLeads.push({
@@ -121,40 +140,43 @@ export const sendLeadConfirmation = async (leadData: LeadData): Promise<boolean>
           timestamp: Date.now()
         });
         localStorage.setItem('kvPendingLeads', JSON.stringify(pendingLeads));
-        throw new Error('Request timed out');
+        
+        // Return true since we've handled the error by storing in localStorage
+        return true;
       }
       throw error;
-    });
-    
-    clearTimeout(timeoutId);
+    }
 
-    if (!response.ok) {
-      const errorText = await response.text();
-      console.error('Server responded with status:', response.status, 'Response:', errorText);
-      
-      // Handle specific error codes
-      if (response.status === 504) {
-        console.warn('Gateway timeout - storing lead confirmation in localStorage for later submission');
-        // Store the lead in localStorage for later submission attempts
-        const pendingLeads = JSON.parse(localStorage.getItem('kvPendingLeads') || '[]');
-        pendingLeads.push({
-          type: 'confirmation',
-          data: leadData,
-          timestamp: Date.now()
-        });
-        localStorage.setItem('kvPendingLeads', JSON.stringify(pendingLeads));
-        return true; // Return true to prevent showing error to user
+    if (!response || !response.ok) {
+      if (response) {
+        const errorText = await response.text();
+        console.error('Server responded with status:', response.status, 'Response:', errorText);
+        
+        // Handle specific error codes
+        if (response.status === 504) {
+          console.info('Gateway timeout - storing lead confirmation in localStorage for later submission');
+          // Store the lead in localStorage for later submission attempts
+          const pendingLeads = JSON.parse(localStorage.getItem('kvPendingLeads') || '[]');
+          pendingLeads.push({
+            type: 'confirmation',
+            data: leadData,
+            timestamp: Date.now()
+          });
+          localStorage.setItem('kvPendingLeads', JSON.stringify(pendingLeads));
+          return true; // Return true to prevent showing error to user
+        }
+        
+        throw new Error(`HTTP error! status: ${response.status}`);
       }
-      
-      throw new Error(`HTTP error! status: ${response.status}`);
+      return false;
     }
 
     const result = await response.json();
-    return result.success;
-  } catch (error) {
+    return result.success === true;
+  } catch (error: any) {
     console.error('Error in sendLeadConfirmation:', error);
     // Return true if we've handled the error by storing in localStorage
-    return error.message === 'Request timed out' || localStorage.getItem('kvPendingLeads') ? true : false;
+    return Boolean(error.message === 'Request timed out' || localStorage.getItem('kvPendingLeads'));
   }
 };
 
