@@ -98,7 +98,7 @@ function formatTimeframe(timeframe) {
 }
 
 // API endpoint to send lead notification email
-app.post('/api/send-lead-notification', async (req, res) => {
+app.post('/send-lead-notification', async (req, res) => {
   try {
     const leadData = req.body;
     
@@ -211,7 +211,7 @@ app.post('/api/send-lead-notification', async (req, res) => {
 });
 
 // API endpoint to send lead confirmation email
-app.post('/api/send-lead-confirmation', async (req, res) => {
+app.post('/send-lead-confirmation', async (req, res) => {
   try {
     const leadData = req.body;
     
@@ -328,13 +328,13 @@ app.post('/api/send-lead-confirmation', async (req, res) => {
 });
 
 // Test endpoint
-app.get('/api/test', (req, res) => {
+app.get('/test', (req, res) => {
   console.log('Test endpoint hit');
   res.json({ status: 'API is working', timestamp: new Date().toISOString() });
 });
 
 // Handle contact form submissions
-app.post('/api/send-contact-email', async (req, res) => {
+app.post('/send-contact-email', async (req, res) => {
   try {
     const { name, email, phone, message } = req.body;
     
