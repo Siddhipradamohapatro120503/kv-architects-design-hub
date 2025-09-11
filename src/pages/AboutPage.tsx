@@ -86,77 +86,143 @@ const AboutPage: React.FC = () => {
               </p>
             </div>
             
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {[
-                {
-                  name: "Sameer Ansari",
-                  role: "Architectural designer",
-                  image: "./images/team/IMG_4138.JPG"
-                },
-                {
-                  name: "Sagun Chaudhary",
-                  role: "Architectural designer",
-                  image: "./images/team/sagun.jpeg"
-                },
-                {
-                  name: "Mridul Kumar",
-                  role: "Computer Operator ( Draftman)",
-                  image: "./images/team/Mridul.jpeg"
-                },
-                {
-                  name: "Rahul Kumar",
-                  role: "Personal Assistant",
-                  image: "./images/team/rahul.jpeg"
-                },
-                {
-                  name: "Anil Patel",
-                  role: "Computer Operator ( Draftman)",
-                  image: "./images/team/Anil.jpeg"
-                },
-                {
-                  name: "Priya Bharti",
-                  role: "Interior Designer",
-                  image: "./images/team/priya1.jpeg"
-                },
-                {
-                  name: "Satish Kulkarni",
-                  role: "Mentor",
-                  image: "./images/team/satish1.jpeg"
-                },
-                {
-                  name: "Amit kumar patel",
-                  role: "3D Designer 5 years experience",
-                  image: "./images/team/amit.jpeg"
-                },
-                {
-                  name: "Pragya Ratan Maurya",
-                  role: "Assistant Architect",
-                  image: "./images/team/Pragya.jpeg"
-                },
-               
-              ].map((member, index) => (
-                <motion.div
-                  key={index}
-                  className="bg-card rounded-lg overflow-hidden border border-border hover:shadow-lg transition-all duration-300"
-                  initial={{ y: 50, opacity: 0 }}
-                  whileInView={{ y: 0, opacity: 1 }}
-                  transition={{ delay: index * 0.1, duration: 0.5 }}
-                  viewport={{ once: true }}
-                  whileHover={{ y: -5 }}
-                >
-                  <div className="aspect-square overflow-hidden">
+            <div className="space-y-12">
+              {/* Special Card for Satish Kulkarni */}
+              {/* <motion.div 
+                className="bg-gradient-to-br from-blue-50 to-blue-100 dark:from-gray-900 dark:to-gray-800 rounded-2xl overflow-hidden border-2 border-blue-200 dark:border-blue-800 shadow-xl"
+                initial={{ y: 50, opacity: 0 }}
+                whileInView={{ y: 0, opacity: 1 }}
+                transition={{ duration: 0.8 }}
+                viewport={{ once: true }}
+              >
+                <div className="md:flex">
+                  <div className="md:w-1/3">
                     <img 
-                      src={member.image} 
-                      alt={member.name} 
-                      className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                      src="./images/team/satish1.jpeg" 
+                      alt="Satish Kulkarni"
+                      className="w-full h-full max-h-[500px] object-cover"
                     />
                   </div>
-                  <div className="p-6">
-                    <h3 className="text-xl font-semibold">{member.name}</h3>
-                    <p className="text-muted-foreground">{member.role}</p>
+                  <div className="p-8 md:w-2/3">
+                    <div className="mb-8">
+                      <h3 className="text-3xl font-bold text-blue-900 dark:text-white">
+                        Satish Kulkarni
+                      </h3>
+                      <p className="text-blue-700 dark:text-blue-300 text-lg font-medium">
+                        Mentor & Senior Advisor
+                      </p>
+                    </div>
+                    
+                    <div className="grid md:grid-cols-2 gap-8">
+                      <div>
+                        <h4 className="text-sm font-semibold text-blue-800 dark:text-blue-200 uppercase tracking-wider mb-3">Education</h4>
+                        <p className="text-blue-900 dark:text-gray-200">
+                          B.Arch (Hons), M. Arch (Urban Design)
+                        </p>
+                      </div>
+                      
+                      <div>
+                        <h4 className="text-sm font-semibold text-blue-800 dark:text-blue-200 uppercase tracking-wider mb-3">Experience</h4>
+                        <p className="text-blue-900 dark:text-gray-200">
+                          25+ years in Architecture & Urban Planning
+                        </p>
+                      </div>
+                      
+                      <div className="md:col-span-2">
+                        <h4 className="text-sm font-semibold text-blue-800 dark:text-blue-200 uppercase tracking-wider mb-3">Areas of Expertise</h4>
+                        <p className="text-blue-900 dark:text-gray-200">
+                          Sustainable Design, Urban Regeneration, Heritage Conservation
+                        </p>
+                      </div>
+                      
+                      <div className="md:col-span-2">
+                        <h4 className="text-sm font-semibold text-blue-800 dark:text-blue-200 uppercase tracking-wider mb-3">Key Achievements</h4>
+                        <ul className="space-y-3">
+                          {[
+                            "Former Principal Architect at Kulkarni & Associates (2000-2020)",
+                            "Visiting Faculty at SPA Delhi & CEPT University",
+                            "Recipient of National Award for Excellence in Urban Design (2018)",
+                            "Published 15+ research papers on sustainable urban development"
+                          ].map((achievement, index) => (
+                            <li key={index} className="flex items-start">
+                              <span className="text-blue-500 mr-2 mt-1">•</span>
+                              <span className="text-blue-900 dark:text-gray-300">{achievement}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    </div>
                   </div>
-                </motion.div>
-              ))}
+                </div>
+              </motion.div> */}
+
+              {/* Regular Team Members Grid */}
+              <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                {[
+                   {
+                    name: "Rahul Kumar",
+                    role: "Personal Assistant",
+                    image: "./images/team/rahul.jpeg"
+                  },
+                  {
+                    name: "Priya Bharti",
+                    role: "Interior Designer",
+                    image: "./images/team/priya1.jpeg"
+                  },
+                  {
+                    name: "Sameer Ansari",
+                    role: "Architectural designer",
+                    image: "./images/team/IMG_4138.JPG"
+                  },
+                  {
+                    name: "Sagun Chaudhary",
+                    role: "Architectural designer",
+                    image: "./images/team/sagun.jpeg"
+                  },
+                  {
+                    name: "Amit Kumar Patel",
+                    role: "3D Designer (5+ years experience)",
+                    image: "./images/team/amit.jpeg"
+                  },
+                  {
+                    name: "Anil Patel",
+                    role: "Computer Operator (Draftman)",
+                    image: "./images/team/Anil.jpeg"
+                  },
+                  {
+                    name: "Mridul Kumar",
+                    role: "Computer Operator (Draftman)",
+                    image: "./images/team/Mridul.jpeg"
+                  },
+                  {
+                    name: "Pragya Ratan Maurya",
+                    role: "Assistant Architect",
+                    image: "./images/team/Pragya.jpeg"
+                  },
+                ].map((member, index) => (
+                  <motion.div
+                    key={index}
+                    className="bg-card rounded-lg overflow-hidden border border-border hover:shadow-lg transition-all duration-300"
+                    initial={{ y: 50, opacity: 0 }}
+                    whileInView={{ y: 0, opacity: 1 }}
+                    transition={{ delay: index * 0.1, duration: 0.5 }}
+                    viewport={{ once: true }}
+                    whileHover={{ y: -5 }}
+                  >
+                    <div className="aspect-square overflow-hidden">
+                      <img 
+                        src={member.image} 
+                        alt={member.name} 
+                        className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                      />
+                    </div>
+                    <div className="p-6">
+                      <h3 className="text-xl font-semibold">{member.name}</h3>
+                      <p className="text-muted-foreground">{member.role}</p>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
             </div>
           </div>
         </section>

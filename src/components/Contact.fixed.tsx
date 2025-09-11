@@ -279,80 +279,10 @@ const Contact = () => {
               {/* Google Maps Section */}
               <div className="mt-8">
                 <div className="relative w-full h-[300px] rounded-lg overflow-hidden shadow-xl">
-                  {/* Enhanced Location Tag - Light Theme */}
-                  <div className="absolute top-4 left-4 z-10 bg-gradient-to-r from-primary to-primary/80 text-white px-4 py-3 rounded-lg flex flex-col space-y-1 shadow-lg backdrop-blur-sm border border-white/10 max-w-[280px] dark:hidden">
-                    <div className="flex items-center space-x-2">
-                      <div className="bg-white/20 p-1.5 rounded-full">
-                        <MapPin size={18} className="text-white" />
-                      </div>
-                      <span className="font-semibold text-sm">KV Associates</span>
-                    </div>
-                    <div className="pl-9 text-xs text-white/90">
-                      <p>N-10/79, B3, Kakarmatta</p>
-                      <p>DLW-Lanka Road, Varanasi - 221004</p>
-                    </div>
-                    <div className="flex items-center space-x-2 mt-1 pl-9">
-                      <div className="flex items-center space-x-1 bg-white/20 px-2 py-0.5 rounded-full">
-                        <Phone size={10} />
-                        <span className="text-xs">9120333520</span>
-                      </div>
-                      <div className="flex items-center space-x-1 bg-white/20 px-2 py-0.5 rounded-full">
-                        <Clock size={10} />
-                        <span className="text-xs">10AM-7PM</span>
-                      </div>
-                    </div>
+                  <div className="absolute top-4 left-4 z-10 bg-primary/90 text-white px-3 py-1.5 rounded-md flex items-center space-x-2 shadow-lg">
+                    <MapPin size={18} />
+                    <span className="font-medium text-sm">KV Associates, Varanasi</span>
                   </div>
-                  
-                  {/* Enhanced Location Tag - Dark Theme */}
-                  <div className="absolute top-4 left-4 z-10 bg-gray-800 text-white px-4 py-3 rounded-lg flex flex-col space-y-1 shadow-lg backdrop-blur-sm border border-white/20 max-w-[280px] hidden dark:flex dark:flex-col">
-                    <div className="flex items-center space-x-2">
-                      <div className="bg-white/30 p-1.5 rounded-full">
-                        <MapPin size={18} className="text-white" />
-                      </div>
-                      <span className="font-semibold text-sm text-white">KV Associates</span>
-                    </div>
-                    <div className="pl-9 text-xs text-white">
-                      <p>N-10/79, B3, Kakarmatta</p>
-                      <p>DLW-Lanka Road, Varanasi - 221004</p>
-                    </div>
-                    <div className="flex items-center space-x-2 mt-1 pl-9">
-                      <div className="flex items-center space-x-1 bg-white/30 px-2 py-0.5 rounded-full">
-                        <Phone size={10} className="text-white" />
-                        <span className="text-xs text-white">9120333520</span>
-                      </div>
-                      <div className="flex items-center space-x-1 bg-white/30 px-2 py-0.5 rounded-full">
-                        <Clock size={10} className="text-white" />
-                        <span className="text-xs text-white">10AM-7PM</span>
-                      </div>
-                    </div>
-                  </div>
-                  
-                  {/* Get Directions Button - Light Theme */}
-                  <a 
-                    href="https://www.google.com/maps/dir//N-10%2F79,+B3,+Kakarmatta,+Opp.+to+Bangal+Sweet+House+DLW-Lanka+Road,+Varanasi+-+221004/@25.2854089,82.9639505,17z/data=!4m9!4m8!1m0!1m5!1m1!1s0x398e33ef9b1f7e5d:0x7d1e86e0471cf44f!2m2!1d82.9639505!2d25.2854089!3e0"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="absolute bottom-4 right-4 z-10 bg-white text-primary px-3 py-2 rounded-md flex items-center space-x-2 shadow-lg hover:bg-gray-100 transition-colors duration-300 border border-transparent dark:hidden"
-                  >
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-navigation">
-                      <polygon points="3 11 22 2 13 21 11 13 3 11"/>
-                    </svg>
-                    <span className="font-medium text-sm">Get Directions</span>
-                  </a>
-                  
-                  {/* Get Directions Button - Dark Theme */}
-                  <a 
-                    href="https://www.google.com/maps/dir//N-10%2F79,+B3,+Kakarmatta,+Opp.+to+Bangal+Sweet+House+DLW-Lanka+Road,+Varanasi+-+221004/@25.2854089,82.9639505,17z/data=!4m9!4m8!1m0!1m5!1m1!1s0x398e33ef9b1f7e5d:0x7d1e86e0471cf44f!2m2!1d82.9639505!2d25.2854089!3e0"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="absolute bottom-4 right-4 z-10 bg-gray-800 text-white px-3 py-2 rounded-md hidden dark:flex items-center space-x-2 shadow-lg hover:bg-gray-700 transition-colors duration-300 border border-white/20"
-                  >
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-navigation">
-                      <polygon points="3 11 22 2 13 21 11 13 3 11"/>
-                    </svg>
-                    <span className="font-medium text-sm">Get Directions</span>
-                  </a>
-                  
                   <iframe
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3608.3015305271784!2d82.9639505!3d25.2854089!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x398e33ef9b1f7e5d%3A0x7d1e86e0471cf44f!2sN-10%2F79%2C%20B3%2C%20Kakarmatta%2C%20Opp.%20to%20Bangal%20Sweet%20House%20DLW-Lanka%20Road%2C%20Varanasi%20-%20221004!5e0!3m2!1sen!2sin!4v1688641458899!5m2!1sen!2sin"
                     width="100%"

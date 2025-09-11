@@ -146,28 +146,50 @@ const Gallery = () => {
           {[
             {
               id: 101,
-              title: "Duplex House",
+              title: "Modern Apartment Complex",
               image: "/images/buildings/Apartment.jpg",
               category: "Residential"
             },
             {
-              id: 105,
-              title: "Healthcare Center",
-              image: "/images/buildings/upkar hospital.jpg",
+              id: 102,
+              title: "Industrial Facility",
+              image: "/images/buildings/1factory.jpg",
+              category: "Industrial"
+            },
+            {
+              id: 103,
+              title: "Corporate Office Building",
+              image: "/images/buildings/2capt.jpg",
+              category: "Commercial"
+            },
+            {
+              id: 104,
+              title: "Educational Institute",
+              image: "/images/buildings/NCMS.jpg",
+              category: "Institutional"
+            },
+            {
+              id: 107,
+              title: "Modern Hospital Facility",
+              image: "/images/buildings/hospital11.jpg",
               category: "Healthcare"
             },
             {
-              id: 106,
-              title: "Contemporary Design",
-              image: "/images/buildings/achi12.jpg",
-              category: "Commercial"
+              id: 108,
+              title: "Educational Campus",
+              image: "/images/buildings/classroom.jpg",
+              category: "Institutional"
+            },
+            {
+              id: 109,
+              title: "Residential Complex",
+              image: "/images/buildings/ch.jpg",
+              category: "Residential"
             }
           ].map((item, index) => (
             <motion.div 
               key={`grid-${item.id}`}
-              className={`bg-muted rounded-lg overflow-hidden group cursor-pointer ${
-                index === 3 ? 'md:col-span-2' : ''
-              }`}
+              className="bg-muted rounded-lg overflow-hidden group cursor-pointer"
               initial={{ opacity: 0, y: 30 }}
               animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
               transition={{ duration: 0.6, delay: 0.9 + index * 0.1 }}

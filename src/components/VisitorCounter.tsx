@@ -136,7 +136,7 @@ const VisitorCounter: React.FC = () => {
           <CounterItem 
             icon={<Users size={40} />}
             label="Happy Clients"
-            startValue={5100}
+            startValue={6000}
             endValue={visitorCount}
             duration={2000}
             suffix="+"
@@ -145,27 +145,27 @@ const VisitorCounter: React.FC = () => {
           <CounterItem 
             icon={<Building size={40} />}
             label="Projects Completed"
-            startValue={200}
+            startValue={5000}
             endValue={250}
-            duration={2000}
+            duration={20000}
             suffix="+"
           />
           
           <CounterItem 
             icon={<Award size={40} />}
             label="Awards Won"
-            startValue={25}
+            startValue={12}
             endValue={32}
-            duration={1500}
+            duration={15000}
             suffix=""
           />
           
           <CounterItem 
             icon={<Clock size={40} />}
             label="Years Experience"
-            startValue={10}
+            startValue={16}
             endValue={15}
-            duration={1000}
+            duration={10000}
             suffix="+"
           />
         </div>

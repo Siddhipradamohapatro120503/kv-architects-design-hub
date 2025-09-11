@@ -22,30 +22,99 @@ const About = () => {
   }, []);
 
   return (
-    <section id="about" className="py-20 bg-gradient-to-br dark:from-black dark:via-gray-900 dark:to-black from-blue-50 via-white to-blue-50 transition-colors duration-300 overflow-hidden transition-colors duration-300">
+    <section id="about" className="py-16 bg-gradient-to-br dark:from-black dark:via-gray-900 dark:to-black from-blue-50 via-white to-blue-50 transition-colors duration-300 overflow-hidden">
       <div className="container mx-auto px-4">
         <motion.div 
-          className="grid lg:grid-cols-2 gap-16 items-start"
+          className="grid lg:grid-cols-1 gap-12 items-start"
           initial={{ opacity: 0 }}
           animate={isVisible ? { opacity: 1 } : { opacity: 0 }}
           transition={{ duration: 0.8 }}
         >
           <motion.div
-            className="space-y-8"
-            initial={{ x: -50, opacity: 0 }}
-            animate={isVisible ? { x: 0, opacity: 1 } : { x: -50, opacity: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            className="space-y-10"
+            initial={{ y: 20, opacity: 0 }}
+            animate={isVisible ? { y: 0, opacity: 1 } : { y: 20, opacity: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <div className="space-y-8">
-              <div>
-                <h3 className="text-3xl font-bold mb-6">Company Vision</h3>
-                <p className="text-blue-600 dark:text-muted-foreground text-lg max-w-2xl mx-auto">
-                  To be a standard-setting architectural firm committed to total customer satisfaction by leveraging strengths in design innovation, material quality, technology, and timely project delivery.
-                </p>
+            <div className="space-y-12 max-w-6xl mx-auto">
+              {/* Mentor Section - Top Priority */}
+              <div className="bg-gradient-to-br from-blue-50 to-blue-100 dark:from-gray-900/50 dark:to-gray-800/50 p-6 md:p-8 rounded-xl border border-blue-200 dark:border-blue-800/50 shadow-sm">
+                <div className="lg:flex gap-8 items-start">
+                  <div className="lg:w-1/4 mb-6 lg:mb-0">
+                    <div className="sticky top-24">
+                      <img 
+                        src="./images/team/satish1.jpeg" 
+                        alt="Prof. Satish Kulkarni"
+                        className="w-full h-full object-contain rounded-lg shadow-md"
+                      />
+                      <div className="mt-3 p-3 bg-white/80 dark:bg-gray-800/80 rounded-lg shadow-sm">
+                        <p className="text-sm italic text-gray-700 dark:text-gray-300 text-center">
+                          "Fusion of non-measurable with measurable is the essence of architectural creations"
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="lg:w-3/4">
+                    <div className="mb-6 pb-4 border-b border-blue-100 dark:border-gray-700">
+                      <h3 className="text-xl font-bold text-blue-900 dark:text-blue-300 mb-1">OUR MENTOR</h3>
+                      <h4 className="text-3xl font-bold mb-0">Prof. Satish Kulkarni</h4>
+                    </div>
+                    
+                    <div className="prose dark:prose-invert max-w-none text-gray-800 dark:text-gray-200">
+                      <p>
+                        Prof. Satish Kulkarni was a distinguished Professor of Architecture and former Head of the Department of Architecture and Planning at the Indian Institute of Technology, Roorkee (1977-2015). His illustrious academic career includes serving as a faculty member in the Departments of Architecture at Baghdad and Mosul in Iraq (1987-89), and at NEC Kathmandu, Nepal (1999).
+                      </p>
+                      
+                      <p>
+                        He served as Professor and Dean of Architecture at H.Z. University, Dehrandun (2016-18) and as a Visiting Professor, established and mentored the Department of Architecture at IIT BHU (2019-20).
+                      </p>
+                      
+                      <div className="bg-white/50 dark:bg-gray-800/50 p-4 rounded-lg my-4">
+                        <h5 className="font-semibold text-lg mb-2">Professional Highlights</h5>
+                        <ul className="list-disc pl-5 space-y-1 text-sm md:text-base">
+                          <li>40+ years of professional experience in architecture and planning</li>
+                          <li>Institute Architect at IIT Roorkee for 11 years</li>
+                          <li>Designed the Master Plan of IITR campus and numerous architectural projects</li>
+                          <li>Expert on architecture colleges inspection committees under the Council of Architecture, Govt. of India</li>
+                          <li>Executive member of Building Works Committees for IIT BHU, Jodhpur, and Bhilai</li>
+                          <li>Member of expert committee for architect selection at IIT Gandhinagar</li>
+                        </ul>
+                      </div>
+                      
+                      <p className="italic text-gray-700 dark:text-gray-300 text-sm md:text-base">
+                        "Space and form, the two central elements of architecture, represent an ideal synthesis of man's civilizing factors with natural resources."
+                      </p>
+                    </div>
+                  </div>
+                </div>
               </div>
-              
+
+              {/* Company Vision with Image */}
+              <div className="grid lg:grid-cols-2 gap-8 items-center">
+                <div>
+                  <h3 className="text-2xl font-bold mb-4">Company Vision</h3>
+                  <p className="text-blue-600 dark:text-muted-foreground text-lg">
+                    To be a standard-setting architectural firm committed to total customer satisfaction by leveraging strengths in design innovation, material quality, technology, and timely project delivery.
+                  </p>
+                </div>
+                
+                <div className="relative">
+                  <div className="bg-white dark:bg-gray-900/50 p-4 rounded-xl border border-blue-100 dark:border-border shadow-md hover:shadow-lg transition-all duration-300">
+                    <img
+                      src="./images/team/image.png"
+                      alt="Ar. Anil Bharti - Principal Architect"
+                      className="w-full h-full object-contain rounded-lg"
+                    />
+                  </div>
+                  <div className="absolute -bottom-4 -right-4 bg-card p-3 rounded-xl shadow-xl border border-border backdrop-blur-sm">
+                    <div className="text-2xl font-bold text-primary">16+</div>
+                    <div className="text-xs font-medium text-muted-foreground">Years Experience</div>
+                  </div>
+                </div>
+              </div>
+            
               <div>
-                <h3 className="text-3xl font-bold mb-6">Principal Architect</h3>
+                <h3 className="text-2xl font-bold mb-4">Principal Architect</h3>
                 <div className="text-muted-foreground space-y-4">
                   <p className="text-xl font-semibold">Ar. Anil Bharti</p>
                   <ul className="list-disc pl-5 space-y-2">
@@ -109,30 +178,7 @@ const About = () => {
             </div>
           </motion.div>
 
-          <motion.div
-            initial={{ x: 50, opacity: 0 }}
-            animate={isVisible ? { x: 0, opacity: 1 } : { x: 50, opacity: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="relative"
-          >
-            <div className="bg-white dark:bg-gray-900/50 p-8 rounded-lg border border-blue-100 dark:border-border shadow-sm hover:border-blue-200 dark:hover:border-border transition-all duration-300">
-              <img
-                src="./images/team/image.png"
-                alt="Ar. Anil Bharti - Principal Architect"
-                className="w-full h-full object-cover"
-              />
-            </div>
-
-            <motion.div
-              className="absolute -bottom-8 -left-8 bg-card p-8 rounded-lg shadow-xl border border-border"
-              initial={{ scale: 0.8, opacity: 0 }}
-              animate={isVisible ? { scale: 1, opacity: 1 } : { scale: 0.8, opacity: 0 }}
-              transition={{ duration: 0.6, delay: 0.8 }}
-            >
-              <div className="text-4xl font-bold mb-2">21+</div>
-              <div className="text-muted-foreground">Years Experience</div>
-            </motion.div>
-          </motion.div>
+          {/* Image section has been integrated with Company Vision */}
         </motion.div>
 
         {/* Service Cards */}
