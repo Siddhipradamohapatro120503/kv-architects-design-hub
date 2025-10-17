@@ -239,26 +239,113 @@ const Contact = () => {
             )}
             
             <div className="space-y-6">
-              <div className="flex items-start space-x-4 p-6 bg-card dark:bg-gray-900/50 rounded-lg border border-border shadow-sm transition-colors duration-300">
-                <MapPin className="text-muted-foreground mt-1 flex-shrink-0" size={20} />
-                <div>
-                  <p className="font-semibold mb-2 text-foreground">Address</p>
-                  <p className="text-muted-foreground leading-relaxed">
-                    KV Associate<br />
-                    N-10/79, B3, Kakarmataa, (New Colony)<br />
-                    Opp. to Bangal Sweet House<br />
-                    DLW-Lanka Road, Varanasi - 221004
-                  </p>
+              {/* Main Office - KV Associate */}
+              <motion.div 
+                className="p-6 bg-gradient-to-br from-primary/5 to-primary/10 dark:from-primary/10 dark:to-primary/5 rounded-xl border-2 border-primary/20 shadow-lg"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+              >
+                <div className="flex items-center space-x-2 mb-4">
+                  <div className="bg-primary text-black px-3 py-1 rounded-full text-xs font-semibold">
+                    Main Office
+                  </div>
                 </div>
-              </div>
-              
-              <div className="flex items-center space-x-4 p-6 bg-white dark:bg-gray-900/50 rounded-lg border border-blue-100 dark:border-border shadow-sm hover:border-blue-200 dark:hover:border-border transition-all duration-300">
-                <Phone className="text-muted-foreground flex-shrink-0" size={20} />
-                <div>
-                  <p className="font-semibold mb-2 text-foreground">Phone</p>
-                  <p className="text-muted-foreground">+91 9120333520</p>
+                <div className="flex items-start space-x-4">
+                  <MapPin className="text-primary mt-1 flex-shrink-0" size={24} />
+                  <div className="flex-1">
+                    <p className="font-bold text-lg mb-2 text-foreground">KV Associate</p>
+                    <p className="text-muted-foreground leading-relaxed mb-3">
+                      Bhagwati Complex, Near to BOB ATM<br />
+                      Grand Trunk Rd, Mirzamurad, Gaur<br />
+                      Uttar Pradesh – 221307
+                    </p>
+                    <div className="flex flex-wrap gap-2 mb-2">
+                      <a 
+                        href="tel:08449299109"
+                        className="flex items-center space-x-1 bg-primary/10 hover:bg-primary/20 text-primary px-3 py-1.5 rounded-lg text-sm transition-colors duration-300"
+                      >
+                        <Phone size={14} />
+                        <span>08449299109</span>
+                      </a>
+                      <a 
+                        href="tel:09120333520"
+                        className="flex items-center space-x-1 bg-primary/10 hover:bg-primary/20 text-primary px-3 py-1.5 rounded-lg text-sm transition-colors duration-300"
+                      >
+                        <Phone size={14} />
+                        <span>09120333520</span>
+                      </a>
+                    </div>
+                    <a 
+                      href="https://www.kvassociate.in"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center space-x-1 text-primary hover:text-primary/80 text-sm font-medium transition-colors duration-300"
+                    >
+                      <span>🌐</span>
+                      <span>www.kvassociate.in</span>
+                    </a>
+                  </div>
                 </div>
-              </div>
+              </motion.div>
+
+              {/* DLW-Lanka Office */}
+              <motion.div 
+                className="p-6 bg-card dark:bg-gray-900/50 rounded-xl border-2 border-border hover:border-primary/30 shadow-md hover:shadow-lg transition-all duration-300"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.1 }}
+              >
+                <div className="flex items-center space-x-2 mb-4">
+                  <div className="bg-muted text-foreground px-3 py-1 rounded-full text-xs font-semibold">
+                    Branch Office
+                  </div>
+                </div>
+                <div className="flex items-start space-x-4">
+                  <MapPin className="text-muted-foreground mt-1 flex-shrink-0" size={24} />
+                  <div className="flex-1">
+                    <p className="font-bold text-lg mb-2 text-foreground">DLW-Lanka Office</p>
+                    <p className="text-muted-foreground leading-relaxed mb-3">
+                      N-10/79, B3, Kakarmatta (New Colony)<br />
+                      Opp. to Bangal Sweet House<br />
+                      DLW-Lanka Road, Varanasi – 221004
+                    </p>
+                    <div className="flex flex-wrap gap-2">
+                      <a 
+                        href="tel:09120333520"
+                        className="flex items-center space-x-1 bg-muted hover:bg-muted/80 text-foreground px-3 py-1.5 rounded-lg text-sm transition-colors duration-300"
+                      >
+                        <Phone size={14} />
+                        <span>09120333520</span>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+
+              {/* BHU Area Office */}
+              <motion.div 
+                className="p-6 bg-card dark:bg-gray-900/50 rounded-xl border-2 border-border hover:border-primary/30 shadow-md hover:shadow-lg transition-all duration-300"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+              >
+                <div className="flex items-center space-x-2 mb-4">
+                  <div className="bg-muted text-foreground px-3 py-1 rounded-full text-xs font-semibold">
+                    Branch Office
+                  </div>
+                </div>
+                <div className="flex items-start space-x-4">
+                  <MapPin className="text-muted-foreground mt-1 flex-shrink-0" size={24} />
+                  <div className="flex-1">
+                    <p className="font-bold text-lg mb-2 text-foreground">BHU Area Office</p>
+                    <p className="text-muted-foreground leading-relaxed">
+                      Malhiya, Ramna, BHU<br />
+                      Varanasi, Uttar Pradesh – 221005
+                    </p>
+                  </div>
+                </div>
+              </motion.div>
               
               <div className="flex items-center space-x-4 p-6 bg-white dark:bg-gray-900/50 rounded-lg border border-blue-100 dark:border-border shadow-sm hover:border-blue-200 dark:hover:border-border transition-all duration-300">
                 <Mail className="text-muted-foreground flex-shrink-0" size={20} />
@@ -285,16 +372,16 @@ const Contact = () => {
                       <div className="bg-white/20 p-1.5 rounded-full">
                         <MapPin size={18} className="text-white" />
                       </div>
-                      <span className="font-semibold text-sm">KV Associates</span>
+                      <span className="font-semibold text-sm">KV Associate</span>
                     </div>
                     <div className="pl-9 text-xs text-white/90">
-                      <p>N-10/79, B3, Kakarmatta</p>
-                      <p>DLW-Lanka Road, Varanasi - 221004</p>
+                      <p>Bhagwati Complex, Near BOB ATM</p>
+                      <p>Grand Trunk Rd, Mirzamurad, Gaur</p>
                     </div>
                     <div className="flex items-center space-x-2 mt-1 pl-9">
                       <div className="flex items-center space-x-1 bg-white/20 px-2 py-0.5 rounded-full">
                         <Phone size={10} />
-                        <span className="text-xs">9120333520</span>
+                        <span className="text-xs">08449299109</span>
                       </div>
                       <div className="flex items-center space-x-1 bg-white/20 px-2 py-0.5 rounded-full">
                         <Clock size={10} />
@@ -309,16 +396,16 @@ const Contact = () => {
                       <div className="bg-white/30 p-1.5 rounded-full">
                         <MapPin size={18} className="text-white" />
                       </div>
-                      <span className="font-semibold text-sm text-white">KV Associates</span>
+                      <span className="font-semibold text-sm text-white">KV Associate</span>
                     </div>
                     <div className="pl-9 text-xs text-white">
-                      <p>N-10/79, B3, Kakarmatta</p>
-                      <p>DLW-Lanka Road, Varanasi - 221004</p>
+                      <p>Bhagwati Complex, Near BOB ATM</p>
+                      <p>Grand Trunk Rd, Mirzamurad, Gaur</p>
                     </div>
                     <div className="flex items-center space-x-2 mt-1 pl-9">
                       <div className="flex items-center space-x-1 bg-white/30 px-2 py-0.5 rounded-full">
                         <Phone size={10} className="text-white" />
-                        <span className="text-xs text-white">9120333520</span>
+                        <span className="text-xs text-white">08449299109</span>
                       </div>
                       <div className="flex items-center space-x-1 bg-white/30 px-2 py-0.5 rounded-full">
                         <Clock size={10} className="text-white" />
@@ -329,7 +416,7 @@ const Contact = () => {
                   
                   {/* Get Directions Button - Light Theme */}
                   <a 
-                    href="https://www.google.com/maps/dir//N-10%2F79,+B3,+Kakarmatta,+Opp.+to+Bangal+Sweet+House+DLW-Lanka+Road,+Varanasi+-+221004/@25.2854089,82.9639505,17z/data=!4m9!4m8!1m0!1m5!1m1!1s0x398e33ef9b1f7e5d:0x7d1e86e0471cf44f!2m2!1d82.9639505!2d25.2854089!3e0"
+                    href="https://www.google.com/maps/dir//Bhagwati+Complex,+Near+to+BOB+ATM,+Grand+Trunk+Rd,+Mirzamurad,+Gaur,+Uttar+Pradesh+221307"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="absolute bottom-4 right-4 z-10 bg-white text-primary px-3 py-2 rounded-md flex items-center space-x-2 shadow-lg hover:bg-gray-100 transition-colors duration-300 border border-transparent dark:hidden"
@@ -342,7 +429,7 @@ const Contact = () => {
                   
                   {/* Get Directions Button - Dark Theme */}
                   <a 
-                    href="https://www.google.com/maps/dir//N-10%2F79,+B3,+Kakarmatta,+Opp.+to+Bangal+Sweet+House+DLW-Lanka+Road,+Varanasi+-+221004/@25.2854089,82.9639505,17z/data=!4m9!4m8!1m0!1m5!1m1!1s0x398e33ef9b1f7e5d:0x7d1e86e0471cf44f!2m2!1d82.9639505!2d25.2854089!3e0"
+                    href="https://www.google.com/maps/dir//Bhagwati+Complex,+Near+to+BOB+ATM,+Grand+Trunk+Rd,+Mirzamurad,+Gaur,+Uttar+Pradesh+221307"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="absolute bottom-4 right-4 z-10 bg-gray-800 text-white px-3 py-2 rounded-md hidden dark:flex items-center space-x-2 shadow-lg hover:bg-gray-700 transition-colors duration-300 border border-white/20"
@@ -354,7 +441,7 @@ const Contact = () => {
                   </a>
                   
                   <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3608.3015305271784!2d82.9639505!3d25.2854089!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x398e33ef9b1f7e5d%3A0x7d1e86e0471cf44f!2sN-10%2F79%2C%20B3%2C%20Kakarmatta%2C%20Opp.%20to%20Bangal%20Sweet%20House%20DLW-Lanka%20Road%2C%20Varanasi%20-%20221004!5e0!3m2!1sen!2sin!4v1688641458899!5m2!1sen!2sin"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3608.3015305271784!2d82.9639505!3d25.2854089!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjXCsDE3JzA3LjUiTiA4MsKwNTcnNTAuMiJF!5e0!3m2!1sen!2sin!4v1688641458899!5m2!1sen!2sin"
                     width="100%"
                     height="300"
                     style={{ border: 0 }}
@@ -362,7 +449,7 @@ const Contact = () => {
                     loading="lazy"
                     referrerPolicy="no-referrer-when-downgrade"
                     className="rounded-lg"
-                    title="Our Office Location"
+                    title="KV Associate - Main Office Location"
                   />
                 </div>
               </div>
