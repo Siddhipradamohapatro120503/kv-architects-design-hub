@@ -233,6 +233,73 @@ const AboutPage: React.FC = () => {
                 ))}
               </div>
             </motion.div>
+
+            {/* Achievement Gallery */}
+            <motion.div 
+              className="mt-16"
+              initial={{ y: 50, opacity: 0 }}
+              whileInView={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+            >
+              <h3 className="text-2xl font-bold mb-8 text-center">Achievement Highlights</h3>
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {[
+                  {
+                    image: "/images/achievements/award-ceremony-1.jpeg",
+                    title: "Excellence Award Recognition",
+                    description: "Awarded for outstanding contribution in architecture"
+                  },
+                  {
+                    image: "/images/achievements/award-ceremony-2.jpeg",
+                    title: "Professional Excellence Award",
+                    description: "Recognition for innovative design solutions"
+                  },
+                  {
+                    image: "/images/achievements/award-ceremony-3.jpeg",
+                    title: "Industry Achievement Award",
+                    description: "Honored for exceptional project delivery"
+                  },
+                  {
+                    image: "/images/achievements/alumni-meet-stage.jpeg",
+                    title: "Alumni Meet 2025",
+                    description: "Bundelkhand University Alumni Recognition"
+                  },
+                  {
+                    image: "/images/achievements/meeting-with-mentor.jpeg",
+                    title: "Professional Mentorship",
+                    description: "Collaboration with industry leaders"
+                  },
+                  {
+                    image: "/images/achievements/sustainability-award.jpeg",
+                    title: "Sustainability Initiative Award",
+                    description: "Recognition for eco-friendly design practices"
+                  }
+                ].map((achievement, index) => (
+                  <motion.div
+                    key={index}
+                    className="bg-card rounded-lg overflow-hidden border border-border hover:shadow-xl transition-all duration-300 group"
+                    initial={{ scale: 0.9, opacity: 0 }}
+                    whileInView={{ scale: 1, opacity: 1 }}
+                    transition={{ delay: index * 0.1, duration: 0.5 }}
+                    viewport={{ once: true }}
+                    whileHover={{ y: -5 }}
+                  >
+                    <div className="aspect-video overflow-hidden">
+                      <img 
+                        src={achievement.image} 
+                        alt={achievement.title}
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                      />
+                    </div>
+                    <div className="p-4">
+                      <h4 className="font-semibold mb-2">{achievement.title}</h4>
+                      <p className="text-sm text-muted-foreground">{achievement.description}</p>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
           </div>
         </section>
         
