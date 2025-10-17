@@ -148,6 +148,50 @@ const Gallery = () => {
           </motion.div>
         </motion.div>
         
+        {/* Featured Architectural Drawings */}
+        <motion.div 
+          className="grid md:grid-cols-2 gap-8 mb-16"
+          initial={{ opacity: 0, y: 30 }}
+          animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+          transition={{ duration: 0.8, delay: 0.6 }}
+        >
+          <motion.div 
+            className="bg-card rounded-xl overflow-hidden border border-border shadow-lg hover:shadow-2xl transition-all duration-300 group"
+            whileHover={{ y: -5 }}
+          >
+            <div className="aspect-square relative overflow-hidden bg-white dark:bg-gray-900">
+              <img 
+                src="/images/architecture/temple-front-elevation-1.png" 
+                alt="Temple Front Elevation - Traditional Design with Ganesha"
+                className="w-full h-full object-contain p-4 transition-transform duration-500 group-hover:scale-105"
+              />
+            </div>
+            <div className="p-6 bg-gradient-to-br from-card to-muted/30">
+              <span className="text-sm text-primary font-semibold">Temple Architecture</span>
+              <h3 className="text-xl font-bold mt-2">Front Elevation - Traditional Design</h3>
+              <p className="text-muted-foreground mt-2 text-sm">Detailed architectural drawing showcasing intricate temple design with traditional elements</p>
+            </div>
+          </motion.div>
+
+          <motion.div 
+            className="bg-card rounded-xl overflow-hidden border border-border shadow-lg hover:shadow-2xl transition-all duration-300 group"
+            whileHover={{ y: -5 }}
+          >
+            <div className="aspect-square relative overflow-hidden bg-white dark:bg-gray-900">
+              <img 
+                src="/images/architecture/temple-front-elevation-2.png" 
+                alt="Temple Front Elevation - Kalasha Shikhara Design"
+                className="w-full h-full object-contain p-4 transition-transform duration-500 group-hover:scale-105"
+              />
+            </div>
+            <div className="p-6 bg-gradient-to-br from-card to-muted/30">
+              <span className="text-sm text-primary font-semibold">Temple Architecture</span>
+              <h3 className="text-xl font-bold mt-2">Front Elevation - Kalasha Shikhara</h3>
+              <p className="text-muted-foreground mt-2 text-sm">Precise architectural blueprint featuring traditional Kalasha and Shikhara temple elements</p>
+            </div>
+          </motion.div>
+        </motion.div>
+        
         {/* Additional Gallery Grid */}
         <motion.div 
           className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-16"
