@@ -50,6 +50,19 @@ const categories: Category[] = [
   }
 ];
 
+const templeDrawings = [
+  {
+    title: "Ganesh Temple Entrance",
+    image: "/images/temples/ganesh-temple-elevation.png",
+    description: "Front elevation with ornate pillars and traditional Ganesh motif (Span: 18'-0\")"
+  },
+  {
+    title: "Shikhara Temple",
+    image: "/images/temples/shikhara-temple-elevation.png",
+    description: "Classical Kalasha style with detailed Garbhagriha design (Height: 45'-9\")"
+  }
+];
+
 
 const CategoryCard = ({ category, index }: { category: Category; index: number }) => {
   const cardRef = useRef(null);
@@ -188,11 +201,52 @@ const Categories = () => {
         </motion.div>
 
         {/* Vertical Grid Layout */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
           {categories.map((category, index) => (
             <CategoryCard key={category.title} category={category} index={index} />
           ))}
         </div>
+
+        {/* Temple Technical Drawings */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="mb-16"
+        >
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            {templeDrawings.map((temple, index) => (
+              <motion.div
+                key={temple.title}
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.8, delay: index * 0.2 }}
+                viewport={{ once: true }}
+                className="group relative bg-card rounded-xl overflow-hidden border border-border hover:border-primary/50 transition-all duration-300"
+              >
+                <div className="relative aspect-square overflow-hidden bg-white">
+                  <img
+                    src={temple.image}
+                    alt={temple.title}
+                    className="w-full h-full object-contain p-4 transform group-hover:scale-105 transition-transform duration-700"
+                  />
+                </div>
+                
+                <div className="p-6">
+                  <h3 className="text-xl font-bold mb-2 group-hover:text-primary transition-colors">
+                    {temple.title}
+                  </h3>
+                  <p className="text-muted-foreground text-sm">{temple.description}</p>
+                </div>
+
+                <div className="absolute top-4 right-4 bg-primary/90 text-primary-foreground px-3 py-1 rounded-full text-xs font-semibold backdrop-blur-sm">
+                  Technical Drawing
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
 
         {/* Infinite Image Scroll Section */}
         <InfiniteImageScroll />
