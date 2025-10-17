@@ -254,26 +254,26 @@ const Contact = () => {
                 <div className="flex items-start space-x-4">
                   <MapPin className="text-primary mt-1 flex-shrink-0" size={24} />
                   <div className="flex-1">
-                    <p className="font-bold text-lg mb-2 text-foreground">KV Associate</p>
+                    <p className="font-bold text-lg mb-2 text-foreground">DLW-Lanka Office</p>
                     <p className="text-muted-foreground leading-relaxed mb-3">
-                      Bhagwati Complex, Near to BOB ATM<br />
-                      Grand Trunk Rd, Mirzamurad, Gaur<br />
-                      Uttar Pradesh – 221307
+                      N-10/79, B3, Kakarmatta (New Colony)<br />
+                      Opp. to Bangal Sweet House<br />
+                      DLW-Lanka Road, Varanasi – 221004
                     </p>
                     <div className="flex flex-wrap gap-2 mb-2">
-                      <a 
-                        href="tel:08449299109"
-                        className="flex items-center space-x-1 bg-primary/10 hover:bg-primary/20 text-primary px-3 py-1.5 rounded-lg text-sm transition-colors duration-300"
-                      >
-                        <Phone size={14} />
-                        <span>08449299109</span>
-                      </a>
                       <a 
                         href="tel:09120333520"
                         className="flex items-center space-x-1 bg-primary/10 hover:bg-primary/20 text-primary px-3 py-1.5 rounded-lg text-sm transition-colors duration-300"
                       >
                         <Phone size={14} />
                         <span>09120333520</span>
+                      </a>
+                      <a 
+                        href="tel:9120333508"
+                        className="flex items-center space-x-1 bg-primary/10 hover:bg-primary/20 text-primary px-3 py-1.5 rounded-lg text-sm transition-colors duration-300"
+                      >
+                        <Phone size={14} />
+                        <span>9120333508</span>
                       </a>
                     </div>
                     <a 
@@ -304,19 +304,19 @@ const Contact = () => {
                 <div className="flex items-start space-x-4">
                   <MapPin className="text-muted-foreground mt-1 flex-shrink-0" size={24} />
                   <div className="flex-1">
-                    <p className="font-bold text-lg mb-2 text-foreground">DLW-Lanka Office</p>
+                    <p className="font-bold text-lg mb-2 text-foreground">Mirzamurad Office</p>
                     <p className="text-muted-foreground leading-relaxed mb-3">
-                      N-10/79, B3, Kakarmatta (New Colony)<br />
-                      Opp. to Bangal Sweet House<br />
-                      DLW-Lanka Road, Varanasi – 221004
+                      Bhagwati Complex, Near to BOB ATM<br />
+                      Grand Trunk Rd, Mirzamurad, Gaur<br />
+                      Uttar Pradesh – 221307
                     </p>
                     <div className="flex flex-wrap gap-2">
                       <a 
-                        href="tel:09120333520"
+                        href="tel:08449299109"
                         className="flex items-center space-x-1 bg-muted hover:bg-muted/80 text-foreground px-3 py-1.5 rounded-lg text-sm transition-colors duration-300"
                       >
                         <Phone size={14} />
-                        <span>09120333520</span>
+                        <span>08449299109</span>
                       </a>
                     </div>
                   </div>

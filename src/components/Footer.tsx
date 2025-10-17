@@ -113,9 +113,12 @@ const Footer: React.FC = () => {
                 <MapPin className="text-blue-400 mt-1 flex-shrink-0" size={18} />
                 <p className="text-muted-foreground">N-10/79, B3, Kakarmataa, (New Colony) Opp. to Bangal Sweet House DLW-Lanka Road, Varanasi - 221004</p>
               </div>
-              <div className="flex items-center space-x-3">
+              <div className="flex items-start space-x-3">
                 <Phone className="text-blue-400 flex-shrink-0" size={18} />
-                <p className="text-muted-foreground">+91 9120333520</p>
+                <div className="text-muted-foreground">
+                  <p>+91 9120333520</p>
+                  <p>9120333508</p>
+                </div>
               </div>
               <div className="flex items-center space-x-3">
                 <Mail className="text-blue-400 flex-shrink-0" size={18} />

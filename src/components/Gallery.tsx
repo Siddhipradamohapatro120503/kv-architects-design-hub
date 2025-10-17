@@ -197,18 +197,6 @@ const Gallery = () => {
               title: "Residential Complex",
               image: "/images/buildings/ch.jpg",
               category: "Residential"
-            },
-            {
-              id: 110,
-              title: "Temple Architecture",
-              image: "./images/kvassociate/kvassociate/Screenshot 2025-10-13 at 7.22.33 PM.png",
-              category: "Temple"
-            },
-            {
-              id: 111,
-              title: "Sacred Temple Design",
-              image: "./images/kvassociate/kvassociate/Screenshot 2025-10-13 at 7.22.59 PM.png",
-              category: "Temple"
             }
           ].map((item, index) => (
             <motion.div 

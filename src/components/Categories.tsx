@@ -33,7 +33,7 @@ const categories: Category[] = [
   {
     title: "Temples",
     icon: <LandmarkIcon className="w-8 h-8" />,
-    image: "./image/achi12.jpg",
+    image: "./images/temples/ganesh-temple-elevation.png",
     description: "Sacred spaces that blend traditional architecture with modern engineering."
   },
   {
